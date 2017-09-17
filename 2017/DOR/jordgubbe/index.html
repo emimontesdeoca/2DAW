@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="myApp" ng-controller="myCtrl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#424242">
+  <title>{{config.pageTitle}}</title>
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="css/icon.png">
+  <!-- Css reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Colours CSS -->
+  <link rel="stylesheet" href="css/colors.css">
+  <!-- Hover CSS -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/hover.css/2.1.1/css/hover-min.css">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="title" class="animated fadeIn">{{config.pageHeader}}</div>
+    <div id="weather" class="animated fadeIn"></div>
+  </div>
+  <div id="container">
+    <a href="{{apps.link}}" ng-repeat="apps in items" class="animated fadeIn" style="animation-delay: {{$index}}50ms;">
+      <div class="items {{apps.colour}}">
+        <span class="item-text">{{apps.name}}</span>
+      </div>
+    </a>
+  </div>
+
+
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Simplyweather API -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <!-- App -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>

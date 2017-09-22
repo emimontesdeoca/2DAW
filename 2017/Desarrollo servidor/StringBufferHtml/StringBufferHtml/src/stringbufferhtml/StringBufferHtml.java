@@ -1,13 +1,18 @@
-package inputmain;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package stringbufferhtml;
 
-import java.util.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.Scanner;
 
-public class InputMain {
-
-    public static void main(String[] args) {
+/**
+ *
+ * @author emont
+ */
+public class StringBufferHtml {
+public static void main(String[] args) {
         /// Carpeta TEMP
         String tempFolder = System.getenv("TEMP");
         /// Nombre de fichero
@@ -18,7 +23,7 @@ public class InputMain {
         String name = askString("Introduce nombre: ");
         
         /// Crear archivo
-        createFile(tempFolder + fileName, createHtml(title,name));
+        FileCreator.createFile(tempFolder + fileName, createHtml(title,name));
     }
 
     public static String askString(String text){
@@ -43,18 +48,5 @@ public class InputMain {
         /// Retornar el string
         return sb.toString();
     }
-
-    public static void createFile(String path, String text) {
-        /// Metodo de creacion de archivo por el documento
-        File file = new File(path);
-        try {
-            FileWriter fw = new FileWriter(file);
-            fw.write(text);
-            fw.close();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        }
+     
     }
-
-}

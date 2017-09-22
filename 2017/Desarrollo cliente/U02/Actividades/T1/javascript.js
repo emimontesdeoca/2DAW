@@ -20,17 +20,16 @@ function calculateSupplyFlotante(a, b) {
   var yearToLive = emax - a;
   var currentYear = new Date().getFullYear();
   var lastYear = currentYear + yearToLive;
-  var counter = 0;
+  var c = 0;
 
   for (var i = currentYear; i <= lastYear; i++) {
-    if (isLeapYear(currentYear)) {
-      counter += b * 366;
-    } else {
-      counter += b * 365;
-    }
+    isLeapYear(currentYear) ? c += b * 366 : c += b * 365;
   }
 
-  return console.log("Necesitaras " + counter.toFixed() + " hasta que tengas " + emax + " años y te vas a gastar " + (0.80 * counter).toFixed(2) + "€.");
+  return console.log("Necesitaras " + c.toFixed() +
+    " hasta que tengas " + emax + " años y te vas a gastar " +
+    (0.80 * c).toFixed(2) + "€.");
 }
+
 
 calculateSupplyFlotante(22, 2.8);

@@ -4,7 +4,13 @@
 <title>Calcular exponencial</title>
 <SCRIPT>
 function exponencial(a, n) {
+  if (n == 0) {
+    return 1;
+  }
+  else {
   return a*exponencial(a, n-1);
+  }
+
 }
 </script>
 </head>

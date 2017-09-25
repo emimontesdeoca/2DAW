@@ -3,6 +3,8 @@ mensaje indicando el número de dígitos que contiene y la suma de cada
 uno de sus dígitos. Por ejemplo: 125, tendría tres dígitos y la suma
 de estos sería 8.*/
 
+function mainEjercicio5() {
+
 
 function validate(n) {
   if (isNaN(n) || n == '') {
@@ -32,3 +34,4 @@ for (var i = 0; i < split.length; i++) {
 }
 /// Show total
 alert(total);
+}

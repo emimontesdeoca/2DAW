@@ -8,3 +8,13 @@ la letra es * y la anchura es 4, debería mostrar lo siguiente:
  **
  *
  */
+
+
+for (var i = 5; i > 0; i--) {
+  var a = "";
+  for (var j = 0; j < i; j++) {
+    a += "* "
+  }
+
+  console.log(a);
+}

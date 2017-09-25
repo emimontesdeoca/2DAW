@@ -14,6 +14,9 @@ del alumno. El mensaje en la consola aparecerá como "log" si es nivel A, "info"
 nivel B, "warning" si es nivel C y "error" para nivel D
 Igual que lo anterior pero añadiendo a la web los datos del alumno con formato H2 y el nivel en H1*/
 
+function mainEjercicio8() {
+
+
 
 var a = prompt("Nombre de alumno?");
 var b = prompt("Cantidad de preguntas?");
@@ -35,42 +38,49 @@ function getNivel(alu) {
   return (perc * 100).toFixed();
 }
 
+function changeInnerHtml(id, text) {
+  return document.getElementById(id).innerHTML = text;
+}
+
+/// Set html
 var n = parseInt(getNivel(alumno));
-
-var name = document.getElementById("name").innerHTML = alumno[0].alumno;
-var total = document.getElementById("total").innerHTML = alumno[0].totalpreguntas;
-var correctas = document.getElementById("correctas").innerHTML = alumno[0].correctas;
-
+var name = changeInnerHtml("name", alumno[0].alumno);
+var total = changeInnerHtml("total", alumno[0].totalpreguntas);
+var correctas = changeInnerHtml("correctas", alumno[0].correctas);
+/*
+/// Write level
 if (n >= 85) {
-  console.info("Nivel A!");
-  var nivel = document.getElementById("nivel").innerHTML = "Nivel A!";
+  console.log("Nivel A!");
+  var nivel = changeInnerHtml("nivel", "Nivel A!");
 } else if (n >= 70 && n < 85) {
   console.info("Nivel B!");
-  var nivel = document.getElementById("nivel").innerHTML = "Nivel B!";
+  var nivel = changeInnerHtml("nivel", "Nivel B!");
 } else if (n >= 50 && n < 70) {
   console.warn("Nivel C!");
-  var nivel = document.getElementById("nivel").innerHTML = "Nivel C!";
+  var nivel = changeInnerHtml("nivel", "Nivel C!");
 } else {
   console.error("Nivel D!");
-  var nivel = document.getElementById("nivel").innerHTML = "Nivel D!";
-}
-
-
-
-
-/* No funciona?
-switch (n) {
-  case n >= 85:
-    console.info("Nivel A!");
-    break;
-  case n >= 70 && n < 85:
-    console.info("Nivel B!");
-    break;
-  case n >= 50 && n < 70:
-    console.warn("Nivel C!");
-    break;
-  case n < 50:
-    console.error("Nivel D!");
-    break;
+  var nivel = changeInnerHtml("nivel", "Nivel D!");
 }
 */
+switch (true) {
+  case (n >= 85):
+    console.info("Nivel A!");
+    var nivel = changeInnerHtml("nivel", "Nivel A!");
+    break;
+  case (n >= 70 && n < 85):
+    console.info("Nivel B!");
+    var nivel = changeInnerHtml("nivel", "Nivel B!");
+    break;
+  case (n >= 50 && n < 70):
+    console.warn("Nivel C!");
+    var nivel = changeInnerHtml("nivel", "Nivel C!");
+    break;
+  case (n < 50):
+    console.error("Nivel D!");
+    var nivel = changeInnerHtml("nivel", "Nivel D!");
+    break;
+}
+
+
+}

@@ -12,10 +12,9 @@ package personaapp;
 public class PersonaApp {
 
     public static void main(String[] args) {
-        Persona p = new Persona(args[0], Integer.parseInt(args[1]));
+        Persona p = new Persona("Emiliano", "Montesdeoca",22);
 
         System.out.println(p.getNombre());
-        System.out.println(p.getEdad());
 
     }
 

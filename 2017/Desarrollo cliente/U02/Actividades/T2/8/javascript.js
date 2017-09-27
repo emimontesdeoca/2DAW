@@ -14,13 +14,14 @@ del alumno. El mensaje en la consola aparecerá como "log" si es nivel A, "info"
 nivel B, "warning" si es nivel C y "error" para nivel D
 Igual que lo anterior pero añadiendo a la web los datos del alumno con formato H2 y el nivel en H1*/
 
-function mainEjercicio8() {
-
-
-
 var a = prompt("Nombre de alumno?");
-var b = prompt("Cantidad de preguntas?");
-var c = prompt("Respuesta correctas?")
+do {
+  var b = prompt("Cantidad de preguntas?");
+} while (b < 0);
+
+do {
+  var c = prompt("Respuesta correctas?")
+} while (c > b);
 
 /// object alumno
 var alumno = [{
@@ -80,7 +81,4 @@ switch (true) {
     console.error("Nivel D!");
     var nivel = changeInnerHtml("nivel", "Nivel D!");
     break;
-}
-
-
 }

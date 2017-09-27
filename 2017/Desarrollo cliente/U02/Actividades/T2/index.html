@@ -5,26 +5,94 @@
   <meta charset="utf-8">
   <title>Actividades</title>
 </head>
+<style media="screen">
+  body {
+    font-family: "Arial";
+  }
+
+  button {
+    margin:auto;
+  display:block;
+  }
+
+  h1,h2,h3 {
+    text-align: center;
+  }
+
+  #imgcontainer{
+    margin: auto;
+    display: block;
+    width: 70%;
+
+  }
+</style>
 
 <body>
-  <h2>Actividades</h2>
+  <h1>Actividades</h1>
+  <hr>
+  <h2>Emiliano Montesdeoca del Puerto</h2>
+
+
 
   <h3>Ejercicio 1</h3>
-  <button type="button" name="button" onclick=""></button>
+
+  <p>Realizar un programa que pida al usuario mediante prompt 6 valores enteros que serán almacenados en 6 variables distintas. Una vez introducidos se deberá mostrar un mensaje que indique el número mayor, el menor, la suma de los enteros introducidos y
+    la diferencia entre el mayor y el menor.</p>
   <h2 id="array"></h2>
   <h2 id="mayor"></h2>
   <h2 id="menor"></h2>
   <h2 id="suma"></h2>
   <h2 id="diferencia"></h2>
+
+  <button onclick="mainEjercicio1();">Pulsar</button>
+
   <h3>Ejercicio 2</h3>
+  <p>Solicitar al usuario un número entero a través de una ventana de diálogo. Multiplicar ese número por 2.5 y sumarle 100. Mostrar el resultado en otra ventana de diálogo.</p>
+  <button onclick="mainEjercicio2();">Pulsar</button>
   <h3>Ejercicio 3</h3>
+  <p>Repetir el ejercicio 1 con cuatro valores enteros y tres valores reales. En este caso, los números deben ser almacenados en una única variable, deben ser todos positivos y se debe mostrar un mensaje de “Aprobado” cuando la media supere el 5. Si la media
+    es menor a 5 saldrá el mensaje "Ponte las pilas"</p>
+  <button onclick="mainEjercicio3();">Pulsar</button>
+
   <h3>Ejercicio 4</h3>
+  <p>Se deben añadir 5 imágenes a la página web para que al hacer click sobre ellas se muestre un mensaje como el siguiente: “Haz hecho click sobre la imagen número 1”, “Haz hecho click sobre la imagen número 2”, etc </p>
+<div id="imgcontainer">
+  <img src="http://dummyimage.com/400x200/000/00ffd5.png" onclick="checkImage(this.id);" id="0" alt="placeholder image" />
+  <img src="http://dummyimage.com/400x200/000/00ffd5.png" onclick="checkImage(this.id);" id="1" alt="placeholder image" />
+  <img src="http://dummyimage.com/400x200/000/00ffd5.png" onclick="checkImage(this.id);" id="2" alt="placeholder image" />
+  <img src="http://dummyimage.com/400x200/000/00ffd5.png" onclick="checkImage(this.id);" id="3" alt="placeholder image" />
+  <img src="http://dummyimage.com/400x200/000/00ffd5.png" onclick="checkImage(this.id);" id="4" alt="placeholder image" />
+  <img src="http://dummyimage.com/400x200/000/00ffd5.png" onclick="checkImage(this.id);" id="5" alt="placeholder image" />
+</div>
+
   <h3>Ejercicio 5</h3>
+  <p>Solicitar por teclado mediante prompt un número positivo y mostrar un mensaje indicando el número de dígitos que contiene y la suma de cada uno de sus dígitos. Por ejemplo: 125, tendría tres dígitos y la suma de estos sería 8</p>
+  <button onclick="mainEjercicio5();">Pulsar</button>
+
   <h3>Ejercicio 6</h3>
+  <p>Solicitar que el usuario escriba alguna de estas cuatro palabras (profesor, manzana, servidor, mar) para luego mostrar la palabra traducida en inglés. Es decir, si se ingresa 'mar' debemos mostrar el texto 'sea' en la página. Solo se admiten estas palabras
+    como entradas permitidas.</p>
+  <button onclick="mainEjercicio6();">Pulsar</button>
+
   <h3>Ejercicio 7</h3>
+  <p>Solicitar al usuario el día, mes y año de nacimiento. En función de estos datos mostrar al usuario su edad.</p>
+  <button onclick="mainEjercicio7();">Pulsar</button>
+
   <h3>Ejercicio 8</h3>
+  <p>Un alumno realizó una prueba. Se obtuvo la siguiente información: nombre del alumno, cantidad total de preguntas que se le realizaron y cantidad de preguntas que contestó correctamente. Se pide crear una(s) función(es) JS que lea los datos del estudiante,
+    informe el nivel del mismo según el porcentaje de respuestas correctas que ha obtenido, y sabiendo que:</p>
+  </p>
+  <button onclick="mainEjercicio8();">Pulsar</button>
+
   <h3>Ejercicio 9</h3>
+  <p>Crear una función que reciba un caracter (por ejemplo el *) y un número. Esta función debe escribir un triángulo formado por esa letra, que tenga como anchura inicial la que se ha indicado en el número.</p>
+  <button onclick="mainEjercicio9();">Pulsar</button>
+
   <h3>Ejercicio 10</h3>
+  <p>Modificar el ejercicio anterior para pedir dos caracteres en lugar de uno, se seguirá pidiendo la anchura pero se aplicará un estilo diferente a cada carácter, de forma que sea fácil su distinción visual. Para ello se añadirán estilos CSS que deberán
+    estar separados del código HTML y JS.</p>
+  <button onclick="mainEjercicio10();">Pulsar</button>
+
 
   <script src="1/javascript.js" type="text/javascript"></script>
   <script src="2/javascript.js" type="text/javascript"></script>

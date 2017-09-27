@@ -4,7 +4,7 @@ en inglés. Es decir, si se ingresa 'mar' debemos mostrar el texto 'sea' en
 la página. Solo se admiten estas palabras como entradas permitidas.*/
 
 
-
+function mainEjercicio6() {
 
 var dic = [{
     "word": "profesor",
@@ -33,3 +33,5 @@ var a = prompt("Introduzca una de estas palabras: profesor, manzana, servidor, m
 var old = document.getElementById("old").innerHTML = a;
 
 var newt = document.getElementById("newt").innerHTML = getTraduction(a);
+
+}

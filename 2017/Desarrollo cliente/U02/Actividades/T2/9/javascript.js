@@ -9,8 +9,13 @@ la letra es * y la anchura es 4, debería mostrar lo siguiente:
  *
  */
 
+function mainEjercicio9() {
+
 var e = 0;
-var rows = 10;
+var rows  = prompt("Tamaño?");
+var fuera = prompt("Contorno?");
+var fuera = prompt("Interior?");
+
 
 for (var i = rows; i > 0; i--) {
   var a = "";
@@ -21,16 +26,18 @@ for (var i = rows; i > 0; i--) {
 
   for (var j = 0; j < i; j++) {
     if (i == rows) {
-      a += "* ";
+      a += fuera  ;
     } else {
       if (j == 0 || j == i - 1) {
-        a += "* ";
+        a += fuera;
       } else {
-        a += "0 ";
+        a += interior;
       }
     }
   }
 
   e++;
   console.log(a);
+}
+
 }

@@ -36,9 +36,9 @@ public class FilePersistence implements Persistence {
             String builder = "";
 
             /// Añadir valores
-            builder += h.getNombre() + "-";
-            builder += h.getLocalidad() + "-";
-            builder += h.getEstrellas() + "-";
+            builder += h.getNombre() + ":";
+            builder += h.getLocalidad() + ":";
+            builder += h.getEstrellas() + ":";
             builder += h.getPrecioNoche();
 
             /// Guardar la linea en el fichero
@@ -76,9 +76,9 @@ public class FilePersistence implements Persistence {
                 /// Crear builder
                 String builder = "";
                 /// Escribir valores
-                builder += nh.getNombre() + "-";
-                builder += nh.getLocalidad() + "-";
-                builder += nh.getEstrellas() + "-";
+                builder += nh.getNombre() + ":";
+                builder += nh.getLocalidad() + ":";
+                builder += nh.getEstrellas() + ":";
                 builder += nh.getPrecioNoche();
                 /// Guardar en fichero
                 bw.append(builder);
@@ -107,7 +107,7 @@ public class FilePersistence implements Persistence {
             /// Si la linea no es null, significa que tiene valor
             while (line != null) {
                 /// Split para conseguir valores
-                String[] split = line.split("-");
+                String[] split = line.split(":");
                 String hname = split[0];
                 String hloc = split[1];
                 Integer hestrellas = Integer.parseInt(split[2]);

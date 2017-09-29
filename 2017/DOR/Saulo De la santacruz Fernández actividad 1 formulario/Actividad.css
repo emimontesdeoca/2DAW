@@ -1,0 +1,100 @@
+h3{
+	color:#0085CE;
+}
+.uno{
+	position: relative;
+	left: 30px;
+}
+.tres{
+	position: relative;
+	left: 34px;
+}
+.cuatro{
+	position: absolute;
+	left: 320px;
+	top: 133px;
+}
+.cinco{
+	position: relative;
+	left: 15px;
+}
+.seis{
+	position: absolute;
+	left: 180px;
+	top: 168px;
+}
+.siete{
+	position: absolute;
+	left: 310px;
+	top: 168px;
+
+}
+.ocho{
+	position: absolute;
+	left: 420px;
+	top: 168px;
+}
+.nueve{
+	position: relative;
+	left: 27px;
+}
+.diez{
+	position: absolute;
+	left: 220px;
+	top: 205px;
+}
+
+hr {
+  background-color: red;
+}
+.doce{
+	position: relative;
+	left: 30px;
+}
+
+select{
+	background-color:#F8F8F8;
+	border-radius: 1em;
+}
+.trece{
+	position: absolute;
+	left: 360px;
+	top: 392px;
+}
+.radio{
+	margin-right: 15px;
+}
+
+.cuadro{
+	position: relative;
+	left: 150px;
+	top: -30px;
+	width: 500px;
+	height: 100px;
+}
+.botones>input{
+	margin-right: 10px;
+	border-radius: 1em;
+	background-color: #D9D6BB;
+	width: 150px;
+	
+}
+
+input{
+	border-color: #D7E7F0;
+}
+.catorce{
+	position: relative;
+	left: 5px;
+	width: 200px;
+}
+.quince{
+	position: absolute;
+	top: 242px;
+	left: 330px;
+}
+.veinte{
+	position: absolute;
+	top: 242px;
+	left: 600px;
+}

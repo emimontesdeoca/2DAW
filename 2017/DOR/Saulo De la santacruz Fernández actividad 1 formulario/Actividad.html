@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Actividad.css">
+	<meta charset="utf-8">
+	<title>Actividad 1</title>
+</head>
+<body>
+		<form name="myform" action="https://www.w3schools.com/action_page.php" >
+			<fieldset>
+				<legend></legend>
+					<h3>Obligado al pago</h3>
+				<p>
+					<label for="NIF">
+						<span>N.I.F.(*)</span>
+						<input type="text" class="uno" size="10" Maxlength="9" required="required" name="NIF" id="NIF">
+					</label>
+				</p>
+				<p>
+					<label for="apellidos">
+						<span>Apellidos y Nombre o Razón Social(*) </span>
+						<input type="text"  class="dos" required="required" size="40" minlength="10" name="apellidos" id="apellidos">
+					</label>
+				</p>
+				<p >
+					<label for="Sigla">
+						<span>Sigla(*) </span>
+						<select required="required" class="tres" style="width: 190px;"  name="Sigla" autofocus>
+							<option value="">Seleccione sigla</option>
+							<option value="DOR">DOR</option>
+							<option value="DOR">DSW</option>
+							<option value="DOR">DEW</option>
+							<option value="DOR">DPL</option>
+							<option value="DOR">EMR</option>
+						</select>
+					</label>
+				</p>
+				<p class="cuatro">
+					<label for="viapublica">
+						<span>Nombre vía pública(*) </span>
+						<input type="text" size="50" required="required" name="viapublica" id="viapublica">
+					</label>
+				</p>
+					<p>
+					<label for="Número">
+						<span>Numero(*) </span>
+						<input type="text"  class="cinco" maxlength="2" size="2" required="required" name="numero" id="numero">
+					</label>
+				</p>
+					<p class="seis">
+					<label for="Escalera">
+						<span>Escalera </span>
+						<input type="text"   maxlength="2" size="2" name="Escalera" id="Escalera">
+					</label>
+				</p>
+					<p class="siete">
+					<label for="Piso">
+						<span>Piso </span>
+						<input type="text"   maxlength="2" size="2" name="Piso" id="Piso">
+					</label>
+				</p>
+					<p class="ocho">
+					<label for="Puerta">
+						<span>Puerta </span>
+						<input type="text"   maxlength="2" size="2" name="Puerta" id="Puerta">
+					</label>
+				</p>
+				<p >
+					<label for="Télefono">
+						<span>Télefono </span>
+						<input type="text" class="nueve"   maxlength="9" size="9" name="Telefono" id="Telefono">
+					</label>
+				</p>
+					<p class="diez">
+					<label for="Fax">
+						<span>Fax </span>
+						<input type="text"   maxlength="10" size="10" name="Fax" id="Fax">
+					</label>
+				</p>
+				<p >
+					<label for="Provincia">
+						<span>Provincia(*) </span>
+						<select class="catorce">
+							<option value="">Seleccione provincia</option>
+							<option value="DOR">Santa Cruz de tenerife</option>
+							<option value="DOR">La laguna</option>
+							<option value="DOR">El Rosario</option>
+							<option value="DOR">Candelaria</option>
+							<option value="DOR">El Médano</option>
+						</select>
+					</label>
+				</p>
+					<p class="quince">
+					<label for="Municipio">
+						<span>Municipio(*) </span>
+						<select >
+							<option value="">Seleccione municipio</option>
+							<option value="DOR">Santa Cruz de tenerife</option>
+							<option value="DOR">La laguna</option>
+							<option value="DOR">El Rosario</option>
+							<option value="DOR">Candelaria</option>
+							<option value="DOR">El Médano</option>
+						</select>
+					</label>
+				</p>
+				<p class="veinte">
+					<label for="Cód. Postal">
+						<span>Cód. Postal(*) </span>
+						<input type="text"   maxlength="10" size="10" name="Fax" id="Fax">
+					</label>
+				</p>
+				<hr>
+				<h3>Tasas</h3>
+					<p class="once">
+					<label for="Tramite">
+						<span>Trámite(*)</span>
+						<br>
+							<select required="required" class="tramite" style="width: 660px;"  name="Tramite" autofocus>
+							<option value="">Seleccione trámite</option>
+							<option value="DOR">Matricula</option>
+							<option value="DOR">Traspasos</option>
+							<option value="DOR">Ingresos</option>
+							<option value="DOR">Retirar Dinero</option>
+							<option value="DOR">Consultar Saldo</option>
+						</select>
+					</label>
+				</p>
+				<p >
+					<label for="expediente">
+						<span>Número de Expediente </span>
+						<input type="text" class="doce"   maxlength="10" size="10" name="expediente" id="expediente">
+					</label>
+				</p>
+				<p class="trece">
+					<label for="liquidacion">
+						<span>Número de Liquidación </span>
+						<input type="text" class="catorce"   maxlength="10" size="10" name="liquidacion" id="liquidacion">
+					</label>
+				</p>
+				<p>
+					<input type="radio" class="radio"  name="pago"><strong>En efectivo</strong>
+					<input type="radio" class="radio" name="pago"><strong>Adeudo en cta.</strong>
+					<input type="radio" class="radio" name="pago"><strong>Pago telemático</strong>
+				</p>
+				<p>Concepto</p>
+				<input type="text" class="cuadro"  name="concepto">
+				<div class="botones">
+					<input type="submit" name="continuar" value="continuar">
+					<input type="button" name="volver" value="Volver">
+					<input type="button" name="Limpiar Formulario" value="Limpiar formulario"  onclick="reset();" >
+				</div>
+				
+			</fieldset>
+		</form>
+</body>
+</html>

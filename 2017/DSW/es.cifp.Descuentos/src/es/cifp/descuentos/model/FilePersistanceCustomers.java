@@ -68,9 +68,9 @@ public class FilePersistanceCustomers {
                 /// Crear builder
                 String builder = "";
                 /// Añadir valores
-                builder += c.getName() + ":";
+                builder += nc.getName() + ":";
                 builder += "true:";
-                builder += c.getMemberType();
+                builder += nc.getMemberType();
 
                 /// Guardar en fichero
                 bw.append(builder);
@@ -94,7 +94,7 @@ public class FilePersistanceCustomers {
             BufferedReader br = new BufferedReader(f);
 
             /// Leer linea
-            String line = br.readLine();
+            String line = "";
 
             /// Si la linea no es null, significa que tiene valor
             while ((line = br.readLine()) != null) {

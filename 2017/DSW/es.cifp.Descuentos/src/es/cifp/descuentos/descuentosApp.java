@@ -5,20 +5,24 @@
  */
 package es.cifp.descuentos;
 
+import es.cifp.descuentos.view.MainMenu;
+import es.cifp.descuentos.view.Utils;
+
 /**
  *
  * @author emont
  */
 public class descuentosApp {
 
-    public static String fileCustomers;
-    public static String fileItems;
+    public static String fileCustomers = System.getProperty("user.home") + "/Desktop" + "\\customers.txt";
+    public static String fileItems = System.getProperty("user.home") + "/Desktop" + "\\items.txt";
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        MainMenu.showMainMenu();
 
     }
 

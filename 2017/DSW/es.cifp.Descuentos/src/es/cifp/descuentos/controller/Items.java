@@ -1,5 +1,7 @@
 package es.cifp.descuentos.controller;
 
+import es.cifp.descuentos.model.FilePersistanceItems;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -12,7 +14,10 @@ public class Items {
     private String name;
     private Double value;
 
-    public List<Items> itemList;
+    public static List<Items> itemList;
+
+    public Items() {
+    }
 
     public Items(String name, Double value) {
         this.name = name;
@@ -36,7 +41,20 @@ public class Items {
     }
 
     public List<Items> getAllItems() {
-        return itemList;
+        return new FilePersistanceItems().list();
+    }
+
+    public Items getItemByName(String name) {
+        Items i = new Items();
+        itemList = new FilePersistanceItems().list();
+        for (Items items : itemList) {
+            String a = items.getName();
+            if (a.equals(name)) {
+                return items;
+            }
+        }
+
+        return i;
     }
 
 }

@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class FilePersistanceItems {
 
-    static List<Items> itemList;
+    List<Items> itemList;
 
     public void save(Items i) {
         try {
@@ -46,11 +47,16 @@ public class FilePersistanceItems {
 
     public void delete(Items i) {
         /// Nueva lista para guardar en el fichero
-        List<Items> newList = list();
+        List<Items> newList;
+        newList = list();
 
         for (Iterator<Items> iter = newList.listIterator(); iter.hasNext();) {
             Items search = iter.next();
-            if (search.getName().equals(i.getName())) {
+
+            String a = search.getName();
+            String b = i.getName();
+
+            if (a.equals(b)) {
                 /// Borrar en la nueva lista el objeto que no queremos
                 iter.remove();
                 break;
@@ -60,7 +66,7 @@ public class FilePersistanceItems {
         /// Escribir de nuevo el archivo con la lista filtrada/objeto eliminado
         try {
             /// Elementos para tratar ficheros
-            FileWriter f = new FileWriter(descuentosApp.fileCustomers);
+            FileWriter f = new FileWriter(descuentosApp.fileItems,true);
             BufferedWriter bw = new BufferedWriter(f);
 
             /// Por cada hotel, escribir en fichero
@@ -95,7 +101,7 @@ public class FilePersistanceItems {
             BufferedReader br = new BufferedReader(f);
 
             /// Leer linea
-            String line = br.readLine();
+            String line = "";
 
             /// Si la linea no es null, significa que tiene valor
             while ((line = br.readLine()) != null) {
@@ -108,7 +114,7 @@ public class FilePersistanceItems {
                 itemList.add(new Items(cname, cvalue));
             }
 
-        } catch (Exception e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
         /// Devolver lista

@@ -18,45 +18,53 @@ import java.util.List;
  * @clase: 2DAW-B
  */
 public class FilePersistanceItems {
-
+    
     List<Items> itemList;
-
-    public void save(Items i) {
+    
+    public void save(Items i) throws Exception {
         try {
             /// Instanciar objetos
             FileWriter f = new FileWriter(descuentosApp.fileItems, true);
             BufferedWriter bw = new BufferedWriter(f);
+            
+            itemList = list();
+            
+            if (itemList.contains(i)) {
+                throw new Exception();
+            } else {
+                /// Cadena a escribir
+                String builder = "";
 
-            /// Cadena a escribir
-            String builder = "";
+                /// Añadir valores
+                builder += i.getName() + ":";
+                builder += i.getValue();
 
-            /// Añadir valores
-            builder += i.getName() + ":";
-            builder += i.getValue();
-
-            /// Guardar la linea en el fichero
-            bw.append(builder);
-            /// Nueva linea  bw.append(builder);
-            bw.newLine();
-            /// Cerrar lector
-            bw.close();
-            f.close();
+                /// Guardar la linea en el fichero
+                bw.append(builder);
+                /// Nueva linea  bw.append(builder);
+                bw.newLine();
+                /// Cerrar lector
+                bw.close();
+                f.close();
+            }
+            
         } catch (Exception e) {
+            throw new Exception();
         }
     }
-
+    
     public void delete(Items i) {
         /// Nueva lista para guardar en el fichero
         List<Items> newList;
         newList = list();
-
+        
         for (Iterator<Items> iter = newList.listIterator(); iter.hasNext();) {
             Items search = iter.next();
-
+            
             String a = search.getName();
             String b = i.getName();
-
-            if (a.equals(b)) {
+            
+            if (a.equals(b) && search.getValue().equals(i.getValue())) {
                 /// Borrar en la nueva lista el objeto que no queremos
                 iter.remove();
                 break;
@@ -66,7 +74,7 @@ public class FilePersistanceItems {
         /// Escribir de nuevo el archivo con la lista filtrada/objeto eliminado
         try {
             /// Elementos para tratar ficheros
-            FileWriter f = new FileWriter(descuentosApp.fileItems,true);
+            FileWriter f = new FileWriter(descuentosApp.fileItems, true);
             BufferedWriter bw = new BufferedWriter(f);
 
             /// Por cada hotel, escribir en fichero
@@ -89,9 +97,9 @@ public class FilePersistanceItems {
             f.close();
         } catch (Exception e) {
         }
-
+        
     }
-
+    
     public List<Items> list() {
         /// Instanciar lista
         itemList = new ArrayList<Items>();
@@ -113,7 +121,7 @@ public class FilePersistanceItems {
                 //Crear y agregar a la lista de hoteles
                 itemList.add(new Items(cname, cvalue));
             }
-
+            
         } catch (IOException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }

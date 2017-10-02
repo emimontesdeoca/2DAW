@@ -1,5 +1,6 @@
 package es.cifp.descuentos.controller;
 
+import es.cifp.descuentos.model.FilePersistanceCustomers;
 import java.util.List;
 
 /**
@@ -52,6 +53,9 @@ public class Customer {
     }
 
     public Customer getCustomerByName(String name) {
+        
+        customerList = new FilePersistanceCustomers().list();
+        
         for (Customer customer : customerList) {
             if ((customer.getName()).equals(name)) {
                 return customer;

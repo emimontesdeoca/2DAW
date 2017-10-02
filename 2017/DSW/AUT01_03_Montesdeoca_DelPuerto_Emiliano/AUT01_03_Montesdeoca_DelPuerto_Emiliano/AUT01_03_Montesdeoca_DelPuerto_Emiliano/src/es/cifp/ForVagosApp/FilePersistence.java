@@ -28,6 +28,8 @@ public class FilePersistence implements Persistence {
 
     public void save(Hotel h) {
         try {
+            
+            
             /// Instanciar objetos
             FileWriter f = new FileWriter(Hotel.filename, true);
             BufferedWriter bw = new BufferedWriter(f);
@@ -58,7 +60,7 @@ public class FilePersistence implements Persistence {
 
         for (Iterator<Hotel> iter = newList.listIterator(); iter.hasNext();) {
             Hotel searchh = iter.next();
-            if (searchh.getNombre().equals(h.getNombre())) {
+            if (searchh.getNombre().equals(h.getNombre()) && searchh.getLocalidad().equals(h.getLocalidad())) {
                 /// Borrar en la nueva lista el objeto que no queremos
                 iter.remove();
                 break;

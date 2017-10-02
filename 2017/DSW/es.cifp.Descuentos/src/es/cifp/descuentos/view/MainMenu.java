@@ -5,6 +5,8 @@
  */
 package es.cifp.descuentos.view;
 
+import es.cifp.descuentos.descuentosApp;
+
 /**
  *
  * @author emont
@@ -28,8 +30,13 @@ public class MainMenu {
 
             switch (option) {
                 case 1:
+                    if (descuentosApp.isLoggedIn) {
+                    } else {
+                        CustomerMenu.showLoginCustomerMenu();
+                    }
                     break;
                 case 2:
+                    CustomerMenu.showCreateNewCustomerMenu();
                     break;
                 case 9:
                     AdminMenu.showAdminMenu();
@@ -38,4 +45,5 @@ public class MainMenu {
             }
         } while (option != 0);
     }
+
 }

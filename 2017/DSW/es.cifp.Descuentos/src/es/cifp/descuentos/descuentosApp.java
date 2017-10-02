@@ -5,6 +5,7 @@
  */
 package es.cifp.descuentos;
 
+import es.cifp.descuentos.controller.Visit;
 import es.cifp.descuentos.view.MainMenu;
 import es.cifp.descuentos.view.Utils;
 
@@ -14,8 +15,10 @@ import es.cifp.descuentos.view.Utils;
  */
 public class descuentosApp {
 
-    public static String fileCustomers = System.getProperty("user.home") + "/Desktop" + "\\customers.txt";
-    public static String fileItems = System.getProperty("user.home") + "/Desktop" + "\\items.txt";
+    public static Boolean isLoggedIn = false;
+    public static Visit currentVisit = null;
+    public static String fileCustomers = System.getProperty("user.home") + "\\Desktop" + "\\customers.txt";
+    public static String fileItems = System.getProperty("user.home") + "\\Desktop" + "\\items.txt";
 
     /**
      * @param args the command line arguments

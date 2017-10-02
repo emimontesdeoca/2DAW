@@ -16,11 +16,11 @@ public class DiscountRate {
 
     public static Double getServiceDiscountRate(String type) {
         switch (type) {
-            case "Premiuim":
+            case "premium":
                 return serviceDiscountPremium;
-            case "Gold":
+            case "gold":
                 return serviceDiscountSilver;
-            case "Silver":
+            case "silver":
                 return serviceDiscountGold;
             default:
                 return 0.0;
@@ -29,11 +29,11 @@ public class DiscountRate {
 
     public static Double getProductDiscountRate(String type) {
         switch (type) {
-            case "Premiuim":
+            case "premium":
                 return productDiscountPremium;
-            case "Gold":
+            case "gold":
                 return productDiscountSilver;
-            case "Silver":
+            case "silver":
                 return productDiscountGold;
             default:
                 return 0.0;

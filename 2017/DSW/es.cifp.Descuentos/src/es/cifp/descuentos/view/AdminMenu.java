@@ -57,7 +57,7 @@ public class AdminMenu {
             new FilePersistanceItems().save(newItem);
 
         } catch (Exception e) {
-
+            System.out.println("Theres a Item with that name.");
         }
         Utils.finishStuff();
     }
@@ -77,7 +77,7 @@ public class AdminMenu {
 
     }
 
-public static void showAllItemMenu() {
+    public static void showAllItemMenu() {
         System.out.println("############### AMAZON.EMI ###############");
         System.out.println();
         List<Items> list = new Items().getAllItems();

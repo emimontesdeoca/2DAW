@@ -26,6 +26,10 @@ public class Visit {
         return this.customer.getName();
     }
 
+    public String getCustomerType() {
+        return this.customer.getMemberType();
+    }
+
     public Double getServiceExpense() {
         return this.serviceExpense;
     }
@@ -42,11 +46,27 @@ public class Visit {
         this.productExpense += ex;
     }
 
+    public void resetExpenses() {
+        this.productExpense = 0.0;
+        this.serviceExpense = 0.0;
+
+    }
+
+    public double getTotalExpenseWithoutDiscount() {
+        double total = 0.0;
+        double s = getServiceExpense();
+        double p = getProductExpense();
+
+        return s + p;
+    }
+
     public double getTotalExpense() {
         double total = 0.0;
 
-        double s = getServiceExpense() * DiscountRate.getServiceDiscountRate(this.customer.getMemberType());
-        double p = getProductExpense() * DiscountRate.getProductDiscountRate(this.customer.getMemberType());
+        double descuentoServicio = getServiceExpense() * DiscountRate.getServiceDiscountRate(this.customer.getMemberType());
+        double descuentoProducto = getProductExpense() * DiscountRate.getProductDiscountRate(this.customer.getMemberType());
+        double s = getServiceExpense() - descuentoServicio;
+        double p = getProductExpense() - descuentoProducto;
 
         return s + p;
     }

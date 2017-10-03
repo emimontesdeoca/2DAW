@@ -18,17 +18,17 @@ import java.util.List;
  * @clase: 2DAW-B
  */
 public class FilePersistanceItems {
-    
+
     List<Items> itemList;
-    
+
     public void save(Items i) throws Exception {
         try {
             /// Instanciar objetos
             FileWriter f = new FileWriter(descuentosApp.fileItems, true);
             BufferedWriter bw = new BufferedWriter(f);
-            
+
             itemList = list();
-            
+
             if (itemList.contains(i)) {
                 throw new Exception();
             } else {
@@ -47,23 +47,23 @@ public class FilePersistanceItems {
                 bw.close();
                 f.close();
             }
-            
+
         } catch (Exception e) {
             throw new Exception();
         }
     }
-    
+
     public void delete(Items i) {
         /// Nueva lista para guardar en el fichero
         List<Items> newList;
         newList = list();
-        
+
         for (Iterator<Items> iter = newList.listIterator(); iter.hasNext();) {
             Items search = iter.next();
-            
+
             String a = search.getName();
             String b = i.getName();
-            
+
             if (a.equals(b) && search.getValue().equals(i.getValue())) {
                 /// Borrar en la nueva lista el objeto que no queremos
                 iter.remove();
@@ -97,9 +97,40 @@ public class FilePersistanceItems {
             f.close();
         } catch (Exception e) {
         }
-        
+
+    }
+
+    public Boolean itemExists(String name, Double value) {
+        Boolean res = false;
+
+        List<Items> newList;
+        newList = list();
+
+        for (Items items : newList) {
+            if (items.getName().equals(name) && items.getValue().equals(value)) {
+                return true;
+            }
+        }
+
+        return res;
     }
     
+    public Boolean itemExistsWithName(String name) {
+        Boolean res = false;
+
+        List<Items> newList;
+        newList = list();
+
+        for (Items items : newList) {
+            if (items.getName().equals(name)) {
+                return true;
+            }
+        }
+
+        return res;
+    }
+    
+
     public List<Items> list() {
         /// Instanciar lista
         itemList = new ArrayList<Items>();
@@ -121,7 +152,7 @@ public class FilePersistanceItems {
                 //Crear y agregar a la lista de hoteles
                 itemList.add(new Items(cname, cvalue));
             }
-            
+
         } catch (IOException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }

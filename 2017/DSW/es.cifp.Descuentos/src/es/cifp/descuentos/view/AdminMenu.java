@@ -20,12 +20,12 @@ public class AdminMenu {
         Integer option = 0;
         do {
 
-            System.out.println("############### AMAZON.EMI ###############");
+            Utils.showHeader(); 
             System.out.println();
             System.out.println("1. Create new item");
             System.out.println("2. Delete an item");
             System.out.println("3. List all items");
-            System.out.println("###############");
+            System.out.println("-----------------");
             System.out.println("0. Exit");
 
             option = Utils.getInteger("Select an option: ");
@@ -48,44 +48,75 @@ public class AdminMenu {
 
     public static void showCreateNewItemMenu() {
 
-        System.out.println("############### AMAZON.EMI ###############");
-        System.out.println();
+        Utils.showHeader(); 
         String a = Utils.getString("Item name: ");
         Double b = Utils.getDouble("Item value: ");
         try {
-            Items newItem = new Items(a, b);
-            new FilePersistanceItems().save(newItem);
+            if (new FilePersistanceItems().itemExistsWithName(a)) {
+                System.out.println();
+                System.out.println("There's an item with that name.");
 
+            } else {
+
+                switch (Utils.getInteger("Are you sure? (1-Yes | 2-No)")) {
+                    case 1:
+                        Items newItem = new Items(a, b);
+                        new FilePersistanceItems().save(newItem);
+                        System.out.println("Item added succesfully!");
+                        System.out.println();
+                        break;
+                    case 2:
+                        System.out.println();
+                        System.out.println("Operation canceled!");
+                        break;
+                }
+            }
         } catch (Exception e) {
-            System.out.println("Theres a Item with that name.");
+
         }
         Utils.finishStuff();
     }
 
     public static void showDeleteItemMenu() {
-        System.out.println("############### AMAZON.EMI ###############");
-        System.out.println();
+        Utils.showHeader(); 
         String a = Utils.getString("Item name: ");
         try {
-            Items i = new Items();
-            i = i.getItemByName(a);
-            new FilePersistanceItems().delete(i);
-            Utils.finishStuff();
+            if (new FilePersistanceItems().itemExistsWithName(a)) {
+                switch (Utils.getInteger("Are you sure? (1-Yes | 2-No)")) {
+                    case 1:
+                        Items i = new Items();
+                        i = i.getItemByName(a);
+                        new FilePersistanceItems().delete(i);
+                        System.out.println("Item deleted succesfully!");
+                        break;
+                    case 2:
+                        System.out.println();
+                        System.out.println("Operation canceled!");
+                        break;
+                }
+            } else {
+                System.out.println();
+                System.out.println("No item found with that name.");
+            }
         } catch (Exception e) {
-
+            System.out.println();
+            System.out.println("No item found with that name.");
         }
-
+        Utils.finishStuff();
     }
 
     public static void showAllItemMenu() {
-        System.out.println("############### AMAZON.EMI ###############");
+        Utils.showHeader(); 
+        System.out.println();
+        System.out.println("List of products available: ");
         System.out.println();
         List<Items> list = new Items().getAllItems();
         if (list.size() > 0) {
             for (Items items : list) {
                 System.out.println("Item name: " + items.getName());
-                System.out.println("Item value: " + items.getValue());
-                System.out.println("###############");
+                System.out.println("Item value: " + items.getValue() + "$");
+                System.out.println("-----------------");
+                System.out.println();
             }
         } else {
             System.out.println("No items found!");

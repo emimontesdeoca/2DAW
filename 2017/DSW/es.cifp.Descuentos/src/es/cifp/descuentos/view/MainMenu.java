@@ -18,12 +18,12 @@ public class MainMenu {
 
         do {
 
-            System.out.println("############### AMAZON.EMI ###############");
+            Utils.showHeader(); 
             System.out.println();
             System.out.println("1. Login");
             System.out.println("2. Sign up");
             System.out.println("0. Exit");
-            System.out.println("###############");
+            System.out.println("-----------------");
             System.out.println("9. Admin");
 
             option = Utils.getInteger("Select an option: ");

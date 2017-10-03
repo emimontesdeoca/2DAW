@@ -2,12 +2,121 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	
 	<meta charset="utf-8">
 	<title>Actividad formulario</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+body {
+  font-family: "Arial";
+}
 
+h3 {
+  color: #0085CE;
+  margin-top: 0px;
+}
+
+span {
+  min-width: 100px !important;
+  display: inline-block;
+}
+
+hr {
+  background-color: red;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  border: 1px solid lightblue;
+  border-radius: 5px;
+}
+
+input {
+  border: 1px solid lightblue;
+}
+
+textarea {
+  border: 1px solid lightblue;
+}
+
+p:nth-child(3) span {
+  min-width: 300px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(4) select {
+  width: 190px
+}
+
+p:nth-child(4) label:nth-child(2) span {
+  min-width: 175px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(5) input[type="number"] {
+  border: 1px solid lightblue;
+  width: 45px;
+}
+
+p:nth-child(5) label:nth-child(1n+2) span {
+  min-width: 75px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(6) label:nth-child(1n+2) span {
+  min-width: 50px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(7) label:nth-child(1n+2) span {
+  min-width: 110px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(10) label select {
+  min-width: 650px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(11) label span {
+  min-width: 200px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(12) strong {
+  margin-left: 10px;
+  display: inline-block !important;
+}
+
+p:nth-child(13) span {
+  min-width: 120px !important;
+  display: inline-block;
+  display: inline-block !important;
+  vertical-align: top;
+}
+
+.botones>input {
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #D9D6BB;
+  width: 150px;
+  border-style: none;
+  font-weight: bold;
+}
+
+input[type="button"]:nth-child(2) {
+  max-width: 90px;
+}
+
+input:required:valid {
+  border: 1px solid green;
+}
+
+</style
 <body>
 	<form name="myform" action="https://www.w3schools.com/action_page.php">
 		<fieldset>
@@ -89,7 +198,7 @@
 						</label>
 				<label for="Cód. Postal">
 								<span>Cód. Postal(*) </span>
-								<input type="text" required="required" maxlength="10" size="10" name="Fax" id="Fax">
+								<input type="text" required="required" maxlength="10" size="10" name="codpostal" id="CodPostal">
 							</label>
 
 				<hr>

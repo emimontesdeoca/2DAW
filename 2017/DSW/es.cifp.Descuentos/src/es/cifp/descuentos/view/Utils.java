@@ -20,7 +20,9 @@ public class Utils {
         /// El siguiente codigo para recibir strings se encarga de mirar si esta vacio 
         /// o si se puede parsear, significa que es un numero
         do {
+            System.out.println();
             System.out.print(text);
+
             res = new Scanner(System.in).nextLine();
             if (res.trim().isEmpty()) {
                 System.out.println("It can't be empty");
@@ -42,6 +44,7 @@ public class Utils {
 
         do {
             try {
+                System.out.println();
                 System.out.print(text);
                 String test = (new Scanner(System.in)).nextLine();
                 res = Integer.parseInt(test);
@@ -73,12 +76,20 @@ public class Utils {
     }
 
     public static void finishStuff() {
-        System.out.println("###############");
-        System.out.println("Press a key to finish...");
+        System.out.println("");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Press a key to continue...");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         new Scanner(System.in).nextLine();
     }
-    
-    public static Double roundDouble(Double a){
-    return Math.round(a * 100.0) / 100.0;
+
+    public static void showHeader() {
+        System.out.println("|----------------------------------------|");
+        System.out.println("|                AMAZON.EMI              |");
+        System.out.println("|----------------------------------------|");
+    }
+
+    public static Double roundDouble(Double a) {
+        return Math.round(a * 100.0) / 100.0;
     }
 }

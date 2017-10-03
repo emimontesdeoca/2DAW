@@ -16,17 +16,17 @@ import java.util.List;
  * @clase: 2DAW-B
  */
 public class FilePersistanceCustomers {
-    
+
     static List<Customer> customerList;
-    
+
     public void save(Customer c) throws Exception {
         try {
             /// Instanciar objetos
             FileWriter f = new FileWriter(descuentosApp.fileCustomers, true);
             BufferedWriter bw = new BufferedWriter(f);
-            
+
             customerList = list();
-            
+
             if (customerList.contains(c)) {
                 throw new Exception();
             } else {
@@ -50,11 +50,25 @@ public class FilePersistanceCustomers {
             throw new Exception();
         }
     }
-    
+
+    public Boolean customerExists(String name, String memberType) {
+        Boolean res = false;
+
+        List<Customer> newList = (List<Customer>) list();
+
+        for (Customer c : newList) {
+            if (c.getName().equals(name) && c.getMemberType().equals(memberType)) {
+                return true;
+            }
+        }
+
+        return res;
+    }
+
     public void delete(Customer c) {
         /// Nueva lista para guardar en el fichero
         List<Customer> newList = (List<Customer>) list();
-        
+
         for (Iterator<Customer> iter = newList.listIterator(); iter.hasNext();) {
             Customer search = iter.next();
             if (search.getName().equals(c.getName()) && search.getMemberType().equals(c.getMemberType())) {
@@ -89,9 +103,9 @@ public class FilePersistanceCustomers {
             f.close();
         } catch (Exception e) {
         }
-        
+
     }
-    
+
     public List<Customer> list() {
         /// Instanciar lista
         customerList = new ArrayList<Customer>();
@@ -113,9 +127,9 @@ public class FilePersistanceCustomers {
 
                 //Crear y agregar a la lista de hoteles
                 customerList.add(new Customer(cname, cmember, cmembertype));
-                
+
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

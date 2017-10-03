@@ -22,6 +22,10 @@ public class Visit {
         this.productExpense = 0.0;
     }
 
+    public String getDate() {
+        return this.date.toString();
+    }
+
     public String getName() {
         return this.customer.getName();
     }

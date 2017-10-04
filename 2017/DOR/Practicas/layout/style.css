@@ -11,7 +11,7 @@
 }
 
 #columna {
-    width: 89%;
+    width: Calc(100% - 204px);
     height: auto;
     display: inline-block;
 }
@@ -30,11 +30,21 @@ section {
 .pie {
     width: 100%;
     height: 50px;
-    border: 2px solid blue;
-    vertical-align: middle;
+
     position: fixed;
     bottom: 0;
     left: 0;
+}
+.subpie{
+  position: relative;
+  border: 2px solid blue;
+  vertical-align: middle;
+  width:75%;
+  height: 100%;
+  margin: 0 auto;
+  vertical-align: middle;
+  background-color: white;
+  text-align: center;
 }
 
 @media screen and (max-width:600px) {

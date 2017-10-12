@@ -1,0 +1,74 @@
+﻿************************************************************
+Practica: U02-T04: La carrera de la liebre y la tortuga.
+Realizada por: Emiliano Montesdeoca del Puerto.
+Curso: 2ºDAWB.
+************************************************************
+
+Primero,
+
+se ha separado los JavaScript dependiendo de su tipo y función:
+
+- animal.js: JavaScript con la clase animal donde se encuentra su constructor y sus métodos.
+- game.js: JavaScript donde se realiza la lógica del juego, como la siguiente ronda y devolver la línea a mostrar.
+- app.js: JavaScript principal desde donde se hacen todas las llamadas.
+- utils.js: JavaScript donde se encuentran funciones de ayuda globales.
+
+Segundo, 
+
+se ha seguido estrictamente la calificación de la actividad:
+
+- Se ha utilizado un único array asociativo para los movimientos (game.js).
+- Se ha utilizado una función arrow (utils.js).
+- Se ha utilizado la nomenclatura camelCase (todos los js).
+- Se ha separado los códigos JavaScript en diferentes ficheros externos.
+- Se ha comentado el código (todos los js).
+- Se han utilizado objetos (animal.js).
+- Se puede realizar la carrera por pantalla (app.js).
+- Se puede realizar la carrera por consola (app.js).
+- Se puede realizar la carrera paso a paso (app.js).
+- Se puede realizar la carrera completa (app.js).
+
+Por fuera de la calificación, pero tambien se pedía:
+
+- Si los animales coinciden.
+- Si gana la libre.
+- Si gana la tortuga.
+- Si empatan.
+
+Tercero, 
+
+para el desarrollo de esta practica, se ha centrado bastante en la función de movimiento de los animales, ya que, 
+en el enunciado, se puede ver como los animales tienen diferentes tipos de movimientos y su cantidad de 
+movimientos es diferentes.
+
+La función creada se encarga de comparar el numero aleatorio con la clave del movimiento y asi devolver su valor.
+
+Para hacer esta función se ha utilizado la función Object.keys(), esto nos devuelve el índex de la clave,
+usando esta función sabemos cuál será el índex para el valor, entonces se utiliza Object.values() y nos dará
+el valor de la clave.
+
+Cuarto,
+
+para el uso de los emojis de la tortuga, la liebre y la bomba, se ha utilizado una librería externa alojada en
+Github (https://afeld.github.io/emoji-css/emoji.css).
+
+En cuanto al estilo, se ha intenado hacer uno simple y minimalista para que no parezca sobrecargado.
+
+Por último,
+
+para hacer funcionar la practica hace falta seleccionar un tipo de ejecución:
+
+- En documento (se mostrará en el HTML).
+- En consola (se mostrará en consola).
+- En ambos (se mostrar en HTML y en consola).
+
+Luego se podrá pulsar un botón:
+
+- Continuado: se mostrará toda la carrera completa.
+- Paso a paso: se mostrará la carrera paso por paso.
+
+También se ha incluido puntuación, la cual se actualiza cada vez que se chocan o alguno de los dos animales gana.
+
+NOTAS:
+
+Se ha utilizado la función dada por el profesor para obtener el numero aleatorio.

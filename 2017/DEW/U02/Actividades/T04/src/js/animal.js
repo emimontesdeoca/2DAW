@@ -10,7 +10,8 @@ function animal(data) {
 }
 
 /**
- * Funcion mover para el animal, actualiza la posicion
+ * Funcion mover para el animal, actualiza la posicion, esta funcion es importante
+ * ya que se pueden cambiar los movimientos que esta funcion seguira funcionando
  */
 animal.prototype.move = function(random) {
     var k = Object.keys(this.mov);

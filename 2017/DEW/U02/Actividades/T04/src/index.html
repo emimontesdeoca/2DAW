@@ -7,19 +7,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>U02-T04 Emiliano Montesdeoca del Puerto</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<button onclick="newGame()">New game</button>
-<button onclick="continuousGame()">Continuous</button>
-<button onclick="stepByStepGame()">Step by step</button>
-<button onclick="continuousOneLine()">Continuous one line</button>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
-<p id="line"></p>
+</head>
 
 <body>
+    <div class="container">
+        <div class="header">
+            <h2>U02-T04: La carrera de la liebre y la tortuga.</h2>
+            <h3>Emiliano Montesdeoca del Puerto</h3>
+        </div>
+        <div class="execution">
+            <fieldset id="first">
+                <legend>Ejecución</legend>
+                <input type="radio" name="exec" id="doc" value="" checked> Documento
+                <input type="radio" name="exec" id="con" value=""> Consola
+                <input type="radio" name="exec" id="both" value=""> Ambos
+                <br>
+                <br>
+                <div id="btns">
+                    <button onclick="continuousGame()">Continuado</button>
+                    <button onclick="stepByStepGame()">Paso a paso</button>
+                </div>
+            </fieldset>
+
+            <fieldset id="second">
+                <legend>Puntuación</legend>
+                <span>
+                    <i class="em em-boom icon-flipped"></i>:
+                    <span id="boom">0</span>
+                </span>
+                <span>
+                    <br>
+                    <i class="em em-goat icon-flipped"></i>:
+                    <span id="liebre">0</span>
+                </span>
+                <span>
+                    <br>
+                    <i class="em em-turtle icon-flipped"></i>:
+                    <span id="tortuga">0</span>
+                </span>
+            </fieldset>
+        </div>
+        <br>
+        <br>
+        <div class="document">
+            <p id="line">Pulsa cualquier boton para comenzar la carrera!</p>
+        </div>
+
+
+
+    </div>
     <script src="js/utils.js" type="text/javascript"></script>
     <script src="js/animal.js" type="text/javascript"></script>
     <script src="js/game.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
+
+
+
 </body>
 
 </html>

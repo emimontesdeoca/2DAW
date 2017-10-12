@@ -41,7 +41,7 @@ function game() {
 /**
  * Funcion que consigue un numero random y cambia la posicion de los animales.
  */
-game.prototype.nextRound = function() {
+game.prototype.nextRound = function () {
     var res = getRandom();
     this.animal1.move(res);
     this.animal2.move(res);
@@ -50,41 +50,25 @@ game.prototype.nextRound = function() {
 /**
  * Funcion que escribe una linea en consola donde aparece el animal1 y el animal2
  */
-game.prototype.showLine = function() {
+game.prototype.showLine = function () {
     var line = "";
     for (var i = 0; i <= 70; i++) {
 
         if (i == this.animal1.pos && i == this.animal2.pos) {
-            line += "X ";
+            // line += "X ";
+            line += "<i class=\"em em-boom icon-flipped\"></i>";
         } else if (i == this.animal1.pos) {
-            line += this.animal1.letter + " ";
+            // line += this.animal1.letter + " ";
+            line += "<i class=\"em em-goat icon-flipped\"></i>";
         } else if (i == this.animal2.pos) {
-            line += this.animal2.letter + " ";
+            // line += this.animal2.letter + " ";
+
+            line += "<i class=\"em em-turtle icon-flipped\"></i>";
         } else {
+            // line += "_ ";
             line += "_ ";
         }
     };
-    console.log(line);
-
-};
-
-/**
- * Funcion que actualiza una lista hasta que acaba el juego
- */
-game.prototype.showOneLine = function(p) {
-    var line = "";
-    for (var i = 0; i <= 70; i++) {
-
-        if (i == this.animal1.pos && i == this.animal2.pos) {
-            line += "X ";
-        } else if (i == this.animal1.pos) {
-            line += this.animal1.letter + " ";
-        } else if (i == this.animal2.pos) {
-            line += this.animal2.letter + " ";
-        } else {
-            line += "_ ";
-        }
-    };
-    document.getElementById('line').innerHTML = line;
+    return line;
 
 };

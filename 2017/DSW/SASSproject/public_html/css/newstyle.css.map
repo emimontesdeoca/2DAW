@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;;;EAIE;AACF;;;EAGE;AAGF,OAAQ;EAEA,MAAM,EAAE,eAAe;EAE3B,SAAS,EAAC,IAAI;EAClB,OAAO,EAAC,YAAY;;AAUpB,OAAO;EANH,aAAa,EAOU,GAAG;EAN1B,qBAAqB,EAME,GAAG;EAL1B,kBAAkB,EAKK,GAAG;EAJ1B,iBAAiB,EAIM,GAAG;;AAQ9B,UAAU;EAJN,SAAS,EAKW,IAAI;EAJxB,KAAK,EAIW,GAAG",
+"sources": ["../scss/newstyle.scss"],
+"names": [],
+"file": "newstyle.css"
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <h2>Nueva</h2>
+
+    <h1>Emiliano</h1>
+    <h2>Montesdeoca</h2>
+    <h3 id="hora"></h3>
+    <select>
+        <option selected>Tenerife</option>
+        <option>Gran Canaria</option>
+        <option>La Palma</option>
+        <option>La Gomera</option>
+        <option>Fuerteventura</option>
+    </select>
+
+
+    <script>
+        var date = new Date();
+        document.getElementById("hora").innerText = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    </script>
+</body>
+
+</html>

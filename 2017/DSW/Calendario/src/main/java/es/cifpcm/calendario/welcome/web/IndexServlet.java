@@ -7,6 +7,9 @@ package es.cifpcm.calendario.welcome.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormatSymbols;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,12 +45,66 @@ public class IndexServlet extends HttpServlet {
                 out.println("<title>Servlet IndexServlet</title>");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>Servlet IndexServlet at " + request.getContextPath() + "</h1>");
+                /*out.println("<h1>Servlet IndexServlet at " + request.getContextPath() + "</h1>");
 
                 String name = request.getParameter("name");
                 name = name == null ? "<Anonimo/a>" : name;
+                out.println("<p>Bienvenido/a: " + StringEscapeUtils.escapeHtml4(name) + "</p>");*/
 
-                out.println("<p>Bienvenido/a: " + StringEscapeUtils.escapeHtml4(name) + "</p>");
+                int mes = 2;
+                out.println(new DateFormatSymbols().getMonths()[mes]);
+                Calendar calendar = new GregorianCalendar(2017, mes, 0);
+                int a = calendar.get(Calendar.DAY_OF_WEEK);
+                Calendar newc = new GregorianCalendar(2017, mes - 1, 0);
+                int b = newc.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+                out.println("<table style=\"border:1px solid black\"");
+                out.println("<tr>");
+                out.println("<td>");
+                out.println("L");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("M");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("X");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("J");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("V");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("S");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("D");
+                out.println("</td>");
+                out.println("</tr>");
+
+                for (int i = 0, d = 1; i < 6; i++) {
+                    out.println("<tr>");
+                    for (int j = 1; j <= 7; j++) {
+
+                        if (j == a && i == 0) {
+                            out.println("<td> " + d + " </td>");
+                            d++;
+                        } else if (i > 0 || d > 1) {
+                            if (d == b + 1 || (mes == 1 && d == 29)) {
+                                d = 1;
+                            }
+                            out.println("<td> " + d + " </td>");
+
+                            d++;
+                        } else {
+                            out.println("<td> " + (b - (7-j) ) + " </td>");
+                        }
+
+                    }
+                    out.println("</tr>");
+                }
+                out.println("<table>");
                 out.println("</body>");
                 out.println("</html>");
             } finally {

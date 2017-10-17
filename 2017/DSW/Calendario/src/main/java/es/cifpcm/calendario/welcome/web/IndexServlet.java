@@ -8,6 +8,7 @@ package es.cifpcm.calendario.welcome.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormatSymbols;
+import java.time.YearMonth;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
@@ -43,20 +44,25 @@ public class IndexServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Servlet IndexServlet</title>");
+                out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + request.getContextPath() + "/css/style.css\">");
                 out.println("</head>");
                 out.println("<body>");
-                /*out.println("<h1>Servlet IndexServlet at " + request.getContextPath() + "</h1>");
 
-                String name = request.getParameter("name");
-                name = name == null ? "<Anonimo/a>" : name;
-                out.println("<p>Bienvenido/a: " + StringEscapeUtils.escapeHtml4(name) + "</p>");*/
+                int mes = Integer.parseInt(request.getParameter("mes"));
 
-                int mes = 2;
-                out.println(new DateFormatSymbols().getMonths()[mes]);
+                /// Nombre mes actual
+                String header = "<p class=\"header\">" + new DateFormatSymbols().getMonths()[mes] + "</p>";
+                out.println(header);
                 Calendar calendar = new GregorianCalendar(2017, mes, 0);
                 int a = calendar.get(Calendar.DAY_OF_WEEK);
-                Calendar newc = new GregorianCalendar(2017, mes - 1, 0);
-                int b = newc.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+                /// Mes anterior
+                //int mesAnterior = mes;
+                //Calendar newc = new GregorianCalendar(2017, mesAnterior, 0);
+                YearMonth yearMonthObject = YearMonth.of(2017, mes);
+                int daysInMonth = yearMonthObject.lengthOfMonth(); //28  
+                //int b = newc.getActualMaximum(newc.DAY_OF_MONTH);
+                int b = daysInMonth;
 
                 out.println("<table style=\"border:1px solid black\"");
                 out.println("<tr>");
@@ -82,7 +88,7 @@ public class IndexServlet extends HttpServlet {
                 out.println("D");
                 out.println("</td>");
                 out.println("</tr>");
-
+                int e = a;
                 for (int i = 0, d = 1; i < 6; i++) {
                     out.println("<tr>");
                     for (int j = 1; j <= 7; j++) {
@@ -91,14 +97,17 @@ public class IndexServlet extends HttpServlet {
                             out.println("<td> " + d + " </td>");
                             d++;
                         } else if (i > 0 || d > 1) {
-                            if (d == b + 1 || (mes == 1 && d == 29)) {
+                            if ((d == b + 2 && b == 30) || (mes == 1 && d == 29) || (d == b + 1 && b == 29)) {
                                 d = 1;
                             }
+
                             out.println("<td> " + d + " </td>");
 
                             d++;
                         } else {
-                            out.println("<td> " + (b - (7-j) ) + " </td>");
+                            int x = (j - (e - j)) + b;
+                            e++;
+                            out.println("<td> " + x + " </td>");
                         }
 
                     }

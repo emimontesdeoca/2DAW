@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Actividad 4</title>
+</head>
+<style>
+  h1 {
+    display: inline-block;
+  }
+</style>
+
+<body>
+  <h1 id="name">Emiliano Montesdeoca</h1>
+  <script>
+    var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'lightblue', 'black', 'pink', 'brown'];
+
+    var timer = setInterval(() => document.getElementById('name').style.color = colors[Math.floor(Math.random() * colors.length)], 5000);
+  </script>
+</body>
+
+</html>

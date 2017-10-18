@@ -7,35 +7,35 @@ body {
 	margin: 0;
 }
 
-.container {
+.contenedor {
 	border: solid 2px black;
 }
 
-.nav {
+.nav-izq {
 	border: solid 2px darkmagenta;
 	display: inline-block;
 	vertical-align: top;
 	width: 25%;
 }
 
-.column {
+.columna {
 	border: solid 2px aqua;
 	display: inline-block;
 	vertical-align: top;
 	width: 75%;
 }
 
-section {
+.seccion {
 	border: solid 2px pink;
 }
 
-footer {
+.pie {
 	width: 100%;
 	position: fixed;
 	bottom: 0px;
 }
 
-.subfooter {
+.subpie {
 	margin: 0 auto;
 	width: 75%;
 	border: solid 2px rosybrown;

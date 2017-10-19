@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 19, 2017, 10:20:21 AM
+    Author     : emont
+*/
+
+@import 'vars';
+@import 'extend';
+
+
+h1 {
+    font-family: $font;
+    @extend .greentext;
+}
+

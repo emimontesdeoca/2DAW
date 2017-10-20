@@ -15,6 +15,11 @@ function getCookie(nombre) {
   return decodeURIComponent(document.cookie.substring(index, endstr));
 }
 
+function setCookieMaxAge(name, value, maxAgeSeconds) {
+  var maxAge = "; max-age=" + maxAgeSeconds;
+  document.cookie = encodeURI(name) + "=" + encodeURI(value) + maxAge;
+}
+
 function comprobar() {
   var cont = getCookie("contador");
   if (cont == null) {
@@ -26,13 +31,8 @@ function comprobar() {
   }
 
   var hora = getCookie("hora");
-
-  if (hora == null) {
-    hora = new Date();
-    setCookie("hora", hora, 30);
-  } else {
-    setCookie("hora", hora, 30);
-  }
+  hora = new Date();
+  setCookie("hora", hora, 30);
 
   document.getElementById('contador').innerHTML += cont;
   document.getElementById('hora').innerHTML += hora;
@@ -49,6 +49,42 @@ function act2() {
   }
 
 }
-var color = getCookie("color");;
+var color = getCookie("color");
 document.getElementById('coloract2').innerHTML += color;
 document.getElementById('coloract2').style.color = color;
+
+
+function crearCookieAct4() {
+
+  var cadu = getCookie("caduCookie");
+
+  if (cadu == null) {
+    hora = new Date();
+    setCookieMaxAge("caduCookie", hora, 60);
+    alert("Cookie creada!");
+  } else {
+    alert("La cookie ya existe!");
+  }
+}
+
+function act4() {
+
+  var cadu = getCookie("caduCookie");
+  if (cadu == null) {
+    alert("La cookie no existe o esta caducada!");
+  } else {
+    alert("La cookie existe, no esta caducada!");
+  }
+}
+
+function act5() {
+
+  var cookie = getCookie("color");
+
+  if (cookie == null) {
+    alert("La cookie no existe!");
+  } else {
+    setCookieMaxAge("color", "red", 1);
+    alert("Cookie actualizada con 1 segundo de vida!");
+  }
+}

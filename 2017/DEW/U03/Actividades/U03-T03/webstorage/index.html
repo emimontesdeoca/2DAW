@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style>
+* {
+
+  font-family: "Arial";
+}
+
+p {
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+</style>
+<body>
+
+  WebStorage
+
+  <p>
+    Descarga el fichero madlibs.html y ábrelo. Debería tener un formulario que genera frases con los valores introducidos.
+  </p>
+  <ul>
+    <li>Modifica el javascript para que almacene las frases generadas en localStorage y las muestre en la página. Probablemente quieras almacenar todas las frases en una clave llamada (“frases”), y simplemente añade el valor de esa clave cuando llega una
+      frase nueva.</li>
+    <li>Modifica el javascript de manera que recuerde cuando un usuario escribe en el formulario, así si se recarga la página mientras se cumplimenta el formulario, los campos que se había cumplimentados se cargarán automáticamente (ver evento keyup).</li>
+  </ul>
+
+  <p>
+    Añadir un botón "Me gusta" y un div con un mensaje de texto que muestre el contador de las veces que los usuarios han hecho click en el botón. <br />Prueba a cerrar y a abrir el navegador de manera que se siga conservando el valor del contador de
+    "Me gusta". Además prueba a abrir en una nueva pestaña la Web y ver el valor obtenido del contador, prueba a modificarlo.
+  </p>
+
+  <ul>
+    <li>Sugerencia de presentación : sustituir el botón por un div con un a dentro y darle color al div</li>
+  </ul>
+
+  <p>
+    Realizar una versión simplificada del juego "Ahora Caigo" de TV consistente en:
+  </p>
+  <ul>
+    <li>que al usuario le aparecerá una pregunta por pantalla. También le aparecerá la respuesta y algunas letras estarán substituidas por asteriscos (por ejemplo, a la pregunta: "Archipiélago conocido como 'Las afortunadas'" se le presentaría una respuesta
+      (que no es única, depende de tu criterio, a más , mayor dificultad): I*AS **N*R*AS</li>
+    <li>El contenido de los asteriscos será editable, o sea, seleccionando el área con el ratón se podrá escribir y eliminar el texto de ese área.</li>
+    <li>Una vez esté completada la respuesta, se pinchará en el botón de “Comprobar”. El script comprobará si está la respuesta es correcta o no, avisando del resultado.</li>
+    <li>Este script irá guardando un histórico de todos los intentos, de forma que se mostrarán, en la misma pantalla, los textos que fueron enviados a comprobación. Para almacenar estos textos utilizaremos localStorage. Una vez terminado el script, deberemos
+      hacer varias pruebas, unas poniendo bien la respuesta y otras fallando.</li>
+    <li>Cuando tengamos el historial bastante lleno, cerraremos el navegador. Una vez cerrado lo volveremos a abrir y comprobaremos que se mantiene el historial.</li>
+    <li>También se incorporará un botón de “Reiniciar” para eliminar nuestro historial. Mostrar al profesor en el aula para su evaluación.</li>
+  </ul>
+
+<script src="js/script.js" type="text/javascript"></script>
+
+</body>
+
+</html>

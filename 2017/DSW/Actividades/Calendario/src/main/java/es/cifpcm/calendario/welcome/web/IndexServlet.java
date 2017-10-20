@@ -49,6 +49,7 @@ public class IndexServlet extends HttpServlet {
                 out.println("<body>");
 
                 int mes = Integer.parseInt(request.getParameter("mes"));
+                
 
                 /// Nombre mes actual
                 String header = "<p class=\"header\">" + new DateFormatSymbols().getMonths()[mes] + "</p>";
@@ -59,10 +60,18 @@ public class IndexServlet extends HttpServlet {
                 /// Mes anterior
                 //int mesAnterior = mes;
                 //Calendar newc = new GregorianCalendar(2017, mesAnterior, 0);
-                YearMonth yearMonthObject = YearMonth.of(2017, mes);
-                int daysInMonth = yearMonthObject.lengthOfMonth(); //28  
-                //int b = newc.getActualMaximum(newc.DAY_OF_MONTH);
-                int b = daysInMonth;
+                YearMonth yearMonthObject ;
+                int b = 0;
+                 int daysInMonth = 0;
+                 
+                if (mes == 0) {
+                     daysInMonth = 31;
+                }else{
+                 yearMonthObject = YearMonth.of(2017, mes);
+                 daysInMonth = yearMonthObject.lengthOfMonth(); //28  
+                }
+                
+                b = daysInMonth;
 
                 out.println("<table style=\"border:1px solid black\"");
                 out.println("<tr>");
@@ -97,19 +106,22 @@ public class IndexServlet extends HttpServlet {
                             out.println("<td> " + d + " </td>");
                             d++;
                         } else if (i > 0 || d > 1) {
-                            if ((d == b && b == 31) || (mes == 1 && d == 29) || (d == b + 2 && b == 30)) {
+                            if ((d == b && b == 31) || (mes == 2 && d == 32) || (mes == 1 && d == 29) || (d == b + 2 && b == 30)) {
                                 d = 1;
                             }
 
                             out.println("<td> " + d + " </td>");
-
                             d++;
                         } else {
-                            int x = (j - (e - j)) + b;
+                            int x = 0;
+                            if ((mes == 0)) {
+                                x = (j - (e - j)) + 31;
+                            }else{
+                                x = (j - (e - j)) + b;
+                            }                           
                             e++;
                             out.println("<td> " + x + " </td>");
                         }
-
                     }
                     out.println("</tr>");
                 }

@@ -56,3 +56,101 @@ function getFormularioSavedValues() {
     document.getElementById("name").value = formulario[0].name;
   }
 };
+
+document.getElementById('megusta').innerHTML += localStorage.getItem('megusta');
+
+function meGusta() {
+  var cont = localStorage.getItem('megusta');
+  if (cont == null) {
+    localStorage.setItem('megusta', 1)
+  } else {
+    localStorage.setItem('megusta', parseInt(cont) + 1)
+  }
+};
+
+const preguntas = [{
+    "pregunta": "¿Cual es el mejor equipo del mundo?",
+    "respuesta": "Uruguay"
+  },
+  {
+    "pregunta": "¿Cual es el peor equipo del mundo?",
+    "respuesta": "Argentina"
+  },
+  {
+    "pregunta": "¿Que equipo es un compracopas?",
+    "respuesta": "Chile"
+  },
+  {
+    "pregunta": "¿Donde esta el barraquito mas barato?",
+    "respuesta": "Instituto"
+  },
+  {
+    "pregunta": "¿Cual es la mejor empresa de todas?",
+    "respuesta": "Microsoft"
+  },
+  {
+    "pregunta": "¿Cual es la empresa mas sobrevalorada?",
+    "respuesta": "Apple"
+  }
+];
+
+function nuevaPregunta() {
+
+  var preguntaMostrar = preguntas[Math.floor(Math.random() * preguntas.length)];
+  document.getElementById('pregunta').innerHTML = preguntaMostrar.pregunta;
+
+  var respuestaAsteriscos = preguntaMostrar.respuesta;
+
+  for (var i = 0; i < 4; i++) {
+    var index = Math.floor(Math.random() * respuestaAsteriscos.length);
+    respuestaAsteriscos = respuestaAsteriscos.substr(0, index) + '*' + respuestaAsteriscos.substr(index + 1);
+  }
+
+  document.getElementById('respuesta').value = respuestaAsteriscos;
+
+  document.getElementById('respuesta').removeAttribute("disabled");
+  document.getElementById('comprobarBtn').removeAttribute("disabled");
+
+}
+
+function comprobar() {
+  var bool = false;
+  for (var i = 0; i < preguntas.length; i++) {
+    if (preguntas[i].respuesta == document.getElementById('respuesta').value) {
+      bool = true;
+      break;
+    }
+  }
+
+  var a = localStorage.getItem('respuestas');
+
+  if (a == null) {
+    a = "";
+  }
+
+  if (bool) {
+    alert("Correcta");
+    localStorage.setItem('respuestas', a + document.getElementById('respuesta').value + ",");
+  } else {
+    alert("Incorrecta");
+    localStorage.setItem('respuestas', a + document.getElementById('respuesta').value + ",");
+  }
+}
+
+function getAllRespuestasAnteriores() {
+  document.getElementById('respuestasAnteriores').innerHTML = "";
+  var a = localStorage.getItem('respuestas');
+  if (a != null) {
+    var b = a.split(',');
+
+    for (var i = 0; i < b.length; i++) {
+      document.getElementById('respuestasAnteriores').innerHTML += b[i] + "<br/>";
+    }
+  }
+}
+
+function borrarRespuestasAnteriores() {
+  localStorage.removeItem('respuestas');
+}
+
+getAllRespuestasAnteriores();

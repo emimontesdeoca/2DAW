@@ -6,17 +6,17 @@
   <title></title>
 </head>
 <style>
-* {
+  * {
 
-  font-family: "Arial";
-}
+    font-family: "Arial";
+  }
 
-p {
-  font-weight: lighter;
-  font-size: 16px;
-}
-
+  p {
+    font-weight: lighter;
+    font-size: 16px;
+  }
 </style>
+
 <body>
 
   WebStorage
@@ -30,6 +30,8 @@ p {
     <li>Modifica el javascript de manera que recuerde cuando un usuario escribe en el formulario, así si se recarga la página mientras se cumplimenta el formulario, los campos que se había cumplimentados se cargarán automáticamente (ver evento keyup).</li>
   </ul>
 
+  <a href="madlibs.html">Acceder a madlibs.html</a>
+
   <p>
     Añadir un botón "Me gusta" y un div con un mensaje de texto que muestre el contador de las veces que los usuarios han hecho click en el botón. <br />Prueba a cerrar y a abrir el navegador de manera que se siga conservando el valor del contador de
     "Me gusta". Además prueba a abrir en una nueva pestaña la Web y ver el valor obtenido del contador, prueba a modificarlo.
@@ -39,6 +41,11 @@ p {
     <li>Sugerencia de presentación : sustituir el botón por un div con un a dentro y darle color al div</li>
   </ul>
 
+  <p id="megusta">
+    Me gusta:
+  </p>
+
+  <button onclick="meGusta()">Me gusta!</button>
   <p>
     Realizar una versión simplificada del juego "Ahora Caigo" de TV consistente en:
   </p>
@@ -53,7 +60,25 @@ p {
     <li>También se incorporará un botón de “Reiniciar” para eliminar nuestro historial. Mostrar al profesor en el aula para su evaluación.</li>
   </ul>
 
-<script src="js/script.js" type="text/javascript"></script>
+  <h3>Ahora Caigo</h3>
+
+  <button onclick="nuevaPregunta()">Nueva pregunta!</button>
+
+  <p id="pregunta">
+
+  </p>
+
+  <input disabled="true" type="text" id="respuesta" value="Aqui va la respuesta!" />
+
+  <button id="comprobarBtn" disabled="true" onclick="comprobar(); getAllRespuestasAnteriores();">Comprobar respuesta!</button>
+
+  <h3>Respuestas anteriores</h3>
+  <p id="respuestasAnteriores">
+
+  </p>
+  <button onclick="borrarRespuestasAnteriores(); getAllRespuestasAnteriores();">Borrar historial!</button>
+
+  <script src="js/script.js" type="text/javascript"></script>
 
 </body>
 

@@ -33,32 +33,8 @@ public class ResultadosServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /// Combinacion ganadora
-            TreeSet<Integer> COMBINACION_GANADORA = new TreeSet<>();
-            Random rnd = new Random();
-            while (COMBINACION_GANADORA.size() < 6) {
-                int num = rnd.nextInt(45) + 1;
+            /// Objetos
 
-                if (!COMBINACION_GANADORA.contains(num)) {
-                    COMBINACION_GANADORA.add(num);
-                }
-            }
-            /// Combinacion de jugador
-            String[] szNumeros = request.getParameterValues("numero");
-            TreeSet<Integer> COMBINACION_JUGADOR = new TreeSet<>();
-
-            while (COMBINACION_JUGADOR.size() < 6) {
-                for (String s : szNumeros) {
-                    COMBINACION_JUGADOR.add(Integer.parseInt(s));
-                }
-            }
-
-            Integer aciertos = 0;
-            for (Integer integer : COMBINACION_JUGADOR) {
-                if (COMBINACION_GANADORA.contains(integer)) {
-                    aciertos++;
-                }
-            }
 
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -67,9 +43,45 @@ public class ResultadosServlet extends HttpServlet {
             out.println("<title>Servlet ResultadosServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Has acertado " + aciertos + " de 6</h1>");
-            out.println("<h2>Combinacion ganadora: " + COMBINACION_GANADORA.toString() + "</h2>");
-            out.println("<h4>Tus números: " + COMBINACION_JUGADOR.toString() + "</h4>");
+            try {
+                TreeSet<Integer> COMBINACION_GANADORA = new TreeSet<>();
+                TreeSet<Integer> COMBINACION_JUGADOR = new TreeSet<>();
+                String[] szNumeros = request.getParameterValues("numero");
+                Integer aciertos = 0;
+
+                Random rnd = new Random();
+                while (COMBINACION_GANADORA.size() < 6) {
+                    int num = rnd.nextInt(45) + 1;
+
+                    if (!COMBINACION_GANADORA.contains(num)) {
+                        COMBINACION_GANADORA.add(num);
+                    }
+                }
+                /// Combinacion de jugador
+
+                while (true) {
+                    for (String s : szNumeros) {
+                        COMBINACION_JUGADOR.add(Integer.parseInt(s));
+                    }
+                    break;
+
+                }
+                if (COMBINACION_JUGADOR.size() < 6) {
+                    throw new Exception();
+                }
+
+                for (Integer integer : COMBINACION_JUGADOR) {
+                    if (COMBINACION_GANADORA.contains(integer)) {
+                        aciertos++;
+                    }
+                }
+                out.println("<h1>Has acertado " + aciertos + " de 6</h1>");
+                out.println("<h2>Combinacion ganadora: " + COMBINACION_GANADORA.toString() + "</h2>");
+                out.println("<h4>Tus números: " + COMBINACION_JUGADOR.toString() + "</h4>");
+            } catch (Exception e) {
+                out.println("<h1>Error!</h1>");
+
+            }
 
             out.println("</body>");
             out.println("</html>");

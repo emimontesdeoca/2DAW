@@ -130,11 +130,11 @@ function comprobar() {
 
   if (bool) {
     alert("Correcta");
-    localStorage.setItem('respuestas', a + document.getElementById('respuesta').value + ",");
   } else {
     alert("Incorrecta");
-    localStorage.setItem('respuestas', a + document.getElementById('respuesta').value + ",");
+
   }
+  localStorage.setItem('respuestas', a + document.getElementById('respuesta').value + ",");
 }
 
 function getAllRespuestasAnteriores() {

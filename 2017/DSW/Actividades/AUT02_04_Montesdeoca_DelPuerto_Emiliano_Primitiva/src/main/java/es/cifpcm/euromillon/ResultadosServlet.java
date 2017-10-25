@@ -32,6 +32,10 @@ public class ResultadosServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        String errorMessage = "";
+        String value = "";
+
         try (PrintWriter out = response.getWriter()) {
             /// Objetos
 
@@ -59,14 +63,31 @@ public class ResultadosServlet extends HttpServlet {
                 }
                 /// Combinacion de jugador
 
-                while (true) {
-                    for (String s : szNumeros) {
-                        COMBINACION_JUGADOR.add(Integer.parseInt(s));
-                    }
-                    break;
+                try {
+                    while (true) {
+                        for (String s : szNumeros) {
+                            value = s;
+                            COMBINACION_JUGADOR.add(Integer.parseInt(s));
+                        }
+                        break;
 
+                    }
+
+                } catch (Exception e) {
+                    if (value.equals("")) {
+                        errorMessage = "Ha introducido algun campo vacio!";
+                    } else {
+                        errorMessage = "Ha introducido algun numero con decimal!";
+                    }
+                    throw new Exception();
                 }
+
                 if (COMBINACION_JUGADOR.size() < 6) {
+                    if (szNumeros.length == 6) {
+                        errorMessage = "Ha introducido numeros duplicados!";
+                    } else {
+                        errorMessage = "Ha introducido menos de 6 numeros!!";
+                    }
                     throw new Exception();
                 }
 
@@ -80,6 +101,7 @@ public class ResultadosServlet extends HttpServlet {
                 out.println("<h4>Tus números: " + COMBINACION_JUGADOR.toString() + "</h4>");
             } catch (Exception e) {
                 out.println("<h1>Error!</h1>");
+                out.println("<h3>" + errorMessage + "</h3>");
 
             }
 

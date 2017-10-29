@@ -1,0 +1,61 @@
+$font: "Arial";
+$black: "black";
+$marginLeft: 40%;
+$alignCenter : true;
+
+* {
+  font-family: $font;
+}
+
+.contenedor-todo {
+  margin: 0 auto;
+  position: relative;
+  margin-left: $marginLeft;
+}
+
+
+.dia, .diaTitle {
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  width: 20px;
+}
+
+#nombre {
+  padding: 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+.semana {
+  @if $alignCenter{
+  text-align: center;
+  }
+}
+
+.contenedor {
+  margin-top: 20px;
+  display: inline-block;
+  border: 1px solid $black;
+}
+
+#calendario {
+  visibility: hidden;
+}
+
+.diaGris {
+  color: gray;
+}
+
+#mesSelect {
+  margin-bottom: 25px;
+}
+
+input {
+  max-width: 50px;
+}
+
+.show {
+  visibility: visible !important;
+}

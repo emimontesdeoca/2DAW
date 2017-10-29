@@ -1,0 +1,58 @@
+* {
+  font-family: "Arial";
+}
+
+.contenedor-todo {
+  margin: 0 auto;
+  min-width: 20%;
+  max-width: 20%;
+}
+
+#nombre {
+  padding: 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.semana, .mes, .diaTitle {
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+.contenedor {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+
+.dia, .diaTitle {
+  width: 10%;
+}
+
+#calendario {
+  visibility: hidden;
+}
+
+.diaGris {
+  color: gray;
+}
+
+#mesSelect {
+  margin-bottom: 25px;
+}
+
+input {
+  max-width: 50px;
+}
+
+.show {
+  visibility: visible !important;
+}

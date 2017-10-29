@@ -1,0 +1,9 @@
+#inputMes, #inputAnio, button, label {
+  display: none;
+}
+
+.contenedor-todo {
+  margin: 0 auto;
+  min-width: 50%;
+  max-width: 50%;
+}

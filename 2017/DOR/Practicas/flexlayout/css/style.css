@@ -1,0 +1,52 @@
+header, aside, footer, article {
+  text-align: center;
+  padding: 10px;
+}
+
+.contenedor {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.contenedor > *{
+  flex: 1 100%;
+}
+
+.header {
+  background-color: orange;
+}
+
+.article {
+  background-color: lightblue;
+}
+
+.aside-left {
+  background-color: yellow;
+}
+
+.aside-right {
+  background-color: magenta;
+}
+
+.footer {
+  background-color: lightgreen;
+}
+
+
+@media screen and (min-width: 600px) {
+  .contenedor > .aside-right, .aside-left{
+      flex: 1;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .contenedor > .article{
+      flex: 3;
+    }
+    .header{
+      order: -1;
+    }
+    .aside-left{
+      order: -1;
+    }
+}

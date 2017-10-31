@@ -1,3 +1,7 @@
+html{
+  font-size: 16px;
+}
+
 header, aside, footer, article {
   text-align: center;
   padding: 10px;
@@ -34,12 +38,18 @@ header, aside, footer, article {
 
 
 @media screen and (min-width: 600px) {
+  html{
+    font-size: 80%;
+  }
   .contenedor > .aside-right, .aside-left{
       flex: 1;
     }
 }
 
 @media screen and (min-width: 800px) {
+  html{
+    font-size: 100%;
+  }
     .contenedor > .article{
       flex: 3;
     }

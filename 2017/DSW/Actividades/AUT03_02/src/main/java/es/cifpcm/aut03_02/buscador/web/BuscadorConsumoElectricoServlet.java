@@ -6,6 +6,7 @@
 package es.cifpcm.aut03_02.buscador.web;
 
 import es.cifpcm.aut03_02.cliente;
+import es.cifpcm.aut03_02.medicion;
 import es.cifpcm.aut03_02.utils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,21 +50,22 @@ public class BuscadorConsumoElectricoServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet BuscadorConsumoElectricoServlet</title>");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + request.getContextPath() + "/css/style.css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet BuscadorConsumoElectricoServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Clientes de consumo electrico</h1>");
 
             List<cliente> listaClientes = utils.getAllClientes();
 
-            out.println("<table>");
+            out.println("<table id=\"table-clients\">");
             out.println("<tr>");
-            out.println("<td>Nombre</td>");
-            out.println("<td>Apellido</td>");
-            out.println("<td>Nombre calle</td>");
-            out.println("<td>Numero</td>");
-            out.println("<td>Codigo Postal</td>");
-            out.println("<td>Poblacion</td>");
-            out.println("<td>Provincia</td>");
+            out.println("<th>Nombre</th>");
+            out.println("<th>Apellido</th>");
+            out.println("<th>Nombre calle</th>");
+            out.println("<th>Numero</th>");
+            out.println("<th>Codigo Postal</th>");
+            out.println("<th>Poblacion</th>");
+            out.println("<th>Provincia</th>");
             out.println("</tr>");
 
             for (cliente c : listaClientes) {
@@ -80,9 +82,37 @@ public class BuscadorConsumoElectricoServlet extends HttpServlet {
 
             out.println("</table>");
 
-            //String name = request.getParameter("nombre");
-            //cliente c = utils.getClienteByNombre(name);
-            //out.println(c.getNombre());
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<h2>Consumo para cliente</h2>");
+
+            String name = request.getParameter("nombre");
+
+            if (name != null && !name.isEmpty()) {
+                cliente c = utils.getClienteByNombre(name);
+                String builder = "<h4>El consumo total de " + c.getNombre() + " " + c.getApellido() + " es: " + Math.round(utils.getTotalMedicionCliente(c.getId()) * 100) / 100 + " KW</h4>";
+                out.println(builder);
+
+                List<medicion> listaMediciones = utils.getMedicionesById(c.getId());
+
+                out.println("<table id=\"table-clients\">");
+                out.println("<tr>");
+                out.println("<th>idMedicion</th>");
+                out.println("<th>FechaHora</th>");
+                out.println("<th>KW</th>");
+                out.println("</tr>");
+
+                for (medicion m : listaMediciones) {
+                    out.println("<tr>");
+                    out.println("<td>" + m.getId() + "</td>");
+                    out.println("<td>" + m.getFechaMedicion() + "</td>");
+                    out.println("<td><button onclick=\"alert('La cantidad consumida es: " + Math.round(m.getKilow() * 100) / 100 + " KW')\">Ver KW</button></td>");
+                    out.println("</tr>");
+                }
+
+                out.println("</table>");
+            }
+
             out.println("</body>");
             out.println("</html>");
         }

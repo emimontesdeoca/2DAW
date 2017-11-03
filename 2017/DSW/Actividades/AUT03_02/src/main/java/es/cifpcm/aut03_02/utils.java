@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class utils {
 
-    public static cliente getClienteByNombre(String nombre) {
+    public static cliente getClienteByNombre(String nombre) throws Exception {
         /// Cliente para devolver
         cliente newcliente = null;
         Connection conexion = null;
@@ -39,21 +39,21 @@ public class utils {
                 break;
             }
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            throw new Exception();
         } finally { // Se cierra la conexión con la base de datos.
             try {
                 if (conexion != null) {
                     conexion.close();
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+                throw new Exception();
             }
         }
 
         return newcliente;
     }
 
-    public static List<cliente> getAllClientes() {
+    public static List<cliente> getAllClientes() throws Exception {
         /// Lista para devolver clientes
         List<cliente> res = new ArrayList<>();
         Connection conexion = null;
@@ -75,20 +75,20 @@ public class utils {
                 res.add(newcliente);
             }
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            throw new Exception();
         } finally { // Se cierra la conexión con la base de datos.
             try {
                 if (conexion != null) {
                     conexion.close();
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+                throw new Exception();
             }
         }
         return res;
     }
 
-    public static Double getTotalMedicionCliente(Integer id) {
+    public static Double getTotalMedicionCliente(Integer id) throws Exception {
         /// Double para devolver
         Double totalMedicion = 0.0;
         Connection conexion = null;
@@ -109,21 +109,21 @@ public class utils {
                 totalMedicion += rs.getDouble("KW");
             }
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            throw new Exception();
         } finally { // Se cierra la conexión con la base de datos.
             try {
                 if (conexion != null) {
                     conexion.close();
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+                throw new Exception();
             }
         }
         return totalMedicion;
 
     }
 
-    public static List<medicion> getMedicionesById(Integer id) {
+    public static List<medicion> getMedicionesById(Integer id) throws Exception {
         /// Lista para devolver mediciones
         List<medicion> list = new ArrayList<>();
         Connection conexion = null;
@@ -145,14 +145,14 @@ public class utils {
                 list.add(m);
             }
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            throw new Exception();
         } finally { // Se cierra la conexión con la base de datos.
             try {
                 if (conexion != null) {
                     conexion.close();
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+                throw new Exception();
             }
         }
         return list;

@@ -16,6 +16,7 @@ function crearTabla() {
     table.parentNode.removeChild(table)
   }
 
+  var c = 0;
   /// Crea tabla
   var tabla = document.createElement("table");
   tabla.id = "tabla";
@@ -24,7 +25,8 @@ function crearTabla() {
     var tr = document.createElement("tr");
     for (var j = 0; j < ancho; j++) {
       var td = document.createElement("td");
-      td.id = "td" + i + j;
+      c++;
+      td.id = "td" + c;
       tr.appendChild(td);
     }
     tabla.appendChild(tr);
@@ -92,6 +94,10 @@ function pintarTabla() {
   /// Normas CSS
   var principal = 'td { background-color: ' + colorPrincipal + ' !important}';
   var secundario = 'td:nth-child(' + nthchild + ')  { background-color: ' + colorSecundario + ' !important}';
+
+  if (!isNaN(nthchild)) {
+    var secundario = '#td' + nthchild + '{ background-color: ' + colorSecundario + ' !important}';
+  }
 
   /// Agregarlas al CSS
   styleSheet.insertRule(principal, styleSheet.length - 1);

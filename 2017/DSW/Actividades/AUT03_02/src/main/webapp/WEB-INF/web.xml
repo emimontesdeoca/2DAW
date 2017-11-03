@@ -3,15 +3,22 @@
     <servlet>
         <servlet-name>BuscadorConsumoElectricoServlet</servlet-name>
         <servlet-class>es.cifpcm.aut03_02.buscador.web.BuscadorConsumoElectricoServlet</servlet-class>
-        
         <init-param>
             <param-name>app.config</param-name>
             <param-value>consumoelectrico</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>ConsumoElectricoMediciones</servlet-name>
+        <servlet-class>es.cifpcm.aut03_02.buscador.web.ConsumoElectricoMediciones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BuscadorConsumoElectricoServlet</servlet-name>
         <url-pattern>/buscadorclientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsumoElectricoMediciones</servlet-name>
+        <url-pattern>/medicioncliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

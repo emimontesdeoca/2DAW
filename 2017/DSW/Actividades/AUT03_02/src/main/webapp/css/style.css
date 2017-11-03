@@ -14,7 +14,6 @@ and open the template in the editor.
 
 form{
     margin: 0 auto;
-    width: 270px;
 }
 
 table{
@@ -25,7 +24,6 @@ table{
 h1, h2, h3, h4{
     text-align: center;
 }
-
 
 #table-clients {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;

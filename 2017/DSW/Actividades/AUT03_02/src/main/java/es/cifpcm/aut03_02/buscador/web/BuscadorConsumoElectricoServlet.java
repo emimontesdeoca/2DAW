@@ -49,68 +49,93 @@ public class BuscadorConsumoElectricoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuscadorConsumoElectricoServlet</title>");
+            out.println("<title>Buscador de clientes</title>");
             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + request.getContextPath() + "/css/style.css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Clientes de consumo electrico</h1>");
+            out.println("<h1>Clientes de consumo eléctrico</h1>");
 
-            List<cliente> listaClientes = utils.getAllClientes();
+            try {
+                List<cliente> listaClientes = utils.getAllClientes();
 
-            out.println("<table id=\"table-clients\">");
-            out.println("<tr>");
-            out.println("<th>Nombre</th>");
-            out.println("<th>Apellido</th>");
-            out.println("<th>Nombre calle</th>");
-            out.println("<th>Numero</th>");
-            out.println("<th>Codigo Postal</th>");
-            out.println("<th>Poblacion</th>");
-            out.println("<th>Provincia</th>");
-            out.println("</tr>");
-
-            for (cliente c : listaClientes) {
-                out.println("<tr>");
-                out.println("<td>" + c.getNombre() + "</td>");
-                out.println("<td>" + c.getApellido() + "</td>");
-                out.println("<td>" + c.getNombreCalle() + "</td>");
-                out.println("<td>" + c.getNumero() + "</td>");
-                out.println("<td>" + c.getCodPostal() + "</td>");
-                out.println("<td>" + c.getPoblacion() + "</td>");
-                out.println("<td>" + c.getProvincia() + "</td>");
-                out.println("</tr>");
-            }
-
-            out.println("</table>");
-
-            out.println("<br>");
-            out.println("<br>");
-            out.println("<h2>Consumo para cliente</h2>");
-
-            String name = request.getParameter("nombre");
-
-            if (name != null && !name.isEmpty()) {
-                cliente c = utils.getClienteByNombre(name);
-                String builder = "<h4>El consumo total de " + c.getNombre() + " " + c.getApellido() + " es: " + Math.round(utils.getTotalMedicionCliente(c.getId()) * 100) / 100 + " KW</h4>";
-                out.println(builder);
-
-                List<medicion> listaMediciones = utils.getMedicionesById(c.getId());
-
-                out.println("<table id=\"table-clients\">");
-                out.println("<tr>");
-                out.println("<th>idMedicion</th>");
-                out.println("<th>FechaHora</th>");
-                out.println("<th>KW</th>");
-                out.println("</tr>");
-
-                for (medicion m : listaMediciones) {
+                if (!listaClientes.isEmpty()) {
+                    out.println("<table id=\"table-clients\">");
                     out.println("<tr>");
-                    out.println("<td>" + m.getId() + "</td>");
-                    out.println("<td>" + m.getFechaMedicion() + "</td>");
-                    out.println("<td><button onclick=\"alert('La cantidad consumida es: " + Math.round(m.getKilow() * 100) / 100 + " KW')\">Ver KW</button></td>");
+                    out.println("<th>Nombre</th>");
+                    out.println("<th>Apellido</th>");
+                    out.println("<th>Nombre calle</th>");
+                    out.println("<th>Numero</th>");
+                    out.println("<th>Codigo Postal</th>");
+                    out.println("<th>Poblacion</th>");
+                    out.println("<th>Provincia</th>");
                     out.println("</tr>");
+
+                    for (cliente c : listaClientes) {
+                        out.println("<tr>");
+                        out.println("<td>" + c.getNombre() + "</td>");
+                        out.println("<td>" + c.getApellido() + "</td>");
+                        out.println("<td>" + c.getNombreCalle() + "</td>");
+                        out.println("<td>" + c.getNumero() + "</td>");
+                        out.println("<td>" + c.getCodPostal() + "</td>");
+                        out.println("<td>" + c.getPoblacion() + "</td>");
+                        out.println("<td>" + c.getProvincia() + "</td>");
+                        out.println("</tr>");
+                    }
+                    out.println("</table>");
+                } else {
+                    out.println("<h4>Se han encontrado 0 clientes</h4>");
                 }
 
-                out.println("</table>");
+            } catch (Exception e) {
+
+                out.println("<h4>Error en el acceso de la base de datos para todos los clientes</h4>");
+            }
+
+            String name = "";
+
+            try {
+
+                out.println("<br>");
+                out.println("<h2>Consumo para cliente</h2>");
+
+                name = request.getParameter("nombre");
+
+                if (name != null && !name.isEmpty()) {
+
+                    cliente c = utils.getClienteByNombre(name);
+                    List<medicion> listaMediciones = utils.getMedicionesById(c.getId());
+
+                    if (c != null || !listaMediciones.isEmpty()) {
+                        String builder = "<h4>El consumo total de " + c.getNombre() + " " + c.getApellido() + " es: " + Math.round(utils.getTotalMedicionCliente(c.getId()) * 100) / 100 + " KW</h4>";
+                        out.println(builder);
+
+                        out.println("<table id=\"table-clients\">");
+                        out.println("<tr>");
+                        out.println("<th>idMedicion</th>");
+                        out.println("<th>FechaHora</th>");
+                        out.println("<th>KW</th>");
+                        out.println("</tr>");
+
+                        for (medicion m : listaMediciones) {
+                            out.println("<tr>");
+                            out.println("<td>" + m.getId() + "</td>");
+                            out.println("<td>" + m.getFechaMedicion() + "</td>");
+                            out.println("<td><form action=\"/AUT03_02/medicioncliente\" method=\"POST\"><button type=\"submit\" value=\"" + Math.round(m.getKilow() * 100) / 100 + "\" name=\"kilow\"/>Ver</button></form></td>");
+
+                            out.println("</tr>");
+                        }
+
+                        out.println("</table>");
+                    } else {
+                        out.println("<h4>Se ha encontrado 0 mediciones para este cliente</h4>");
+                    }
+                } else {
+                    out.println("<h4>El nombre es nulo o estaba vacio!</h4>");
+                }
+
+            } catch (Exception e) {
+                out.println("<h4>Hubo un error para acceder a los datos de " + name + "</h4>");
+
             }
 
             out.println("</body>");

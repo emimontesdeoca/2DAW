@@ -1,0 +1,1 @@
+Para el punto extra se ha utilizado localStorage para guardar el estado de la combinacion que el usuario quiere.

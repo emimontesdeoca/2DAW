@@ -19,6 +19,7 @@ function crearTabla() {
   /// Crea tabla
   var tabla = document.createElement("table");
   tabla.id = "tabla";
+  tabla.setAttribute("style", "margin: 0 auto;")
   for (var i = 0; i < alto; i++) {
     var tr = document.createElement("tr");
     for (var j = 0; j < ancho; j++) {
@@ -50,7 +51,7 @@ function resetCSS() {
   var styleSheet = document.styleSheets[0];
 
   /// Array de CSS por defecto
-  var css = ['table {  border: solid 1px black;  border-collapse: collapse;}',
+  const css = ['table {  border: solid 1px black;  border-collapse: collapse;}',
     'td { height: 20px; width: 20px; padding: 0; border: solid 0.2px black; background-color:white;}',
     'input {margin-left: 10px;margin-bottom: 10px;}',
     '*{font-family: "Arial"}'
@@ -133,15 +134,50 @@ function crearInputBoton(name, id, func) {
   input.addEventListener('click', function() {
     if (id == "generar") {
       crearTabla();
-    } else {
+    } else if (id == "reset") {
       resetTabla();
+    } else if (id == "guardar") {
+      guardarInputs();
+    } else if (id == "cargar") {
+      cargarInputs();
     }
   });
   /// Añadir al dom
   document.getElementsByClassName('container')[0].appendChild(input);
 }
 
-/// Crear formulario
+function guardarInputs() {
+  /// Crear objeto inputs con los valores
+  var inputs = {
+    'funcion': document.getElementById('formula').value,
+    'alto': parseInt(document.getElementById('alto').value),
+    'ancho': parseInt(document.getElementById('ancho').value),
+    'principal': document.getElementById('principal').value,
+    'secundario': document.getElementById('secundario').value
+  };
+
+  /// Parsear a JSON y guardar en localStorage
+  localStorage.setItem('inputs', JSON.stringify(inputs));
+}
+
+function cargarInputs() {
+  /// Parsear JSON del locasltorage
+  var inputs = JSON.parse(localStorage.getItem('inputs'));
+
+  if (inputs != null) {
+    /// Valores por defecto a los bucles
+    document.getElementById('formula').value = inputs.funcion;
+    document.getElementById('alto').value = inputs.alto;
+    document.getElementById('ancho').value = inputs.ancho;
+    document.getElementById('principal').value = inputs.principal;
+    document.getElementById('secundario').value = inputs.secundario;
+  }
+
+  /// Recrear la tabla con los valores cargados
+  crearTabla();
+}
+
+/// Crear objetos del DOM
 crearInputLabel("Formula", "text", "formula");
 crearInputLabel("Alto", "text", "alto");
 crearInputLabel("Ancho", "text", "ancho");
@@ -149,6 +185,9 @@ crearInputLabel("Color principal", "color", "principal");
 crearInputLabel("Color secundario", "color", "secundario");
 crearInputBoton("Generar", "generar");
 crearInputBoton("Reset", "reset");
+document.getElementsByClassName('container')[0].appendChild(document.createElement("br"));
+crearInputBoton("Guardar localStorage", "guardar");
+crearInputBoton("Cargar localStorage", "cargar");
 
-/// Crear la tabla, al tener todo cargado
+/// Crear la tabla
 crearTabla();

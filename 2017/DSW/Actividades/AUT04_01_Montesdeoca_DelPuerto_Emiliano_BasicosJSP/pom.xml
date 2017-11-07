@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>es.cifpcm</groupId>
-    <artifactId>SessionTrack</artifactId>
+    <artifactId>AUT04_01_Montesdeoca_DelPuerto_Emiliano_BasicosJSP</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>SessionTrack</name>
+    <name>AUT04_01_Montesdeoca_DelPuerto_Emiliano_BasicosJSP</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

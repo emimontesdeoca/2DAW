@@ -1,0 +1,14 @@
+img {
+  width: 150px;
+  padding: 50px;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: green;
+}

@@ -27,8 +27,7 @@
                 <th>Poblacion</th>
                 <th>Provincia</th>
             </tr>
-            <%
-                for (cliente c : utils.getAllClientes()) {%>
+            <% for (cliente c : utils.getAllClientes()) {%>
             <tr>
                 <td><%= c.getNombre()%> <%= c.getApellido()%></td>
                 <td><%= c.getPoblacion()%></td>

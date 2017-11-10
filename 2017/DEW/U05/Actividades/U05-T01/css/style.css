@@ -1,14 +1,28 @@
 img {
   width: 150px;
-  padding: 50px;
+  transition: all .5s ease-in-out;
+  margin: 15px;
+  border: 2px solid black;
+  border-radius: 14px;
+}
+
+img:hover {
+  border: 2px solid yellow;
+  border-radius: 14px;
 }
 
 #container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 body {
   background-color: green;
+}
+
+#header, #panel {
+  text-align: center;
+  font-family: 'Arial';
 }

@@ -40,7 +40,7 @@ public class LoginControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         try (Connection conn
                 = DriverManager.getConnection("jdbc:mysql://localhost:3306/consumoelectrico", "2daw", "2daw")) {
-            String query = "SELECT login, id FROM consumoelectrico.login WHERE login=? AND password =  ?";
+            String query = "SELECT login, id FROM consu moelectrico.login WHERE login=? AND password =  ?";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 String user = request.getParameter("txtUser");
                 String password = request.getParameter("txtPassword");

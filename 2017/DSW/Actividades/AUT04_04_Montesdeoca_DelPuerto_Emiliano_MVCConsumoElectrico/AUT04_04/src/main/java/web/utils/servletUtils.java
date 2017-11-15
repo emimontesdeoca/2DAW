@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.*;
 
 public class servletUtils {
 
@@ -27,7 +28,11 @@ public class servletUtils {
             Class.forName(driverClassName);
             conexion = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
             Statement s = (Statement) conexion.createStatement();
-            ResultSet rs = s.executeQuery("select * from misclientes limit " + skip + "," + take);
+            String qs = "select * from misclientes limit " + skip + "," + take;
+            if (take == 0) {
+                qs = "select * from misclientes";
+            }
+            ResultSet rs = s.executeQuery(qs);
             while (rs.next()) {
                 /// Crea un clIente con los datos que recibe de la bases de datos y lo agrega a la lista
                 clienteController newcliente = new clienteController(rs.getInt("Id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("NombreCalle"), rs.getInt("numero"), rs.getInt("CodPostal"), rs.getString("Poblacion"), rs.getString("Provincia"));
@@ -47,4 +52,15 @@ public class servletUtils {
         return res;
     }
 
+    public static Cookie getCookie(HttpServletRequest request, String cookieName) {
+        if (request.getCookies() == null) {
+            return null;
+        }
+        for (Cookie cookie : request.getCookies()) {
+            if (cookie.getName().equalsIgnoreCase(cookieName)) {
+                return cookie;
+            }
+        }
+        return null;
+    }
 }

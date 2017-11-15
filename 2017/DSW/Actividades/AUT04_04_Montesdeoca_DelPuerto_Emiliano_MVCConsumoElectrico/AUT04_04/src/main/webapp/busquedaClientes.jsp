@@ -12,14 +12,29 @@
     </head>
     <body>
         <%!
+            /// Variables globales
             Integer take;
             Integer skip;
             String name;
+            Integer totalclientes;
         %>
 
         <%
+            /// Conseguir el total de clientes, solo lo hace una vez ya que luego nunca dejara de ser nulo
             try {
-                name = request.getParameter("nameToSearch");
+                if (totalclientes == null) {
+                    totalclientes = servletUtils.getAllClientes(0, 0).size();
+                }
+            } catch (Exception e) {
+            }
+            /// Conseguir el nombre, se guarda uan vez en variable gloabal para cuando se hace POST sobre si mismo no se pierde
+            try {
+                String getname = request.getParameter("nameToSearch");
+                if (getname != null) {
+                    name = getname;
+                } else {
+                    name = "ninguno";
+                }
             } catch (Exception e) {
             }
 
@@ -28,55 +43,67 @@
 
         <h1>Clientes de consumo eléctrico!</h1>
 
-        <table id="table-clients">
-            <tr>
-                <th>Nombre</th>
-                <th>Poblacion</th>
-                <th>Provincia</th>
-            </tr>
-
-
-            <%
-                try {
+        <%
+            /// Variable con la que sabemos cuantros clientes se piden
+            try {
+                if (take == null && request.getParameter("pag") == null) {
+                    take = 10;
+                } else {
                     take = Integer.parseInt(request.getParameter("pag"));
-                } catch (Exception e) {
                 }
+            } catch (Exception e) {
+            }
 
+            Cookie pageSizeCookie = servletUtils.getCookie(request, "cookieps");
+            if (pageSizeCookie != null && request.getParameter("npag") == null) {
+                skip = Integer.parseInt(pageSizeCookie.getValue());
+            } else {
                 String newPag = request.getParameter("npag");
                 if (newPag != null) {
+
+                    /// Primero seria skip 0 y pillar lo que envie el usario
                     if (newPag.equals("pri")) {
                         skip = 0;
+                        /// Anterior hay estart al skip
                     } else if (newPag.equals("ant")) {
                         skip -= 10;
-
+                        /// Siguiente hay que sumar al skip
                     } else if (newPag.equals("sig")) {
                         skip += 10;
+                        /// Ultimo seria el total menos lo que pdia el usaurio
                     } else if (newPag.equals("ult")) {
+                        skip = totalclientes - take;
                     }
+
+                    /// Para que no pueda ser negativo
+                    if (skip < 0) {
+                        skip = 0;
+                    }
+                    /// Por si te pases del total
+                    if (skip > totalclientes) {
+                        skip = totalclientes - take;
+
+                    }
+
+                    /// No hay cookie creada por lo que guardarla
+                    Cookie savePageSizeCookie = new Cookie("cookieps", skip.toString());
+                    // 1 año de vida
+                    savePageSizeCookie.setMaxAge(24 * 60 * 60 * 365);
+                    savePageSizeCookie.setPath(request.getContextPath());
+                    response.addCookie(savePageSizeCookie);
+
                 } else {
                     skip = 0;
                 }
-                /*
-                switch (newPag) {
-                    case "pri":
-                        skip = 0;
-                        break;
-                    case "ant":
-                        skip -= 10;
-                        break;
-                    case "sig":
-                        skip += 10;
-                        break;
-                    case "ult":
-                        break;
-                    default:
-                        skip = 0;
-                }*/
-            %>
+            }
+        %>
 
-            <h1> muestra: <%= take%></h1>
-            <h1> salta: <%= skip%></h1>
-
+        <table id="table-clients">
+            <tr>
+                <th>Nombre</th>
+                <th>Población</th>
+                <th>Provincia</th>
+            </tr>
 
             <% for (clienteController c : servletUtils.getAllClientes(skip, take)) {%>
             <tr>
@@ -86,14 +113,14 @@
             </tr>
             <%}%>
 
-            <form action="busquedaClientes.jsp" method="POST">
-                <button type="submit" name="npag" value="pri">|<</button>
-                <button type="submit" name="npag" value="ant"><</button>
-                <button type="submit" name="npag" value="sig">></button>
-                <button type="submit" name="npag" value="ult">>|</button>
-
-
-            </form>
+            <div class="contenedorBotones">
+                <form action="busquedaClientes.jsp" method="POST">
+                    <button type="submit" name="npag" value="pri">|<</button>
+                    <button type="submit" name="npag" value="ant"><</button>
+                    <button type="submit" name="npag" value="sig">></button>
+                    <button type="submit" name="npag" value="ult">>|</button>
+                </form>
+            </div>
         </table>
     </body>
 </html>

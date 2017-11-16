@@ -1,0 +1,102 @@
+body {
+  background-color: #000000;
+  padding: 0px;
+  margin: 0px;
+}
+
+#gradient {
+  width: 100%;
+  /* height: 800px; */
+  padding: 0px;
+  margin: 0px;
+}
+
+.main-container {
+  margin-top: 10%;
+}
+
+.main {
+  /* border: 1px solid black; */
+  margin: 0 auto;
+  width: 800px;
+  background-color: white;
+}
+
+.title-header {
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+.btn-panel {
+  margin-left: 20px;
+}
+
+.title-icon {
+  font-size: 60px;
+  padding-right: 14px;
+}
+
+.row-buttons {
+  margin-bottom: 15px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+  text-align: left;
+}
+
+.table thead th {
+  vertical-align: middle;
+  border-bottom: 2px solid #e9ecef;
+  text-align: left;
+}
+
+.table-checkbox {
+  width: 70px;
+  text-align: center !important;
+}
+
+.selectall-checkbox {
+  bottom: 213px;
+}
+
+.td-checkbox {
+  margin-top: 13px;
+  margin-left: 0px !important;
+}
+
+.table td,
+.table th {
+  border-bottom: none !important;
+}
+
+.short-col {
+  width: 1px;
+}
+
+.third-col {
+  width: 20%;
+}
+
+.text-center-quantity {
+  text-align: center !important;
+}
+
+.main-tr {
+  height: 63px !important;
+}
+
+.modal-title-center {
+  width: 100%;
+}
+
+.text-modal {
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+
+.badges-modal{
+    margin-top: 20px;
+    
+}

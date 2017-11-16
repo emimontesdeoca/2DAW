@@ -7,17 +7,250 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/master.css">
-    <title>Lista de la compra</title>
+    <title>Shopping list</title>
 </head>
 
-<body>
+<body id="gradient">
+
+    <div class="container main-container">
+        <div class="main">
+            <div class="row title-header">
+                <div class="col-lg-12">
+                    <div class="container text-center">
+                        <h1 class="display-3">
+                            <i class="fa fa-shopping-basket title-icon" aria-hidden="true"></i>Shopping list</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-buttons">
+                <div class="container">
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-info pull-right btn-panel" data-toggle="modal" data-target="#categoriesModal">
+                            <i class="fa fa-refresh" aria-hidden="true"></i> Categories
+                        </button>
+                        <button type="button" class="btn btn-outline-primary pull-right btn-panel" data-toggle="modal" data-target="#productModal">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <div class="col text-center">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="main-tr">
+                                    <th scope="col" class="table-checkbox text-center">
+                                        <input class="form-check-input selectall-checkbox td-checkbox" type="checkbox" value="">
+                                    </th>
+                                    <th scope="col" class="short-col">Category</th>
+                                    <th scope="col" class="short-col">Quantity</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col" class="third-col text-center">
+                                        <button type="button" class="btn btn-outline-danger " style="display: none" data-toggle="modal" data-target="#deleteAllModal">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input td-checkbox" type="checkbox" value="">
+                                    </th>
+                                    <td class="text-center-quantity">
+                                        <span class="badge badge-dark">Critical</span>
+                                    </td>
+                                    <td class="text-center-quantity">1</td>
+                                    <td>Agua</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#deleteModal">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </button> &nbsp; &nbsp;
+                                        <button type="button" class="btn btn-outline-danger " data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input td-checkbox" type="checkbox" value="">
+                                    </th>
+
+                                    <td class="text-center-quantity">
+                                        <span class="badge badge-warning">Medium</span>
+                                    </td>
+                                    <td class="text-center-quantity">1</td>
+                                    <td>Agua</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </button> &nbsp; &nbsp;
+                                        <button type="button" class="btn btn-outline-danger " data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input td-checkbox" type="checkbox" value="">
+                                    </th>
+                                    <td class="text-center-quantity">
+                                        <span class="badge badge-danger">High</span>
+                                    </td>
+                                    <td class="text-center-quantity">1</td>
+                                    <td>Agua</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-warning " data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </button> &nbsp; &nbsp;
+                                        <button type="button" class="btn btn-outline-danger " data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Add/Edit product -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title modal-title-center" id="exampleModalLabel">Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="container">
+                    <p class="text-modal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan, lectus ac auctor semper.</p>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="col-form-label" for="inputQuantity">Quantity</label>
+                            <input type="number" class="form-control" id="inputQuantity" placeholder="4">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="inputProductName">Product name</label>
+                            <input type="text" class="form-control" id="inputProductName" placeholder="Water">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputState">Category</label>
+                            <select id="inputState" class="form-control">
+                                <option selected disabled>Choose...</option>
+                                <option class="bg-dark">Critical</option>
+                                <option class="bg-danger">High</option>
+                                <option class="bg-warning">Medium</option>
+                                <option class="bg-info">Low</option>
+                                <option class="bg-light">None</option>
+
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <script src="js/app.js"></script>
+    <!-- Modal Categories -->
+    <div class="modal fade" id="categoriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title modal-title-center" id="exampleModalLabel">Categories</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <p class="text-modal">There are five categories which represent different relevance for the product. Each category has
+                            a defined color.
+                        </p>
+                        <p class="badges-modal">These are all categories:
+                            <br>
+                            <span class="badge badge-dark">Critical</span>
+                            <span class="badge badge-danger">High</span>
+                            <span class="badge badge-warning">Medium</span>
+                            <span class="badge badge-info">Low</span>
+                            <span class="badge badge-light">None</span>
+                        </p>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal confirm all delete-->
+        <div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete all/h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal confirm one delete-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete one</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/gradient.js"></script>
 </body>
 
 </html>

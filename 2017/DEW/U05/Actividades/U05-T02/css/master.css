@@ -95,8 +95,10 @@ body {
   margin-bottom: -10px;
 }
 
+.text-modal-option {
+  margin-bottom: 10px;
+}
 
-.badges-modal{
-    margin-top: 20px;
-    
+.badges-modal {
+  margin-top: 20px;
 }

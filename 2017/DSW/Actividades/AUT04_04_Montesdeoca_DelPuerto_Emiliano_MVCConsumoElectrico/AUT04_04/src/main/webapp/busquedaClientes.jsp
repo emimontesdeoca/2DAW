@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <title>Consumo eléctrico JSP</title>
+        <title>Consumo eléctrico JSP MVC</title>
     </head>
     <body>
         <%!
@@ -32,6 +32,8 @@
                 String getname = request.getParameter("nameToSearch");
                 if (getname != null) {
                     name = getname;
+                } else if (getname == null && name != null) {
+
                 } else {
                     name = "ninguno";
                 }
@@ -47,29 +49,35 @@
             /// Variable con la que sabemos cuantros clientes se piden
             try {
                 if (take == null && request.getParameter("pag") == null) {
+                    /// Si no hay nada usar default 
                     take = 10;
                 } else {
+                    /// Si no leer el parametro
                     take = Integer.parseInt(request.getParameter("pag"));
                 }
             } catch (Exception e) {
             }
 
+            /// Buscar la cookie para el skip
             Cookie pageSizeCookie = servletUtils.getCookie(request, "cookieps");
+            /// Si la cookie no es nula y no se ha pedido unn parametro
             if (pageSizeCookie != null && request.getParameter("npag") == null) {
+                /// Usar la cookie
                 skip = Integer.parseInt(pageSizeCookie.getValue());
             } else {
+                /// Si la cookie es nula o no, no importa ya que se utiliza el parametro pasado,
+                /// Si no se mostraria siempre lo que tiene la cookie
                 String newPag = request.getParameter("npag");
                 if (newPag != null) {
-
                     /// Primero seria skip 0 y pillar lo que envie el usario
                     if (newPag.equals("pri")) {
                         skip = 0;
                         /// Anterior hay estart al skip
                     } else if (newPag.equals("ant")) {
-                        skip -= 10;
+                        skip -= take;
                         /// Siguiente hay que sumar al skip
                     } else if (newPag.equals("sig")) {
-                        skip += 10;
+                        skip += take;
                         /// Ultimo seria el total menos lo que pdia el usaurio
                     } else if (newPag.equals("ult")) {
                         skip = totalclientes - take;
@@ -85,7 +93,7 @@
 
                     }
 
-                    /// No hay cookie creada por lo que guardarla
+                    /// Reactualizar la cookie o crearla
                     Cookie savePageSizeCookie = new Cookie("cookieps", skip.toString());
                     // 1 año de vida
                     savePageSizeCookie.setMaxAge(24 * 60 * 60 * 365);

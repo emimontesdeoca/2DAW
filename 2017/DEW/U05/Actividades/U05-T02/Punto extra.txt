@@ -1,0 +1,2 @@
+El punto extra puede ser la forma de mostrar los productos de la lista dependiendo de su categoria, cantidad y ordern alfabetico.
+Tambien puede ser la habilidad de editar los productos.

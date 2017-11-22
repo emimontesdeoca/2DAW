@@ -7,6 +7,9 @@ function Product(quantity, name, category) {
       .substring(7) || "a3k9ka";
   /// Cantidad
   this.quantity = quantity || 1;
+  if (quantity < 0) {
+    this.quantity = 1;
+  }
   /// Nombre
   this.name = name || "product_" + this.id;
   /// Categoria

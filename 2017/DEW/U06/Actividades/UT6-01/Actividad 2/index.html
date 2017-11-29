@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <label>Usuario</label>
+        <input type="text" onblur="checkFormulario()" id="usuario" maxlength="20" required>
+        <span id="eusuario"></span>
+        <br>
+        <br>
+        <label>Nombre y apellidos</label>
+        <input type="text" onblur="checkFormulario()" id="nombreapellidos" required>
+        <span id="enombreapellidos"></span>
+        <br>
+        <br>
+        <label>Direccion</label>
+        <input type="text" id="direccion" onblur="checkFormulario()" maxlength="100">
+        <span id="edireccion"></span>
+        <br>
+        <br>
+        <label>Telefono</label>
+        <input type="number" onblur="checkFormulario()" id="telefono">
+        <span id="etelefono"></span>
+        <br>
+        <br>
+        <label>Correo electronico</label>
+        <input type="email" onblur="checkFormulario()" id="correoelectronico" required>
+        <span id="ecorreoelectronico"></span>
+        <br>
+        <br>
+        <label>Sugerencias</label>
+        <input type="textarea" onblur="checkFormulario()" maxlength="500" id="sugerencias" required>
+        <span id="esugerencias"></span>
+        <br>
+        <br>
+        <label>Foto</label>
+        <input type="file" id="foto" onblur="checkFormulario()">
+        <span id="efoto"></span>
+        <br>
+        <br>
+
+        <button type="submit" onclick="checkFormulario()" id="enviar">Submit</button>
+
+    </form>
+    <script src="app.js"></script>
+</body>
+
+</html>

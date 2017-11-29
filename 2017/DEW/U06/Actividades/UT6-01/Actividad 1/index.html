@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="error"></div>
+    <form>
+        <label>Letras</label> <input type="text" name="primero" id="primero" onblur="checkFormulario()" required>
+        <span id="errorprimero"></span>
+        <br>
+        <br>
+        <label>Numeros</label> <input type="number" name="segundo" id="segundo" onblur="checkFormulario()" required>
+        <span id="errorsegundo"></span>
+        <br>
+        <br>
+        <label>Letras y numeros</label> <input type="text" name="tercero" id="tercero" onblur="checkFormulario()" required>
+        <span id="errortercero"></span>
+        <br>
+        <br>
+        <button type="submit" onclick="checkFormulario()" id="enviar">Submit</button>
+
+    </form>
+    <script src="app.js"></script>
+</body>
+
+</html>

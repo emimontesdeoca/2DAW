@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<meta charset="utf-8">
+	<title>Actividad formulario</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+body {
+  font-family: "Arial";
+}
+
+h3 {
+  color: #0085CE;
+  margin-top: 0px;
+}
+
+span {
+  min-width: 100px !important;
+  display: inline-block;
+}
+
+hr {
+  background-color: red;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  border: 1px solid lightblue;
+  border-radius: 5px;
+}
+
+input {
+  border: 1px solid lightblue;
+}
+
+textarea {
+  border: 1px solid lightblue;
+}
+
+p:nth-child(3) span {
+  min-width: 300px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(4) select {
+  width: 190px
+}
+
+p:nth-child(4) label:nth-child(2) span {
+  min-width: 175px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(5) input[type="number"] {
+  border: 1px solid lightblue;
+  width: 45px;
+}
+
+p:nth-child(5) label:nth-child(1n+2) span {
+  min-width: 75px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(6) label:nth-child(1n+2) span {
+  min-width: 50px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(7) label:nth-child(1n+2) span {
+  min-width: 110px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(10) label select {
+  min-width: 650px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(11) label span {
+  min-width: 200px !important;
+  display: inline-block !important;
+}
+
+p:nth-child(12) strong {
+  margin-left: 10px;
+  display: inline-block !important;
+}
+
+p:nth-child(13) span {
+  min-width: 120px !important;
+  display: inline-block;
+  display: inline-block !important;
+  vertical-align: top;
+}
+
+.botones>input {
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #D9D6BB;
+  width: 150px;
+  border-style: none;
+  font-weight: bold;
+}
+
+input[type="button"]:nth-child(2) {
+  max-width: 90px;
+}
+
+input:required:valid {
+  border: 1px solid green;
+}
+
+</style
+<body>
+	<form name="myform" action="https://www.w3schools.com/action_page.php">
+		<fieldset>
+			<h3>Obligado al pago</h3>
+			<p>
+				<label for="NIF">
+						<span>N.I.F.(*)</span>
+						<input type="text" size="10" Maxlength="9" required="required" pattern="[0-9]{7}[a-Z]{1}" name="NIF">
+					</label>
+			</p>
+			<p>
+				<label for="apellidos">
+						<span>Apellidos y Nombre o Razón Social(*) </span>
+						<input type="text" required="required" size="40" minlength="10" name="apellidos">
+					</label>
+			</p>
+			<p>
+				<label for="Sigla">
+						<span>Sigla(*) </span>
+						<select required="required"   name="Sigla">
+							<option value="" disabled="disabled" selected="selected">Seleccione sigla</option>
+							<option value="Sr">Señor</option>
+							<option value="Sra">Señora</option>
+							<option value="Don">Don</option>
+							<option value="Dona">Doña</option>
+						</select>
+					</label>
+				<label for="viapublica">
+							<span>Nombre vía pública(*) </span>
+							<input type="text" size="50" required="required" name="viapublica"/>
+						</label>
+			</p>
+			<p>
+				<label for="Número">
+						<span>Numero(*) </span>
+						<input type="number" maxlength="2" size="2" required="required" name="numero">
+					</label>
+				<label for="Escalera">
+							<span>Escalera </span>
+							<input type="text" maxlength="2" size="2" name="Escalera">
+						</label>
+				<label for="Piso">
+								<span>Piso </span>
+								<input type="number" maxlength="2" size="2" name="Piso">
+							</label>
+				<label for="Puerta">
+									<span>Puerta </span>
+									<input type="text" maxlength="2" size="2" name="Puerta">
+								</label>
+			</p>
+			<p>
+				<label for="Télefono">
+						<span>Télefono </span>
+						<input type="text" maxlength="9" size="9" name="Telefono">
+					</label>
+				<label for="Fax">
+							<span>Fax </span>
+							<input type="text" maxlength="10" size="10" name="Fax" >
+						</label>
+			</p>
+			<p>
+				<label for="Provincia">
+						<span>Provincia(*) </span>
+						<select required>
+							<option value="" disabled="disabled" selected="selected">Seleccione provincia</option>
+							<option value="SC">Santa Cruz de tenerife</option>
+							<option value="MA">Madrid</option>
+							<option value="MU">Murcia</option>
+						</select>
+					</label>
+				<label for="Municipio">
+							<span>Municipio(*) </span>
+							<select required>
+								<option value="" disabled="disabled" selected="selected">Seleccione municipio</option>
+								<option value="AN">Santa Cruz de tenerife</option>
+								<option value="AR">Arafo</option>
+								<option value="CR">Los Cristianos</option>
+							</select>
+						</label>
+				<label for="Cód. Postal">
+								<span>Cód. Postal(*) </span>
+								<input type="text" required="required" maxlength="10" size="10" name="codpostal" id="CodPostal">
+							</label>
+
+				<hr>
+				<h3>Tasas</h3>
+				<p>
+					<label for="Tramite">
+						<span>Trámite(*)</span>
+						<br>
+							<select required name="Tramite">
+							<option value="" disabled="disabled" selected="selected">Seleccione trámite</option>
+							<option value="MA">Matricula</option>
+							<option value="TR">Traspasos</option>
+							<option value="ING">Ingresos</option>
+							<option value="RET">Retirar Dinero</option>
+							<option value="CON">Consultar Saldo</option>
+						</select>
+					</label>
+				</p>
+				<p>
+					<label for="expediente">
+						<span>Número de Expediente </span>
+						<input type="text" maxlength="10" size="10" name="expediente" >
+					</label>
+					<label for="liquidacion">
+						<span>Número de Liquidación </span>
+						<input type="text" maxlength="10" size="10" name="liquidacion" >
+					</label>
+				</p>
+				<p>
+					<input type="radio" checked name="pago" value="EFE"><strong>En efectivo</strong>
+					<input type="radio" name="pago" value="ADE"><strong>Adeudo en cta.</strong>
+					<input type="radio"  name="pago" value="PAG"><strong>Pago telemático</strong>
+				</p>
+				<p><span>Concepto </span>
+					<textarea rows="6" cols="70" name="concepto"></textarea>
+				</p>
+				<div class="botones">
+					<input type="submit" name="continuar" value="Continuar">
+					<input type="button" name="volver" value="Volver">
+					<input type="reset" name="clear" value="Limpiar formulario">
+				</div>
+		</fieldset>
+	</form>
+</body>
+
+</html>

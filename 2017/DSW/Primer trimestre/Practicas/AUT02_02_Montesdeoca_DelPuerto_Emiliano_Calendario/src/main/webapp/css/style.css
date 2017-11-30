@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-oct-2017, 11:49:21
+    Author     : emont
+*/
+
+table{
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.header{
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Consumo eléctrico!</h1>
+
+        <form action="busquedaClientes.jsp" method="POST" style="width:270px">
+            <fieldset>  
+                <legend>Datos cliente</legend>
+                <label for="nombre" >Nombre de cliente: </label>
+                <input type="text" id="nombre" name="nameToSearch" required="required"/><br>
+                <label for="salidas">Numero de salidas por pagina: </label>
+                <input type="number" id="salidas" name="pag" required="required"/>
+                <input type="submit" value="Enviar"/>
+            </fieldset>
+        </form>
+    </body>
+</html>

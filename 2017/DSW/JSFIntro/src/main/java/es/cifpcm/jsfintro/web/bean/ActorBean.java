@@ -16,10 +16,36 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class ActorBean {
 
-    /**
-     * Creates a new instance of ActorBean
-     */
+    private String firstName;
+    private String lastName;
+    
     public ActorBean() {
     }
     
+    public ActorBean(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String save() {
+        return "ok";
+    }
+
+   
 }

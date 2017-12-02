@@ -16,26 +16,26 @@ and open the template in the editor.
     </head>
     <body>
         <h2 style="text-align: center">Catálogo de actores</h2>
-        <h:dataTable value="#{actorBean.getActorList()}" var="actor" id="actor">
+        <h:dataTable value="#{actorBean.getActorList()}" var="a" id="actor">
 
             <h:column>    				
                 <f:facet name="header">Id</f:facet>    				
-                    #{actor.actorId}
+                    #{a.actorId}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Firstname</f:facet>
-                    #{actor.firstName}
+                    #{a.firstName}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Lastname</f:facet>
-                    #{actor.lastName}
+                    #{a.lastName}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Update</f:facet>
-                    #{actor.lastUpdate}
+                    #{a.lastUpdate}
             </h:column>
         </h:dataTable>
         <div style="width:100%; margin:0 auto; text-align:center">

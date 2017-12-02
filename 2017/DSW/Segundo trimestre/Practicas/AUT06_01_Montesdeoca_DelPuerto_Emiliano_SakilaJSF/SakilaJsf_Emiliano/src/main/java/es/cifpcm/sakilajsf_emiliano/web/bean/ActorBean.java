@@ -7,7 +7,6 @@ package es.cifpcm.sakilajsf_emiliano.web.bean;
 
 import es.cifpcm.sakilajsf_emiliano.web.dao.ActorDao;
 import es.cifpcm.sakilajsf_emiliano.web.pojo.Actor;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -20,6 +19,14 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class ActorBean extends Actor {
 
+    public ActorBean() {
+    }
+    
+    /// Metodo que devuelve todos los actores dependiendo del salto que quiera el usuario
+    public static List<Actor> getActorList() {
+        return ActorDao.selectAll(ActorBean.skip);
+    }
+    
     /// Variable para skip, empieza en 0 y va cambiando, esto solo dura en la sesion
     public static Integer skip = 0;
     /// Variable global para saber la cantidad total de actores, necesaria para que no se pase en las paginas
@@ -44,11 +51,5 @@ public class ActorBean extends Actor {
         }
     }
 
-    public ActorBean() {
-    }
     
-    /// Metodo que devuelve todos los actores dependiendo del salto que quiera el usuario
-    public static List<Actor> getActorList() {
-        return ActorDao.selectAll(ActorBean.skip);
-    }
 }

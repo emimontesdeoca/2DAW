@@ -1,0 +1,25 @@
+.title-subtext {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.app-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.main {
+  margin-top: 20px;
+}
+.title-header {
+  margin-bottom: 20px;
+}
+
+.img-logo{
+    width: 20%;
+}
+
+.buttonbuscar{
+    margin: 0 auto;
+    margin-top: 20px;
+}

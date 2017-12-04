@@ -91,6 +91,7 @@ function renderProductsForTable(sorting) {
       var checkbox = document.createElement("input");
       checkbox.className = "form-check-input td-checkbox";
       checkbox.type = "checkbox";
+      checkbox.title = "checkbox";
       checkbox.param = productJSON[i].id;
       checkbox.id = productJSON[i].id;
 
@@ -174,7 +175,7 @@ function renderProductsForTable(sorting) {
       var btn_edit = document.createElement("button");
       btn_edit.type = "button";
       btn_edit.className = "btn btn-outline-warning btn-separation";
-      btn_edit.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
+      btn_edit.innerHTML = '<span class="fa fa-pencil" aria-hidden="true"></span>';
       btn_edit.setAttribute("data-toggle", "modal");
       btn_edit.setAttribute("data-target", "#productModal");
       btn_edit.param = productJSON[i].id;
@@ -183,7 +184,7 @@ function renderProductsForTable(sorting) {
       var btn_delete = document.createElement("button");
       btn_delete.type = "button";
       btn_delete.className = "btn btn-outline-danger";
-      btn_delete.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
+      btn_delete.innerHTML = '<span class="fa fa-trash-o" aria-hidden="true"></span>';
       btn_delete.param = productJSON[i].id;
       btn_delete.addEventListener("click", loadDeleteModal, false);
 

@@ -13,12 +13,21 @@ import javax.enterprise.context.RequestScoped;
  */
 @Named(value = "actorBean")
 @RequestScoped
-public class ActorBean {
+public class ActorBean extends Actor {
 
     public List<Actor> getActorList() {
-
         ActorDao a = new ActorDaoImplements();
-
         return a.selectAll();
+    }
+
+    public static Actor actor;
+
+    public String save() {
+        actor = new ActorDaoImplements().insert(this);
+        return "actorDetail.xhtml?faces-redirect=true";
+    }
+
+    public static Actor getActor() {
+        return actor;
     }
 }

@@ -27,17 +27,30 @@
     <nivel1 role="heading" aria-level="1">
         Obras de arte
     </nivel1>
-    <div class="buscar">
+    <div class="buscar" tabindex=0>
         <input aria-label="Buscar en algun sitio" type="text" />
-        <button type="button" id="accionBuscar" aria-label="Boton de buscar">Buscar</button>
+		<div tabindex=0  onkeydown="pinchefuncion(event)" id="boton" aria-label="pinche boton de busqueda">Boton</div>
+        
     </div>
-    <div>
-        <img alt="Una imagensita" src="Guernica.jpg">
+	<div tabindex=0 alt="Pinche resultados de la busqueda">
+    <div tabindex=0>
+        <img aria-labelledby="guernica" src="Guernica.jpg">
+		<p id="guernica">La pinche foto de picaso</p>
     </div>
-    <div>
-        <img alt="Otra imagensita" src="Arte-en-la-arena-2.png">
+    <div tabindex=0>
+        <img aria-labelledby="starwars" src="Arte-en-la-arena-2.png">
+		<p id="starwars">La pinche foto de starwas de arena</p>
     </div>
+	
+<script>
+function pinchefuncion(e){
+if(e.keyCode === 13){
+alert("pinche alert");
+}
+}
 
+
+</script>
 
 </body>
 

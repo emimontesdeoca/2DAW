@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una pagina chida</title>
+    <title>Obras de arte</title>
     <style>
         .buscar {
             padding: 1em;
@@ -20,37 +20,34 @@
             color: #C6C3C2;
         }
     </style>
-
 </head>
 
 <body>
     <nivel1 role="heading" aria-level="1">
         Obras de arte
     </nivel1>
-    <div class="buscar" tabindex=0>
-        <input aria-label="Buscar en algun sitio" type="text" />
-		<div tabindex=0  onkeydown="pinchefuncion(event)" id="boton" aria-label="pinche boton de busqueda">Boton</div>
-        
-    </div>
-	<div tabindex=0 alt="Pinche resultados de la busqueda">
-    <div tabindex=0>
-        <img aria-labelledby="guernica" src="Guernica.jpg">
-		<p id="guernica">La pinche foto de picaso</p>
-    </div>
-    <div tabindex=0>
-        <img aria-labelledby="starwars" src="Arte-en-la-arena-2.png">
-		<p id="starwars">La pinche foto de starwas de arena</p>
-    </div>
-	
-<script>
-function pinchefuncion(e){
-if(e.keyCode === 13){
-alert("pinche alert");
-}
-}
+    <div class="buscar" tabindex=0 aria-label="Criterios de busqueda">
+        <input aria-label="Formulario de busqueda" type="text" />
+        <div tabindex=0 onkeydown="pinchefuncion(event)" id="boton" aria-label="Boton de busqueda">Boton</div>
 
+    </div>
+    <div tabindex=0 alt="Resultados de la busqueda">
+        <div tabindex=0 aria-labelledby="Foto de Guernica">
+            <img aria-hidden="true" src="Guernica.jpg">
+            <p id="guernica" aria-hidden="true">Foto de Guernica</p>
+        </div>
+        <div tabindex=0 aria-labelledby="Foto de Starwars">
+            <img aria-hidden="true" src="Arte-en-la-arena-2.png">
+            <p id="starwars">Foto de Starwas de arena</p>
+        </div>
 
-</script>
+        <script>
+            function pinchefuncion(e) {
+                if (e.keyCode === 13) {
+                    alert("pinche alert");
+                }
+            }
+        </script>
 
 </body>
 

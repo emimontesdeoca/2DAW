@@ -22,14 +22,14 @@ and open the template in the editor.
                         <h:outputText value="Nuevo actor"/>
                     </f:facet>
                     <h:outputLabel for="txtFirstName" value="Nombre"/>
-                    <p:inputText id="txtFirstName" value="${actorBean.firstName}"/>
+                    <p:inputText id="txtFirstName" value="${actorBean.firstName}" />
                     <p:message for="txtFirstName" display="icon" />
                     <h:outputLabel for="txtLastName" value="Apellidos"/>
-                    <p:inputText id="txtLastName" value="${actorBean.lastName}"/>
+                    <p:inputText id="txtLastName" value="${actorBean.lastName}"  />
                     <p:message for="txtLastName" display="icon" />
 
                     <p:commandButton value="Save" update="pnlNewActor" action="#{actorBean.save()}"
-                                     icon="ui-icon-check" />
+                                     icon="ui-icon-check"  />
                 </h:panelGrid>
             </p:panel>
         </h:form>

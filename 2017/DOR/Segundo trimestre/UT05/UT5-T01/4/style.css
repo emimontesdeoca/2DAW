@@ -1,0 +1,13 @@
+img {
+  width: 6em;
+  width: 100px;
+  height: 20px;
+  position: absolute;
+}
+
+#estrellas {
+  background-color: grey;
+  width: 70px;
+  height: 20px;
+  position: absolute;
+}

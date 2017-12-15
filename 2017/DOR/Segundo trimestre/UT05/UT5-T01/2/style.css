@@ -1,0 +1,20 @@
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+  }
+  .contenedor>div{
+    font-size: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  
+  .gira{
+    transition: transform 1s;
+    transform: rotate(360deg);
+  }
+  
+  .nogira{
+    transition: none;
+    transform: none;
+  }
+  

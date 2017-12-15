@@ -12,5 +12,6 @@ import java.util.List;
 public interface ActorDao {
 
     public List<Actor> selectAll();
+
     public Actor insert(Actor actor);
 }

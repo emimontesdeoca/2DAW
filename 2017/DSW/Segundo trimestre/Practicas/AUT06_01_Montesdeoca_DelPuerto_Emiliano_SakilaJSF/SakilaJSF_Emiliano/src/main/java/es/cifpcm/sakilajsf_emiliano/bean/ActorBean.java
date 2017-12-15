@@ -1,7 +1,7 @@
 package es.cifpcm.sakilajsf_emiliano.bean;
 
 import es.cifpcm.sakilajsf_emiliano.dao.ActorDao;
-import es.cifpcm.sakilajsf_emiliano.dao.ActorDaoImplements;
+import es.cifpcm.sakilajsf_emiliano.dao.ActorDaoImpl;
 import es.cifpcm.sakilajsf_emiliano.pojo.Actor;
 import java.util.List;
 import javax.inject.Named;
@@ -39,14 +39,14 @@ public class ActorBean extends Actor {
     }
 
     public List<Actor> getActorList() {
-        ActorDao a = new ActorDaoImplements();
+        ActorDao a = new ActorDaoImpl();
         return a.selectAll();
     }
 
     public static Actor actor;
 
     public String save() {
-        actor = new ActorDaoImplements().insert(this);
+        actor = new ActorDaoImpl().insert(this);
         if (actor.getActorId() == null) {
             return "/error.xhtml?faces-redirect=true";
         } else {

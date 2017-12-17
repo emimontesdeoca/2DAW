@@ -1,0 +1,28 @@
+.dibujo {
+  background: url(hombre.png);
+  height: 143px;
+  width: 111px;
+  margin: 30px auto 0;
+  -webkit-animation: caminando 1s steps(8, end) infinite;
+  animation: caminando 1s steps(8, end) infinite;
+}
+@-webkit-keyframes caminando {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -798px 0;
+  }
+}
+@keyframes caminando {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1034px 0;
+  }
+}
+
+h1 {
+  text-align: center;
+}

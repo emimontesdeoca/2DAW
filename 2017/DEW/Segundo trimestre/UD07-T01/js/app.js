@@ -176,6 +176,11 @@ $Ul
       .next()
       .removeClass("current")
       .css("display", "none");
+
+    $("div#blog")
+      .find("p")
+      .first()
+      .slideDown();
   });
 
 $Ul
@@ -273,7 +278,37 @@ $("#nav")
 
 /// 1  Mover el elemento #slideshow a la parte superior de la página;
 
+$("#slideshow").prependTo("#main");
+
 /// 2  Escribir un código que permita mostrar los ítems de forma cíclica, mostrando un ítem por unos segundos, luego ocultándolo con un efecto fade out y mostrando el siguiente con un efecto fade in;
+
+$("#slideshow")
+  .children()
+  .hide();
+
+var i = 0;
+
+setInterval(function() {
+  if (i == 3) {
+    i = 0;
+  }
+  console.log(i);
+  if (i < 3) {
+    try {
+      $("#slideshow")
+        .children()
+        .eq(i - 1)
+        .fadeOut()
+        .hide();
+    } catch (error) {}
+
+    $("#slideshow")
+      .children()
+      .eq(i)
+      .fadeIn();
+    i++;
+  }
+}, 2000);
 
 /// 3  Una vez llegado al último ítem de la lista, comenzar de nuevo con el primero;
 

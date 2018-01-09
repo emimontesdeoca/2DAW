@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 8, 2018, 1:42:55 PM
+    Author     : emont
+*/
+
+#botones{
+    
+    text-align:center;
+}
+#titulo, h3{
+    font-family:"arial";
+    text-align:center;
+}
+
+#homer {
+        text-align:center;
+}
+
+h3{
+    color: blue;
+}
+
+#footertext{
+    text-align:center;
+    font-family:"arial";
+    
+}

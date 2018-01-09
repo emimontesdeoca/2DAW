@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/publicTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <div style="text-align: center">
+            <p:outputLabel for="cboProvincias" value="Pronvicia: " />
+            <h:selectOneMenu id="cboProvincias" style="width: 232px;" value="#{hotelSearchBean.idProvincia}" >
+                <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios"/>
+                <f:selectItems value="#{hotelSearchBean.provincias}" var="p"
+                               itemLabel="#{p.nombre}" itemValue="#{p.id_provinicia}" />
+            </h:selectOneMenu>
+            <br/>
+            <br/>
+            <p:outputLabel for="cboMunicipios" value="Municipio: " />
+            <h:selectOneMenu id="cboMunicipios" style="width: 232px;" >
+                <f:selectItems value="#{hotelSearchBean.municipios}" var="c"
+                               itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
+            </h:selectOneMenu>
+
+            <br/>
+            <br/>
+            <h:button outcome="index" value="Buscar"/>
+        </div>
+    </ui:define>
+
+</ui:composition>

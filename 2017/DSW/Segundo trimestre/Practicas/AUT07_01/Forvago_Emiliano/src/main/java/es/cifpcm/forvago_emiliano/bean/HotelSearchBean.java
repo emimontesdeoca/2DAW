@@ -8,7 +8,7 @@ package es.cifpcm.forvago_emiliano.bean;
 import es.cifpcm.forvago_emiliano.pojo.Municipio;
 import es.cifpcm.forvago_emiliano.pojo.Provincia;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -18,35 +18,44 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @Named(value = "hotelSearchBean")
 @ApplicationScoped
-public class HotelSearchBean extends Provincia {
+public class HotelSearchBean {
 
     private Integer idProvincia;
     private Integer idMunicipio;
 
-    private List<Provincia> listaProvincias;
-    private List<Municipio> listaMunicipios;
+    public Integer getIdProvincia() {
+        return idProvincia;
+    }
+
+    public void setIdProvincia(Integer idProvincia) {
+        this.idProvincia = idProvincia;
+    }
+
+    public Integer getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    public void setIdMunicipio(Integer idMunicipio) {
+        this.idMunicipio = idMunicipio;
+    }
+
+    //private List<Provincia> listaProvincias;
+    //private List<Municipio> listaMunicipios;
 
     public HotelSearchBean() {
     }
 
     public List<Provincia> getProvincias() {
-        if (listaProvincias == null) {
-            listaProvincias = new MasterDataBean().getProvincias();
-        }
-        return listaProvincias;
+        return new MasterDataBean().getProvincias();
     }
 
     public List<Municipio> getMunicipios() {
-        if (listaMunicipios == null) {
-            listaMunicipios = new MasterDataBean().getMunicipios();
-        }
+        return new MasterDataBean().getMunicipios();
+    }
 
-        List<Municipio> res = listaMunicipios;
-
+    public void onCboProvinciasChange() {
         if (idProvincia != null) {
-            res.removeIf(x -> x.getId_provincia() != idProvincia);
+            new MasterDataBean().getMunicipios().removeIf(x -> x.getId_provincia() != idProvincia);
         }
-
-        return res;
     }
 }

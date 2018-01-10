@@ -8,12 +8,14 @@
 
     <ui:define name="content">
         <div style="text-align: center">
-            <p:outputLabel for="cboProvincias" value="Pronvicia: " />
-            <h:selectOneMenu id="cboProvincias" style="width: 232px;" value="#{hotelSearchBean.idProvincia}" >
-                <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios"/>
+            <p:outputLabel for="cboProvincias" value="Provincia: " />
+            <h:selectOneMenu id="cboProvincias" value="#{hotelSearchBean.idProvincia}" >
                 <f:selectItems value="#{hotelSearchBean.provincias}" var="p"
                                itemLabel="#{p.nombre}" itemValue="#{p.id_provinicia}" />
+                <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios" />
+
             </h:selectOneMenu>
+
             <br/>
             <br/>
             <p:outputLabel for="cboMunicipios" value="Municipio: " />

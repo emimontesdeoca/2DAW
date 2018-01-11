@@ -5,11 +5,13 @@
  */
 package es.cifpcm.forvago_emiliano.pojo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author emont
  */
-public class Provincia {
+public class Provincia implements Serializable{
 
     public Integer getId_provinicia() {
         return id_provinicia;

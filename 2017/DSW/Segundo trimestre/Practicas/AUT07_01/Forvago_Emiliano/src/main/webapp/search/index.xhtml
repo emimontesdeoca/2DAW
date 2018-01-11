@@ -7,27 +7,35 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <div style="text-align: center">
-            <p:outputLabel for="cboProvincias" value="Provincia: " />
-            <h:selectOneMenu id="cboProvincias" value="#{hotelSearchBean.idProvincia}" >
-                <f:selectItems value="#{hotelSearchBean.provincias}" var="p"
-                               itemLabel="#{p.nombre}" itemValue="#{p.id_provinicia}" />
-                <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios" />
 
-            </h:selectOneMenu>
+        <h:form>
+            <div style="text-align: center">
+                <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto;     ">
+                    <p:outputLabel for="cboProvincias" value="Provincia: " />
+                    <p:selectOneMenu id="cboProvincias" value="#{hotelSearchBean.idProvincia}" >
+                        <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios" />
+                        <f:selectItems value="#{hotelSearchBean.provincias}" var="p"
+                                       itemLabel="#{p.nombre}" itemValue="#{p.id_provinicia}" />
+                    </p:selectOneMenu>
 
-            <br/>
-            <br/>
-            <p:outputLabel for="cboMunicipios" value="Municipio: " />
-            <h:selectOneMenu id="cboMunicipios" style="width: 232px;" >
-                <f:selectItems value="#{hotelSearchBean.municipios}" var="c"
-                               itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
-            </h:selectOneMenu>
+                    <p:outputLabel for="cboMunicipios" value="Municipio: " />
+                    <p:selectOneMenu id="cboMunicipios" style="width: 232px;" >
+                        <f:selectItems value="#{hotelSearchBean.municipios}" var="c"
+                                       itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
+                    </p:selectOneMenu>
 
-            <br/>
-            <br/>
-            <h:button outcome="index" value="Buscar"/>
-        </div>
+                    <p:outputLabel for="fechaEntrada" value="Fecha de entrada: " />
+                    <p:calendar id="fechaEntrada" value="#{hotelSearchBean.fechaEntrada}" />
+
+                    <p:outputLabel for="fechaSalida" value="Fecha de salida " />
+                    <p:calendar id="fechaSalida" value="#{hotelSearchBean.fechaSalida}" />
+
+                </h:panelGrid>
+                <p:button outcome="resultSearch" value="Buscar"/>
+
+            </div>
+
+        </h:form>
     </ui:define>
 
 </ui:composition>

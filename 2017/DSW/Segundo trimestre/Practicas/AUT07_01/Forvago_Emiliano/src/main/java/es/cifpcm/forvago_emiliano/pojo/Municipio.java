@@ -5,11 +5,13 @@
  */
 package es.cifpcm.forvago_emiliano.pojo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author emont
  */
-public class Municipio {
+public class Municipio implements Serializable{
 
     public Integer getId_municipio() {
         return id_municipio;

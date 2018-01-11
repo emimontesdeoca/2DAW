@@ -10,18 +10,40 @@ import es.cifpcm.forvago_emiliano.pojo.Provincia;
 import javax.inject.Named;
 
 import java.util.List;
+import java.util.ArrayList;
+
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author emont
  */
 @Named(value = "hotelSearchBean")
-@ApplicationScoped
+@RequestScoped
 public class HotelSearchBean {
 
     private Integer idProvincia;
     private Integer idMunicipio;
+
+    private Integer fechaEntrada;
+    private Integer fechaSalida;
+
+    public Integer getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public void setFechaEntrada(Integer fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
+
+    public Integer getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Integer fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
 
     public Integer getIdProvincia() {
         return idProvincia;
@@ -39,23 +61,37 @@ public class HotelSearchBean {
         this.idMunicipio = idMunicipio;
     }
 
-    //private List<Provincia> listaProvincias;
-    //private List<Municipio> listaMunicipios;
+    private List<Provincia> provincias;
+    private List<Municipio> municipios;
+    private List<Municipio> municipiosFiltrados;
 
     public HotelSearchBean() {
+        this.municipios = new MasterDataBean().getMunicipios();
+        municipiosFiltrados = municipios;
     }
 
     public List<Provincia> getProvincias() {
-        return new MasterDataBean().getProvincias();
+        this.provincias = new MasterDataBean().getProvincias();
+        return provincias;
     }
 
     public List<Municipio> getMunicipios() {
-        return new MasterDataBean().getMunicipios();
+
+        return municipiosFiltrados;
     }
 
     public void onCboProvinciasChange() {
-        if (idProvincia != null) {
-            new MasterDataBean().getMunicipios().removeIf(x -> x.getId_provincia() != idProvincia);
+
+        Integer val = this.getIdProvincia();
+        municipiosFiltrados = new ArrayList<>();
+        if (val != null) {
+            for (Municipio m : municipios) {
+                if (m.getId_provincia() == val) {
+                    municipiosFiltrados.add(m);
+                }
+            }
+
+            //this.municipios.removeIf(x -> x.getId_provincia() == this.getIdProvincia());
         }
     }
 }

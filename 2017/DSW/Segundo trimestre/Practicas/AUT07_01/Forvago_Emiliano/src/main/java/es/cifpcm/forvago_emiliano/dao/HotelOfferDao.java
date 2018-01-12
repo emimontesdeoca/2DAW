@@ -16,9 +16,13 @@ public interface HotelOfferDao {
 
     public List<HotelOffer> selectAll();
 
+    public List<HotelOffer> selectByCriteria(Integer idMunicipio);
+
+    public List<HotelOffer> selectByCriteria(String nombreMunicipio);
+
     public void insert(HotelOffer h);
 
-    public void select(HotelOffer h);
+    //public void select(HotelOffer h);
 
     public void update(HotelOffer h);
 

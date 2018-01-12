@@ -31,6 +31,7 @@ public class ShoppingCart implements Serializable {
     public Double getTotal() {
 
         double total = 0.0;
+
         for (HotelOffer offer : offers) {
             total += offer.getPrice();
         }

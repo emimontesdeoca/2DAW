@@ -5,10 +5,13 @@
  */
 package es.cifpcm.forvago_emiliano.bean;
 
+import es.cifpcm.forvago_emiliano.dao.HotelOfferDao;
+import es.cifpcm.forvago_emiliano.dao.HotelOfferDaoImpl;
 import es.cifpcm.forvago_emiliano.dao.MunicipioDao;
 import es.cifpcm.forvago_emiliano.dao.MunicipioDaoImpl;
 import es.cifpcm.forvago_emiliano.dao.ProvinciaDao;
 import es.cifpcm.forvago_emiliano.dao.ProvinciaDaoImpl;
+import es.cifpcm.forvago_emiliano.pojo.HotelOffer;
 import es.cifpcm.forvago_emiliano.pojo.Municipio;
 import es.cifpcm.forvago_emiliano.pojo.Provincia;
 import java.util.List;
@@ -22,6 +25,16 @@ import javax.enterprise.context.ApplicationScoped;
 @Named(value = "masterDataBean")
 @ApplicationScoped
 public class MasterDataBean {
+
+    private Integer idMuncipio;
+
+    public Integer getIdMuncipio() {
+        return idMuncipio;
+    }
+
+    public void setIdMuncipio(Integer idMuncipio) {
+        this.idMuncipio = idMuncipio;
+    }
 
     /**
      * Creates a new instance of MasterDataBean
@@ -37,5 +50,10 @@ public class MasterDataBean {
     public List<Provincia> getProvincias() {
         ProvinciaDao a = new ProvinciaDaoImpl();
         return a.selectAll();
+    }
+
+    public List<HotelOffer> getHotelOffers(Integer idMunicipio) {
+        HotelOfferDao h = new HotelOfferDaoImpl();
+        return h.selectByCriteria(idMunicipio);
     }
 }

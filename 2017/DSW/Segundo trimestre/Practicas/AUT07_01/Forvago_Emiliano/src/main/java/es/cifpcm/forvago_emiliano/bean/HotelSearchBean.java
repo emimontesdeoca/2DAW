@@ -7,6 +7,7 @@ package es.cifpcm.forvago_emiliano.bean;
 
 import es.cifpcm.forvago_emiliano.pojo.Municipio;
 import es.cifpcm.forvago_emiliano.pojo.Provincia;
+import java.io.Serializable;
 import javax.inject.Named;
 
 import java.util.List;
@@ -14,14 +15,25 @@ import java.util.ArrayList;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author emont
  */
 @Named(value = "hotelSearchBean")
-@RequestScoped
-public class HotelSearchBean {
+@SessionScoped
+public class HotelSearchBean implements Serializable {
+
+    public static Integer idMunicipioGlobal;
+
+    public static void setIdMunicipioGlobal(Integer idMunicipioGlobal) {
+        HotelSearchBean.idMunicipioGlobal = idMunicipioGlobal;
+    }
+
+    public static Integer getIdMunicipioGlobal() {
+        return HotelSearchBean.idMunicipioGlobal;
+    }
 
     private Integer idProvincia;
     private Integer idMunicipio;
@@ -58,6 +70,7 @@ public class HotelSearchBean {
     }
 
     public void setIdMunicipio(Integer idMunicipio) {
+        HotelSearchBean.setIdMunicipioGlobal(idMunicipio);
         this.idMunicipio = idMunicipio;
     }
 

@@ -1,14 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./../WEB-INF/templates/publicTemplate.xhtml">
 
             <ui:define name="content">
-                content
+                <div style="float: left; width: 20%;">
+                    <h:graphicImage style="width: 10%;" library="images" name="empty-cart-dark_small.png"/>
+                    <h:outputText id="lblTotal" value="#{shoppingCartBean.totalAsString}"/>
+                </div>
+                <h:form id="form">
+
+                    <p:repeat value="#{hotelResultsBean.offers}" var="offer" offset="0" size="5" step="1" varStatus="status">
+                        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                            <p:commandLink update=":form:offerDetail" oncomplete="PF('offerDialog').show()">
+                               
+                                <p:graphicImage library="images" name="hotels/#{offer.hotel_picture}" />
+                            </p:commandLink>
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Hotel:" />
+                                    <h:outputText value="#{offer.name}" style="font-weight: bold"/>
+                                    <h:outputText value="Precio:" />
+                                    <h:outputText value="#{offer.price}" style="font-weight: bold"/>
+                                    <p:commandButton value="Añadir">
+                                        <p:ajax listener="#{shoppingCartBean.addOffer(offer)}"
+                                                update="lblTotal"/>
+                                    </p:commandButton>
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </h:panelGrid>
+                        <hr />
+                    </p:repeat>
+                </h:form>
+                <br/>
             </ui:define>
 
         </ui:composition>

@@ -19,7 +19,7 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="cboMunicipios" value="Municipio: " />
-                    <p:selectOneMenu id="cboMunicipios" style="width: 232px;" >
+                    <p:selectOneMenu id="cboMunicipios" style="width: 232px;" value="#{hotelSearchBean.idMunicipio}" >
                         <f:selectItems value="#{hotelSearchBean.municipios}" var="c"
                                        itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
                     </p:selectOneMenu>

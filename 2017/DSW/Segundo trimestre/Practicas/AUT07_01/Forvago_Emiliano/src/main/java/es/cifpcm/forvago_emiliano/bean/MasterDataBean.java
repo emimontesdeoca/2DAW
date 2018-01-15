@@ -26,16 +26,6 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class MasterDataBean {
 
-    private Integer idMuncipio;
-
-    public Integer getIdMuncipio() {
-        return idMuncipio;
-    }
-
-    public void setIdMuncipio(Integer idMuncipio) {
-        this.idMuncipio = idMuncipio;
-    }
-
     /**
      * Creates a new instance of MasterDataBean
      */

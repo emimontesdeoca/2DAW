@@ -29,6 +29,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
             Class.forName("com.mysql.jdbc.Driver");
 
         } catch (Exception e) {
+            String error = "error";
         }
 
         /// Connection string 

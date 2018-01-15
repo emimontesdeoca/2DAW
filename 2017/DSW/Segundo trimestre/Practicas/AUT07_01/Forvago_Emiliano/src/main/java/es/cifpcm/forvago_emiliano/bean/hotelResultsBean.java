@@ -5,6 +5,7 @@
  */
 package es.cifpcm.forvago_emiliano.bean;
 
+import es.cifcpm.forvago_emiliano.utils.Cookies;
 import es.cifpcm.forvago_emiliano.pojo.HotelOffer;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -31,7 +32,7 @@ public class hotelResultsBean implements Serializable {
 
     public List<HotelOffer> getOffers() {
 
-        Integer idMunicipioBusqueda = HotelSearchBean.getIdMunicipioGlobal();
+        Integer idMunicipioBusqueda = Integer.parseInt(Cookies.getCookie("idMunicpio").toString());
 
         this.offers = new MasterDataBean().getHotelOffers(idMunicipioBusqueda);
 

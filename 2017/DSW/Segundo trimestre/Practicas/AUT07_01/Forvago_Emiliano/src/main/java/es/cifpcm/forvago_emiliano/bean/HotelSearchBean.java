@@ -5,6 +5,7 @@
  */
 package es.cifpcm.forvago_emiliano.bean;
 
+import es.cifcpm.forvago_emiliano.utils.Cookies;
 import es.cifpcm.forvago_emiliano.pojo.Municipio;
 import es.cifpcm.forvago_emiliano.pojo.Provincia;
 import java.io.Serializable;
@@ -70,7 +71,7 @@ public class HotelSearchBean implements Serializable {
     }
 
     public void setIdMunicipio(Integer idMunicipio) {
-        HotelSearchBean.setIdMunicipioGlobal(idMunicipio);
+        Cookies.setCookie("idMunicipio", idMunicipio.toString(), 10);
         this.idMunicipio = idMunicipio;
     }
 

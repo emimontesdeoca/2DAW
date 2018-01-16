@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 #botones{
-    
+
     text-align:center;
 }
 #titulo, h3{
@@ -18,7 +18,7 @@ and open the template in the editor.
 }
 
 #homer {
-        text-align:center;
+    text-align:center;
 }
 
 h3{
@@ -28,5 +28,19 @@ h3{
 #footertext{
     text-align:center;
     font-family:"arial";
-    
+
+}
+
+.logo{
+
+    max-width: 40px;
+}
+
+table{
+    width: 50%;
+    margin: 0 auto;
+}
+
+form{
+    margin-top: 20px;
 }

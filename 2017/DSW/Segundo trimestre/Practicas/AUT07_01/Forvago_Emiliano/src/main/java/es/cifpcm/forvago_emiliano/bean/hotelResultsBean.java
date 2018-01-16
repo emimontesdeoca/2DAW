@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.*;
+import javax.servlet.http.Cookie;
 
 /**
  *
@@ -28,11 +29,23 @@ public class hotelResultsBean implements Serializable {
     }
 
     private List<HotelOffer> offers = new ArrayList<>();
+
+    public List<HotelOffer> getSelectedOffer() {
+        return selectedOffer;
+    }
+
+    public void setSelectedOffer(List<HotelOffer> selectedOffer) {
+        this.selectedOffer = selectedOffer;
+    }
     private List<HotelOffer> selectedOffer;
 
     public List<HotelOffer> getOffers() {
 
-        Integer idMunicipioBusqueda = Integer.parseInt(Cookies.getCookie("idMunicpio").toString());
+        Cookie a = Cookies.getCookie("idMunicipio");
+
+        String b = a.getValue();
+
+        Integer idMunicipioBusqueda = Integer.parseInt(b);
 
         this.offers = new MasterDataBean().getHotelOffers(idMunicipioBusqueda);
 

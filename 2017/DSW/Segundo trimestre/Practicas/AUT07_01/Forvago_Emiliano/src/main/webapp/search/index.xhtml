@@ -7,10 +7,9 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-
         <h:form>
             <div style="text-align: center">
-                <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto;     ">
+                <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto;">
                     <p:outputLabel for="cboProvincias" value="Provincia: " />
                     <p:selectOneMenu id="cboProvincias" value="#{hotelSearchBean.idProvincia}" >
                         <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios" />
@@ -31,10 +30,8 @@
                     <p:calendar id="fechaSalida" value="#{hotelSearchBean.fechaSalida}" />
 
                 </h:panelGrid>
-                <p:commandButton process="#{hotelSearchBean.setIDCookie(cboMunicipios)}" action="resultSearch" value="Buscar"/>
-
+                <h:commandButton value="Buscar" action="#{hotelSearchBean.setIDCookie()}"/>
             </div>
-
         </h:form>
     </ui:define>
 

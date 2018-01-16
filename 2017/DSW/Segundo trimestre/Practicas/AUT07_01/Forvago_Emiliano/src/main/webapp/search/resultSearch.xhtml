@@ -15,13 +15,17 @@
                     <h:graphicImage style="width: 10%;" library="images" name="empty-cart-dark_small.png"/>
                     <h:outputText id="lblTotal" value="#{shoppingCartBean.totalAsString}"/>
                 </div>
-                <h:form id="form">
+                <br/>
+                <br/>
+                <br/>
 
-                    <p:repeat value="#{hotelResultsBean.offers}" var="offer" offset="0" size="5" step="1" varStatus="status">
-                        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                <h:form id="form">
+                    <p:repeat value="#{hotelResultsBean.offers}" var="offer">
+                        <h:panelGrid columns="2" columnClasses="logo,detail">
                             <p:commandLink update=":form:offerDetail" oncomplete="PF('offerDialog').show()">
-                               
-                                <p:graphicImage library="images" name="hotels/#{offer.hotel_picture}" />
+                                <f:setPropertyActionListener value="#{offer}"
+                                                             target="#{hotelResultsBean.selectedOffer}" />
+                                <p:graphicImage library="images" name="hotels/#{offer.hotel_picture}"  />
                             </p:commandLink>
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
@@ -38,6 +42,23 @@
                         </h:panelGrid>
                         <hr />
                     </p:repeat>
+
+                    <p:dialog header="Información de la oferta" widgetVar="offerDialog" modal="true" showEffect="blind"
+                              hideEffect="explode" resizable="false">
+                        <p:outputPanel id="offerDetail" style="text-align:center;">
+                            <p:panelGrid columns="2" rendered="#{not empty hotelResultsBean.selectedOffer}"
+                                         columnClasses="label,value">
+                                <f:facet name="header">
+                                    <p:graphicImage library="images" value="hotels/#{offer.hotelPicture}"
+                                                    />
+                                </f:facet>
+                                <h:outputText value="Hotel:" />
+                                <h:outputText value="#{offer.hotel}" style="font-weight: bold"/>
+                                <h:outputText value="Precio:" />
+                                <h:outputText value="#{offer.price}" style="font-weight: bold"/>
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form>
                 <br/>
             </ui:define>

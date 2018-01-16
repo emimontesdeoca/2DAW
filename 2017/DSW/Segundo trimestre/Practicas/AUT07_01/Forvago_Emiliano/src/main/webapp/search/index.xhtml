@@ -31,7 +31,7 @@
                     <p:calendar id="fechaSalida" value="#{hotelSearchBean.fechaSalida}" />
 
                 </h:panelGrid>
-                <p:button outcome="resultSearch" value="Buscar"/>
+                <p:commandButton process="#{hotelSearchBean.setIDCookie(cboMunicipios)}" action="resultSearch" value="Buscar"/>
 
             </div>
 

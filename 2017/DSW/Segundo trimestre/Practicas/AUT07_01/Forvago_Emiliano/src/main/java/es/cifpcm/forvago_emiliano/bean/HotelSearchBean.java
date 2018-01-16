@@ -71,8 +71,12 @@ public class HotelSearchBean implements Serializable {
     }
 
     public void setIdMunicipio(Integer idMunicipio) {
-        Cookies.setCookie("idMunicipio", idMunicipio.toString(), 10);
+
         this.idMunicipio = idMunicipio;
+    }
+
+    public void setIDCookie(Integer idMunicipio) {
+        Cookies.setCookie("idMunicipio", idMunicipio.toString(), 10);
     }
 
     private List<Provincia> provincias;

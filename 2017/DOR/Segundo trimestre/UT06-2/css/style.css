@@ -1,0 +1,22 @@
+.noSelected {
+  fill: white;
+}
+
+.selected {
+  fill: blue;
+}
+
+.ocupado {
+  fill: black;
+}
+
+ellipse,
+circle,
+rect {
+  fill: inherit;
+}
+
+#contenedor {
+  background-color: darkred;
+  margin-left: 20%;
+}

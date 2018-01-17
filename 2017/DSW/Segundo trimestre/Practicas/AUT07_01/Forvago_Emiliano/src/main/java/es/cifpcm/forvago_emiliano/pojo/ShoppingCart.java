@@ -5,9 +5,13 @@
  */
 package es.cifpcm.forvago_emiliano.pojo;
 
+import es.cifpcm.forvago_emiliano.utils.Cookies;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.servlet.http.Cookie;
 
 /**
  *
@@ -16,8 +20,10 @@ import java.util.*;
 public class ShoppingCart implements Serializable {
 
     private final List<HotelOffer> offers = new ArrayList<>();
+    private Integer totalDays;
 
     public ShoppingCart() {
+
     }
 
     public void addOffer(HotelOffer offer) {
@@ -29,6 +35,21 @@ public class ShoppingCart implements Serializable {
     }
 
     public Double getTotal() {
+
+        Cookie entradaCookie = Cookies.getCookie("fechaEntrada");
+        Cookie salidaCookie = Cookies.getCookie("fechaSalida");
+
+        try {
+
+            String entradaString = entradaCookie.getValue();
+            String salidaString = salidaCookie.getValue();
+
+            String string = "January 2, 2010";
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+            Date date = format.parse(string);
+            System.out.println(date); // Sat Jan 02 00:00:00 GMT 2010
+        } catch (Exception e) {
+        }
 
         double total = 0.0;
 

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Droppable - Simple photo manager</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/master.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+
+    <div class="ui-widget ui-helper-clearfix">
+
+        <div class="contenedor-islas">
+
+            <div id="Lapalma" isla="lapalma" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    La palma</h4>
+            </div>
+
+            <div id="Elhierro" isla="elhierro" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    El Hierro</h4>
+            </div>
+            <div id="Lagomera" isla="lagomera" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    La Gomera</h4>
+            </div>
+
+            <div id="Tenerife" isla="tenerife" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    Tenerife</h4>
+            </div>
+            <div id="Grancanaria" isla="grancanaria" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    Gran Canaria</h4>
+            </div>
+
+            <div id="Fuerteventura" isla="fuerteventura" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    Fuerteventura</h4>
+            </div>
+            <div id="Lanzarote" isla="lanzarote" class="contenedor-imgs ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">
+                    Lanzarote</h4>
+            </div>
+        </div>
+
+    </div>
+    <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+        <li class="ui-widget-content ui-corner-tr" isla="elhierro">
+            <h5 class="ui-widget-header">Uno</h5>
+            <img src="images/elhierro/uno.jpg" alt="The peaks of High Tatras" width="96" height="72">
+        </li>
+        <li class="ui-widget-content ui-corner-tr" isla="fuerteventura">
+            <h5 class="ui-widget-header">Fuerteventura</h5>
+            <img src="images/fuerteventura/uno.jpg" alt="The peaks of High Tatras" width="96" height="72">
+        </li>
+    </ul>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
  */
 package es.cifpcm.forvago_emiliano.bean;
 
-import es.cifcpm.forvago_emiliano.utils.Cookies;
+import es.cifpcm.forvago_emiliano.utils.Cookies;
 import es.cifpcm.forvago_emiliano.pojo.HotelOffer;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;

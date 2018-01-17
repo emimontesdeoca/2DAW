@@ -11,13 +11,6 @@
         <ui:composition template="./../WEB-INF/templates/publicTemplate.xhtml">
 
             <ui:define name="content">
-                <div style="float: left; width: 20%;">
-                    <h:graphicImage style="width: 10%;" library="images" name="empty-cart-dark_small.png"/>
-                    <h:outputText id="lblTotal" value="#{shoppingCartBean.totalAsString}"/>
-                </div>
-                <br/>
-                <br/>
-                <br/>
 
                 <h:form id="form">
                     <p:repeat value="#{hotelResultsBean.offers}" var="offer">

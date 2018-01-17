@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package es.cifcpm.forvago_emiliano.utils;
+package es.cifpcm.forvago_emiliano.utils;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.*;

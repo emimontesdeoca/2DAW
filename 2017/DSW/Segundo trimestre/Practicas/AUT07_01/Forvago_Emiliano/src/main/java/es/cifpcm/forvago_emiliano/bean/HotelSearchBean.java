@@ -5,10 +5,11 @@
  */
 package es.cifpcm.forvago_emiliano.bean;
 
-import es.cifcpm.forvago_emiliano.utils.Cookies;
+import es.cifpcm.forvago_emiliano.utils.Cookies;
 import es.cifpcm.forvago_emiliano.pojo.Municipio;
 import es.cifpcm.forvago_emiliano.pojo.Provincia;
 import java.io.Serializable;
+import java.util.Date;
 import javax.inject.Named;
 
 import java.util.List;
@@ -26,35 +27,25 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class HotelSearchBean implements Serializable {
 
-    public static Integer idMunicipioGlobal;
-
-    public static void setIdMunicipioGlobal(Integer idMunicipioGlobal) {
-        HotelSearchBean.idMunicipioGlobal = idMunicipioGlobal;
-    }
-
-    public static Integer getIdMunicipioGlobal() {
-        return HotelSearchBean.idMunicipioGlobal;
-    }
-
     private Integer idProvincia;
     private Integer idMunicipio;
 
-    private Integer fechaEntrada;
-    private Integer fechaSalida;
+    private Date fechaEntrada;
+    private Date fechaSalida;
 
-    public Integer getFechaEntrada() {
+    public Date getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Integer fechaEntrada) {
+    public void setFechaEntrada(Date fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public Integer getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Integer fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
@@ -77,6 +68,9 @@ public class HotelSearchBean implements Serializable {
 
     public String setIDCookie() {
         Cookies.setCookie("idMunicipio", this.idMunicipio.toString(), 10);
+        Cookies.setCookie("fechaEntrada", this.fechaEntrada.toString(), 10);
+        Cookies.setCookie("fechaSalida", this.fechaSalida.toString(), 10);
+
         return "resultSearch?faces-redirect=true";
     }
 

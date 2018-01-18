@@ -14,19 +14,48 @@ var arrayIslas = [
   ($fuerteventura = $("#Fuerteventura"))
 ];
 
-var arrayIslasCrear = [
-  { id: 0, name: "Lapalma", title: "La Palma", att: "lapalma" },
-  { id: 1, name: "Elhierro", title: "El Hierro", att: "elhierro" },
-  { id: 2, name: "Lagomera", title: "La Gomera", att: "lagomera" },
-  { id: 3, name: "Tenerife", title: "Tenerife", att: "tenerife" },
-  { id: 4, name: "Grancanaria", title: "Gran Canaria", att: "grancanaria" },
+var arrayIslasCrear = [{
+    id: 0,
+    name: "Lapalma",
+    title: "La Palma",
+    att: "lapalma"
+  },
+  {
+    id: 1,
+    name: "Elhierro",
+    title: "El Hierro",
+    att: "elhierro"
+  },
+  {
+    id: 2,
+    name: "Lagomera",
+    title: "La Gomera",
+    att: "lagomera"
+  },
+  {
+    id: 3,
+    name: "Tenerife",
+    title: "Tenerife",
+    att: "tenerife"
+  },
+  {
+    id: 4,
+    name: "Grancanaria",
+    title: "Gran Canaria",
+    att: "grancanaria"
+  },
   {
     id: 5,
     name: "Fuerteventura",
     title: "Fuerteventura",
     att: "fuerteventura"
   },
-  { id: 6, name: "Lanzarote", title: "Lanzarote", att: "lanzarote" }
+  {
+    id: 6,
+    name: "Lanzarote",
+    title: "Lanzarote",
+    att: "lanzarote"
+  }
 ];
 
 function borrar() {
@@ -102,7 +131,10 @@ function jugar() {
   var arrayIslasNombre = [];
 
   aIslas.forEach(element => {
-    var a = { title: element.title, att: element.att };
+    var a = {
+      title: element.title,
+      att: element.att
+    };
     arrayIslasNombre.push(a);
   });
 
@@ -124,7 +156,11 @@ function jugar() {
     var imgN = arrayIslasFinal[index];
     var path = "images/" + att + "/" + imgN + ".jpg";
 
-    var obj = { att: att, title: title, path: path };
+    var obj = {
+      att: att,
+      title: title,
+      path: path
+    };
 
     if (finalArray.indexOf(obj) == -1) {
       finalArray.push(obj);
@@ -147,7 +183,11 @@ function jugar() {
     var imgN = arrayIslasFinal[index];
     var path = "images/" + att + "/" + imgN + ".jpg";
 
-    var obj = { att: att, title: title, path: path };
+    var obj = {
+      att: att,
+      title: title,
+      path: path
+    };
 
     if (finalArray.indexOf(obj) == -1) {
       finalArray.push(obj);
@@ -187,7 +227,7 @@ function jugar() {
   $("li", $gallery).draggable({
     cancel: "a.ui-icon", // clicking an icon won't initiate dragging
     revert: "invalid",
-    revert: function(event) {
+    revert: function (event) {
       if (event == false) {
         toastr.error("Se ha equivocado, -2 puntos!", "Mal!");
         score -= 2;
@@ -215,24 +255,28 @@ function jugar() {
       // classes: {
       //   "ui-droppable-active": "ui-state-highlight"
       // },
-      drop: function(event, ui) {
+      drop: function (event, ui) {
         deleteImage(ui.draggable, $(this));
       }
     });
   });
 
   function deleteImage($item, $isla) {
-    $item.fadeOut(function() {
-      var $list = $("ul", $isla).length
-        ? $("ul", $isla)
-        : $("<ul class='gallery ui-helper-reset'/>").appendTo($isla);
+    $item.fadeOut(function () {
+      var $list = $("ul", $isla).length ?
+        $("ul", $isla) :
+        $("<ul class='gallery ui-helper-reset'/>").appendTo($isla);
 
       $item.find("a.ui-icon-trash").remove();
-      $item.appendTo($list).fadeIn(function() {
+      $item.appendTo($list).fadeIn(function () {
         $item
-          .animate({ width: "48px" })
+          .animate({
+            width: "48px"
+          })
           .find("img")
-          .animate({ height: "36px" });
+          .animate({
+            height: "36px"
+          });
       });
 
       //console.log(document.querySelector("#gallery").children.length);
@@ -265,7 +309,7 @@ function showModalFinPartida() {
     width: 400,
     modal: true,
     buttons: {
-      Reinciar: function() {
+      Reinciar: function () {
         $(this).dialog("close");
         score = 0;
         dialogoInicial();
@@ -274,6 +318,7 @@ function showModalFinPartida() {
     }
   });
 }
+
 function dialogoInicial() {
   $("#dialog-confirm").dialog({
     resizable: false,
@@ -281,7 +326,7 @@ function dialogoInicial() {
     width: 400,
     modal: true,
     buttons: {
-      Jugar: function() {
+      Jugar: function () {
         var b = document.getElementById("username").value;
 
         var patt = new RegExp(/^([^0-9]*)$/);

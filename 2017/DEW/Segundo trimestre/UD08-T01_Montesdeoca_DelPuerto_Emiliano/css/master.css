@@ -72,37 +72,37 @@ body {
 }
 
 #Lapalma {
-  background-image: url("/images/islas/lapalma.png");
+  background-image: url("../images/islas/lapalma.png");
   background-repeat: no-repeat;
 }
 
 #Elhierro {
-  background-image: url("/images/islas/elhierro.png");
+  background-image: url("../images/islas/elhierro.png");
   background-repeat: no-repeat;
 }
 
 #Fuerteventura {
-  background-image: url("/images/islas/fuerteventura.png");
+  background-image: url("../images/islas/fuerteventura.png");
   background-repeat: no-repeat;
 }
 
 #Grancanaria {
-  background-image: url("/images/islas/grancanaria.png");
+  background-image: url("../images/islas/grancanaria.png");
   background-repeat: no-repeat;
 }
 
 #Tenerife {
-  background-image: url("/images/islas/tenerife.png");
+  background-image: url("../images/islas/tenerife.png");
   background-repeat: no-repeat;
 }
 
 #Lanzarote {
-  background-image: url("/images/islas/lanzarote.png");
+  background-image: url("../images/islas/lanzarote.png");
   background-repeat: no-repeat;
 }
 
 #Lagomera {
-  background-image: url("/images/islas/lagomera.png");
+  background-image: url("../images/islas/lagomera.png");
   background-repeat: no-repeat;
 }
 

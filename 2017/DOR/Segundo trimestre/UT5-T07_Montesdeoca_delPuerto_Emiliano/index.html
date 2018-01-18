@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Elegir copa</title>
+</head>
+
+<body>
+    <div style="text-align:center">
+        <button onclick="createJson()">Crear JSON</button>
+        <button onclick="loadJson()">Cargar reservas</button>
+    </div>
+    <br>
+
+    <svg id="contenedor" width=800 height=800 viewBox="0 0 1600 1600">
+        <symbol id="copa">
+            <rect x=400 y=300 width=200 height=50 stroke="black" stroke-width=2> </rect>
+            <ellipse cx=500 cy=220 rx=50 ry=80 stroke="black" stroke-width=2 />
+            <circle stroke="black" stroke-width=2 cx=500 cy=325 r=10 />
+        </symbol>
+
+
+    </svg>
+
+
+
+    <script src="js/jquery-min.js"></script>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

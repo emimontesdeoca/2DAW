@@ -3,11 +3,11 @@
 }
 
 .selected {
-  fill: blue;
+  fill: green;
 }
 
 .ocupado {
-  fill: black;
+  fill: red;
 }
 
 ellipse,
@@ -17,6 +17,10 @@ rect {
 }
 
 #contenedor {
-  background-color: darkred;
-  margin-left: 20%;
+  background-color: darkgrey;
+}
+
+body {
+  text-align: center;
+  font-family: "arial";
 }

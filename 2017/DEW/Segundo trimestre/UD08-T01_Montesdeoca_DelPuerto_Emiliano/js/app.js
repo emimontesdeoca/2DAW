@@ -10,50 +10,65 @@ var arrayIslas = [
   ($fuerteventura = $("#Fuerteventura"))
 ];
 
-function deleteImage($item, $isla) {
-  $item.fadeOut(function() {
-    var $list = $("ul", $isla).length
-      ? $("ul", $isla)
-      : $("<ul class='gallery ui-helper-reset'/>").appendTo($isla);
-
-    $item.find("a.ui-icon-trash").remove();
-    $item.appendTo($list).fadeIn(function() {
-      $item
-        .animate({ width: "48px" })
-        .find("img")
-        .animate({ height: "36px" });
-    });
-  });
-}
-
-arrayIslas.forEach(element => {
-  $elemento = element;
-
-  let isla = element[0].getAttribute("isla");
-  let string = "#gallery > li[isla='" + isla + "']";
-
-  $elemento.droppable({
-    accept: string,
-    classes: {
-      "ui-droppable-active": "ui-state-highlight"
-    },
-    drop: function(event, ui) {
-      deleteImage(ui.draggable, $(this));
-      console.log(ui);
-    }
-  });
-});
-
-/*
-<li class="ui-widget-content ui-corner-tr" isla="elhierro">
-            <h5 class="ui-widget-header">Uno</h5>
-            <img src="images/elhierro/uno.jpg" alt="The peaks of High Tatras" width="96" height="72">
-        </li>
-*/
+var arrayIslasCrear = [
+  { id: 0, name: "Lapalma", title: "La Palma", att: "lapalma" },
+  { id: 1, name: "Elhierro", title: "El Hierro", att: "elhierro" },
+  { id: 2, name: "Lagomera", title: "La Gomera", att: "lagomera" },
+  { id: 3, name: "Tenerife", title: "Tenerife", att: "tenerife" },
+  { id: 4, name: "Grancanaria", title: "Gran Canaria", att: "grancanaria" },
+  {
+    id: 5,
+    name: "Fuerteventura",
+    title: "Fuerteventura",
+    att: "fuerteventura"
+  },
+  { id: 6, name: "Lanzarote", title: "Lanzarote", att: "lanzarote" }
+];
 
 $(document).ready(function() {
+  // Contenedores
   var c = document.getElementById("gallery");
+  var ci = document.getElementById("islas");
 
+  // Numero random de islas
+  var random = Math.floor(Math.random() * (6 - 3 + 1)) + 3;
+  var aIslas = [];
+
+  // Crear ids para las islas, que nunca se repitan
+  var arr = [];
+  while (arr.length < random) {
+    var randomnumber = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+    if (arr.indexOf(randomnumber) > -1) continue;
+    arr[arr.length] = randomnumber;
+  }
+
+  /// Utilizando el array de islas agregar dependiendo el id generado en el arr
+  arr.forEach(element => {
+    aIslas.push(arrayIslasCrear[element]);
+  });
+
+  // Crea las islas con su respectiva informacion
+  aIslas.forEach(element => {
+    let div = document.createElement("div");
+    div.setAttribute("id", element.name);
+    div.setAttribute("isla", element.att);
+    div.setAttribute(
+      "class",
+      "contenedor-imgs ui-widget-content ui-state-default"
+    );
+
+    let h4 = document.createElement("h4");
+    h4.setAttribute("class", "ui-widget-header");
+    h4.innerHTML = element.title;
+
+    div.appendChild(h4);
+
+    ci.appendChild(div);
+  });
+
+  console.log(aIslas);
+
+  // Crear las imagenes
   for (let index = 0; index < 5; index++) {
     var li = document.createElement("li");
     li.setAttribute(
@@ -86,4 +101,38 @@ $(document).ready(function() {
     helper: "clone",
     cursor: "move"
   });
+
+  aIslas.forEach(element => {
+    $elemento = $("#" + element.name);
+
+    let isla = $elemento[0].getAttribute("isla");
+    let string = "#gallery > li[isla='" + isla + "']";
+
+    $elemento.droppable({
+      accept: string,
+      classes: {
+        "ui-droppable-active": "ui-state-highlight"
+      },
+      drop: function(event, ui) {
+        deleteImage(ui.draggable, $(this));
+        console.log(ui);
+      }
+    });
+  });
+
+  function deleteImage($item, $isla) {
+    $item.fadeOut(function() {
+      var $list = $("ul", $isla).length
+        ? $("ul", $isla)
+        : $("<ul class='gallery ui-helper-reset'/>").appendTo($isla);
+
+      $item.find("a.ui-icon-trash").remove();
+      $item.appendTo($list).fadeIn(function() {
+        $item
+          .animate({ width: "48px" })
+          .find("img")
+          .animate({ height: "36px" });
+      });
+    });
+  }
 });

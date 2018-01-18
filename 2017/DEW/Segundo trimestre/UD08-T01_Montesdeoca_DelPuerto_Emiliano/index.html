@@ -5,10 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Islas Canaremi</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/master.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script>
     </script>
 </head>
@@ -17,7 +20,9 @@
 
     <div class="ui-widget ui-helper-clearfix" id="contenedor-todo">
         <h1>Islas Canaremi</h1>
-        <h2 id="nombreJugador">Jugador</h2>
+        <h2>
+            <span id="nombreJugador"></span> -
+            <span id="puntuacion-titulo"></span> puntos.</h2>
         <div class="botones">
             <button class="ui-corner-all" onclick="jugar()">Reinciar</button>
         </div>
@@ -32,7 +37,7 @@
             <p style="text-align:center">
                 <span class="ui-icon ui-icon-person" style="margin:5px 10px 10px 0;"></span>
                 <label for="username" style="margin-right: 10px;">Nombre</label>
-                <input id="username" class="ui-corner-all" type="text">
+                <input maxlength="100" pattern="^([^0-9]*)$" id="username" class="ui-corner-all" type="text">
             </p>
 
             <p style="text-align:center">
@@ -43,6 +48,13 @@
                     <option value="5">Medio</option>
                     <option value="7">Dificil</option>
                 </select>
+            </p>
+        </div>
+
+        <div id="dialog-finpartida" style="display:none" title="Juego terminado">
+            <p style="text-align:center">
+                Ha finalizado el juego con
+                <span id="puntuacion"></span> puntos!
             </p>
         </div>
 

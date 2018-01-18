@@ -1,6 +1,9 @@
 var $gallery = $("#gallery");
 var numeroIslasValue = 4;
 var nombreJugador = "Jugador";
+var score = 0;
+var titScore = document.getElementById("puntuacion-titulo");
+titScore.innerHTML = score;
 var arrayIslas = [
   ($lapalma = $("#Lapalma")),
   ($elhierro = $("#Elhierro")),
@@ -26,9 +29,24 @@ var arrayIslasCrear = [
   { id: 6, name: "Lanzarote", title: "Lanzarote", att: "lanzarote" }
 ];
 
-$(document).ready();
+function borrar() {
+  // Contenedores
+  var c = document.getElementById("gallery");
+  /// Borrar lo que tiene dentro
+  while (c.firstChild) {
+    c.removeChild(c.firstChild);
+  }
+
+  var ci = document.getElementById("islas");
+  /// Borrar lo que tiene dentro
+  while (ci.firstChild) {
+    ci.removeChild(ci.firstChild);
+  }
+}
 
 function jugar() {
+  score = 0;
+  titScore.innerHTML = score;
   // Contenedores
   var c = document.getElementById("gallery");
   /// Borrar lo que tiene dentro
@@ -136,6 +154,7 @@ function jugar() {
       index--;
     }
   }
+  console.log(finalArray);
 
   // shuffle(finalArray);
   // Crear las imagenes
@@ -151,12 +170,12 @@ function jugar() {
     h5.setAttribute("class", "ui-widget-header");
     h5.innerHTML = element.title;
 
-    li.appendChild(h5);
+    // li.appendChild(h5);
 
     var img = document.createElement("img");
     img.setAttribute("src", element.path);
     img.setAttribute("width", "96");
-    img.setAttribute("height", "72");
+    img.setAttribute("height", "150");
     img.setAttribute("alt", "hola");
 
     li.appendChild(img);
@@ -166,7 +185,19 @@ function jugar() {
 
   $("li", $gallery).draggable({
     cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-    revert: "invalid", // when not dropped, the item will revert back to its initial position
+    revert: "invalid",
+    revert: function(event) {
+      if (event == false) {
+        toastr.error("Se ha equivocado, -2 puntos!", "Mal!");
+        score -= 2;
+        titScore.innerHTML = score;
+        return "invalid";
+      } else {
+        score += 5;
+        toastr.success("Ha acertado, +5 puntos!", "Bien!");
+        titScore.innerHTML = score;
+      }
+    },
     containment: "document",
     helper: "clone",
     cursor: "move"
@@ -180,12 +211,11 @@ function jugar() {
 
     $elemento.droppable({
       accept: string,
-      classes: {
-        "ui-droppable-active": "ui-state-highlight"
-      },
+      // classes: {
+      //   "ui-droppable-active": "ui-state-highlight"
+      // },
       drop: function(event, ui) {
         deleteImage(ui.draggable, $(this));
-        console.log(ui);
       }
     });
   });
@@ -203,20 +233,15 @@ function jugar() {
           .find("img")
           .animate({ height: "36px" });
       });
-    });
-  }
 
-  function dynamicSort(property) {
-    var sortOrder = 1;
-    if (property[0] === "-") {
-      sortOrder = -1;
-      property = property.substr(1);
-    }
-    return function(a, b) {
-      var result =
-        a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
-      return result * sortOrder;
-    };
+      //console.log(document.querySelector("#gallery").children.length);
+      if (document.querySelector("#gallery").children.length == 0) {
+        var c = document.getElementById("puntuacion");
+        borrar();
+        c.innerHTML = score;
+        showModalFinPartida();
+      }
+    });
   }
 
   function shuffle(array) {
@@ -232,7 +257,23 @@ function jugar() {
   cT.setAttribute("style", "display:inline");
 }
 
-$(function() {
+function showModalFinPartida() {
+  $("#dialog-finpartida").dialog({
+    resizable: false,
+    height: "auto",
+    width: 400,
+    modal: true,
+    buttons: {
+      Reinciar: function() {
+        $(this).dialog("close");
+        score = 0;
+        dialogoInicial();
+        // jugar();
+      }
+    }
+  });
+}
+function dialogoInicial() {
   $("#dialog-confirm").dialog({
     resizable: false,
     height: "auto",
@@ -240,17 +281,26 @@ $(function() {
     modal: true,
     buttons: {
       Jugar: function() {
-        $(this).dialog("close");
-        var a = document.getElementById("dificultad").value;
-        numeroIslasValue = parseInt(a);
-
         var b = document.getElementById("username").value;
-        nombreJugador = b;
 
-        var c = document.getElementById("nombreJugador");
-        c.innerHTML = nombreJugador;
-        jugar();
+        var patt = new RegExp(/^([^0-9]*)$/);
+        if (patt.test(b) && b.length != 0) {
+          $(this).dialog("close");
+          var a = document.getElementById("dificultad").value;
+          numeroIslasValue = parseInt(a);
+
+          nombreJugador = b;
+
+          var c = document.getElementById("nombreJugador");
+          c.innerHTML = nombreJugador;
+          jugar();
+          toastr.success("A jugar!", "Bienenido!");
+        } else {
+          toastr.error("Ha introducido mal el nombre!", "Error!");
+        }
       }
     }
   });
-});
+}
+
+$(document).ready(dialogoInicial());

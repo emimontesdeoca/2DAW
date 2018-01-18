@@ -73,7 +73,8 @@ function jugar() {
     if (arr.indexOf(randomnumber) > -1) continue;
     arr[arr.length] = randomnumber;
   }
-
+  shuffle(arr);
+  shuffle(arr);
   /// Randomizar el array
   shuffle(arrayIslasCrear);
   /// Utilizando el array de islas agregar dependiendo el id generado en el arr

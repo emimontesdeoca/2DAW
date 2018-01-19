@@ -72,7 +72,6 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
                 pstmt.setDouble(2, h.getPrice());
                 pstmt.setString(3, h.getHotel_picture());
                 pstmt.setInt(4, h.getId_municipio());
-                pstmt.setInt(5, h.getHotel_id());
 
                 /// Ejecutar la query
                 pstmt.execute();

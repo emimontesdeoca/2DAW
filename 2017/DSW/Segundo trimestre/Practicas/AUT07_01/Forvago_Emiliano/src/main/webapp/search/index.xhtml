@@ -8,8 +8,9 @@
 
     <ui:define name="content">
         <h:form>
-            <div style="text-align: center">
-                <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto;">
+            <div style="text-align:center;">
+                <h:link outcome="/index.xhtml" value="Volver"/><br/><br/>
+                <h:panelGrid  id="formbusqueda" columns="2" cellpadding="5" style="margin: 0 auto;width:auto">
                     <p:outputLabel for="cboProvincias" value="Provincia: " />
                     <p:selectOneMenu id="cboProvincias" value="#{hotelSearchBean.idProvincia}" >
                         <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios" />
@@ -18,19 +19,20 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="cboMunicipios" value="Municipio: " />
-                    <p:selectOneMenu id="cboMunicipios" style="width: 232px;" value="#{hotelSearchBean.idMunicipio}" >
+                    <p:selectOneMenu id="cboMunicipios" style="width: 206px;max-width: 206px;" value="#{hotelSearchBean.idMunicipio}" >
                         <f:selectItems value="#{hotelSearchBean.municipios}" var="c"
                                        itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel for="fechaEntrada" value="Fecha de entrada: " />
-                    <p:calendar id="fechaEntrada" value="#{hotelSearchBean.fechaEntrada}" />
+                    <p:calendar pattern="dd/MM/yyyy" id="fechaEntrada" value="#{hotelSearchBean.fechaEntrada}" required="true" />
 
                     <p:outputLabel for="fechaSalida" value="Fecha de salida " />
-                    <p:calendar id="fechaSalida" value="#{hotelSearchBean.fechaSalida}" />
+                    <p:calendar pattern="dd/MM/yyyy" id="fechaSalida" value="#{hotelSearchBean.fechaSalida}" required="true"/>
 
                 </h:panelGrid>
-                <h:commandButton value="Buscar" action="#{hotelSearchBean.setIDCookie()}"/>
+                <br/>
+                <p:commandButton value="Buscar" action="#{hotelSearchBean.setIDCookie()}"/>
             </div>
         </h:form>
     </ui:define>

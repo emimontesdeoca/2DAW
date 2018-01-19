@@ -19,8 +19,16 @@ import javax.servlet.http.Cookie;
  */
 public class ShoppingCart implements Serializable {
 
-    private final List<HotelOffer> offers = new ArrayList<>();
-    private Integer totalDays;
+    private List<HotelOffer> offers = new ArrayList<>();
+    private Integer totalDays = 1;
+
+    public List<HotelOffer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<HotelOffer> offers) {
+        this.offers = offers;
+    }
 
     public ShoppingCart() {
 
@@ -36,22 +44,18 @@ public class ShoppingCart implements Serializable {
 
     public Double getTotal() {
 
-        Cookie entradaCookie = Cookies.getCookie("fechaEntrada");
-        Cookie salidaCookie = Cookies.getCookie("fechaSalida");
+        double total = 0.0;
 
         try {
+            Cookie getTotalDays = Cookies.getCookie("diasTotales");
+            String d = getTotalDays.getValue();
+            Integer dias = Integer.parseInt(d);
 
-            String entradaString = entradaCookie.getValue();
-            String salidaString = salidaCookie.getValue();
+            this.totalDays = dias;
 
-            String string = "January 2, 2010";
-            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-            Date date = format.parse(string);
-            System.out.println(date); // Sat Jan 02 00:00:00 GMT 2010
         } catch (Exception e) {
+            String error = e.getMessage();
         }
-
-        double total = 0.0;
 
         for (HotelOffer offer : offers) {
             total += offer.getPrice();
@@ -60,6 +64,8 @@ public class ShoppingCart implements Serializable {
         total = total * 100;
         total = Math.round(total);
         total = total / 100;
+
+        total *= this.totalDays;
 
         return total;
     }

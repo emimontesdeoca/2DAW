@@ -41,13 +41,16 @@ public class hotelResultsBean implements Serializable {
 
     public List<HotelOffer> getOffers() {
 
-        Cookie a = Cookies.getCookie("idMunicipio");
+        try {
+            Cookie a = Cookies.getCookie("idMunicipio");
 
-        String b = a.getValue();
+            String b = a.getValue();
 
-        Integer idMunicipioBusqueda = Integer.parseInt(b);
+            Integer idMunicipioBusqueda = Integer.parseInt(b);
 
-        this.offers = new MasterDataBean().getHotelOffers(idMunicipioBusqueda);
+            this.offers = new MasterDataBean().getHotelOffers(idMunicipioBusqueda);
+        } catch (Exception e) {
+        }
 
         return offers;
     }

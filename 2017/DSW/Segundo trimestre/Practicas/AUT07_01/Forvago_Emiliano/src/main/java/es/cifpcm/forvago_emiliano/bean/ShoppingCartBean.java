@@ -42,7 +42,20 @@ public class ShoppingCartBean extends ShoppingCart implements Serializable {
         } catch (Exception e) {
         }
 
-        return "- " + d + " dias seleccionados.";
+        return "- " + d + " dias seleccionados";
+    }
+
+    public String getUser() {
+
+        String user = "Anonimo";
+
+        try {
+            Cookie getTotalDays = Cookies.getCookie("username");
+            user = getTotalDays.getValue();
+        } catch (Exception e) {
+        }
+
+        return " - Logeado como " + user + ".";
     }
 
 }

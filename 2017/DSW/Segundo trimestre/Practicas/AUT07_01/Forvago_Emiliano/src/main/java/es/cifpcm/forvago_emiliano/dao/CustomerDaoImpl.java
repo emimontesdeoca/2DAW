@@ -21,7 +21,7 @@ import java.util.List;
 public class CustomerDaoImpl implements CustomerDao {
 
     @Override
-    public void insert(Customer c) {
+    public void insert(Customer c, String user, String password) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -39,6 +39,22 @@ public class CustomerDaoImpl implements CustomerDao {
                 pstmt.setString(3, c.getTelefono());
                 pstmt.setString(4, c.getEmail());
                 pstmt.setDate(5, c.getFecha_de_nacimiento());
+
+                /// Ejecutar la query
+                pstmt.executeQuery();
+
+            }
+        } catch (SQLException ex) {
+        }
+
+        /// Connection string 
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
+
+            String query = "INSERT INTO `users`(`user_name`, `password`) VALUES (?,?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+                pstmt.setString(1, user);
+                pstmt.setString(2, password);
 
                 /// Ejecutar la query
                 pstmt.executeQuery();

@@ -30,6 +30,12 @@ public class HotelOfferBean extends HotelOffer implements Serializable {
     public void save() {
         HotelOfferDao h = new HotelOfferDaoImpl();
         System.out.println(this);
-        h.insert(this);;
+        h.insert(this);
+    }
+
+    public void delete() {
+        HotelOfferDao h = new HotelOfferDaoImpl();
+        System.out.println(this);
+        h.delete(this.getHotel_id());
     }
 }

@@ -5,13 +5,11 @@
  */
 package es.cifpcm.forvago_emiliano.dao;
 
-import es.cifpcm.forvago_emiliano.pojo.Customer;
-
 /**
  *
  * @author emont
  */
-public interface CustomerDao {
+public interface UserDao {
 
-    public void insert(Customer c, String username, String password);
+    public Boolean login(String username, String password);
 }

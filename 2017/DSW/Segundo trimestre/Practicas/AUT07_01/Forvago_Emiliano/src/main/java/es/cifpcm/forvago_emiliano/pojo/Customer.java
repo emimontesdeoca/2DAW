@@ -6,13 +6,14 @@
 package es.cifpcm.forvago_emiliano.pojo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
  * @author emont
  */
-public class Customer implements Serializable{
+public class Customer implements Serializable {
+
     private Integer customer_id;
     private String first_name;
     private String last_name;
@@ -79,7 +80,5 @@ public class Customer implements Serializable{
     public void setFecha_de_nacimiento(Date fecha_de_nacimiento) {
         this.fecha_de_nacimiento = fecha_de_nacimiento;
     }
-    
-    
-    
+
 }

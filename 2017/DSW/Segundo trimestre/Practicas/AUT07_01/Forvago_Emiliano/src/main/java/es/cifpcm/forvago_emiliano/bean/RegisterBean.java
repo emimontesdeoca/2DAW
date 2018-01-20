@@ -6,6 +6,7 @@
 package es.cifpcm.forvago_emiliano.bean;
 
 import es.cifpcm.forvago_emiliano.dao.CustomerDao;
+import es.cifpcm.forvago_emiliano.dao.CustomerDaoImpl;
 import es.cifpcm.forvago_emiliano.pojo.Customer;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -39,9 +40,10 @@ public class RegisterBean extends Customer implements Serializable {
     }
 
     public String registrar() {
-        String res = "";
+        CustomerDao c = new CustomerDaoImpl();
+        c.insert(this, this.username, this.password);
 
-        return res;
+        return "/index?faces-redirect=true";
 
     }
 

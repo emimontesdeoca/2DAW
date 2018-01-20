@@ -41,16 +41,21 @@ public class LoginBean implements Serializable {
 
     public String loginUsuario() {
         UserDao u = new UserDaoImpl();
+
+        /// Metodo que devuelve true or false si logea o no
+        /// Si logea devuelve al index sino devuelve a la pagina error
         if (u.login(this.username, this.password)) {
-            Cookies.setCookie("username", this.username.toString(), 10);
+            Cookies.setCookie("username", this.username.toString(), 100);
             return "/index?faces-redirect=true";
         } else {
-            Cookies.setCookie("Anonimo", this.username.toString(), 10);
+            Cookies.setCookie("Anonimo", this.username.toString(), 100);
             return "error?faces-redirect=true";
         }
     }
 
     public String loginAdministrador() {
+
+        /// Lo mismo que el login pero con administrador, con la cuenta de admin/admin
         UserDao u = new UserDaoImpl();
         if (this.username.equals("admin") && this.username.equals("admin")) {
             if (u.login(this.username, this.password)) {

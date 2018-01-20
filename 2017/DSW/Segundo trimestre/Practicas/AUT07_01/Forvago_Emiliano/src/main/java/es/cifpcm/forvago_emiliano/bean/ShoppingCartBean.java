@@ -33,7 +33,7 @@ public class ShoppingCartBean extends ShoppingCart implements Serializable {
     }
 
     public String getTotalDays() {
-
+        /// Recoge los dias de la cookie y lo muestra
         String d = "0";
 
         try {
@@ -46,7 +46,7 @@ public class ShoppingCartBean extends ShoppingCart implements Serializable {
     }
 
     public String getUser() {
-
+        /// Recoge el nombre del usuario logeado de una cookie
         String user = "Anonimo";
 
         try {

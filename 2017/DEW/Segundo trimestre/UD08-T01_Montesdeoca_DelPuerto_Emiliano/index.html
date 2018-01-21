@@ -4,32 +4,60 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Droppable - Simple photo manager</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Islas Canaremi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/master.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script>
     </script>
 </head>
 
 <body>
 
-    <div class="ui-widget ui-helper-clearfix">
-
-        <div id="islas" class="contenedor-islas">
-
+    <div class="ui-widget ui-helper-clearfix" id="contenedor-todo">
+        <h1>Islas Canaremi</h1>
+        <h2>
+            <span id="nombreJugador"></span> -
+            <span id="puntuacion-titulo"></span> puntos.</h2>
+        <div class="botones">
+            <button class="ui-corner-all" onclick="jugar()">Reinciar</button>
         </div>
+        <br>
+        <div id="islas" class="contenedor-islas">
+        </div>
+        <br>
         <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
-            <li class="ui-widget-content ui-corner-tr" isla="elhierro">
-                <h5 class="ui-widget-header">Uno</h5>
-                <img src="images/elhierro/uno.jpg" alt="The peaks of High Tatras" width="96" height="72">
-            </li>
-            <li class="ui-widget-content ui-corner-tr" isla="fuerteventura">
-                <h5 class="ui-widget-header">Fuerteventura</h5>
-                <img src="images/fuerteventura/uno.jpg" alt="The peaks of High Tatras" width="96" height="72">
-            </li>
         </ul>
+
+        <div id="dialog-confirm" title="Registrese para jugar">
+            <p style="text-align:center">
+                <span class="ui-icon ui-icon-person" style="margin:5px 10px 10px 0;"></span>
+                <label for="username" style="margin-right: 10px;">Nombre</label>
+                <input maxlength="100" pattern="^([^0-9]*)$" id="username" class="ui-corner-all" type="text">
+            </p>
+
+            <p style="text-align:center">
+                <span class="ui-icon ui-icon-person" style="margin:5px 10px 10px -5px;"></span>
+                <label for="dificultad" style="margin-right: 10px;">Dificultad</label>
+                <select id="dificultad" style="width:50%" class="ui-corner-all">
+                    <option selected="selected" value="4">Facil</option>
+                    <option value="5">Medio</option>
+                    <option value="7">Dificil</option>
+                </select>
+            </p>
+        </div>
+
+        <div id="dialog-finpartida" style="display:none" title="Juego terminado">
+            <p style="text-align:center">
+                Ha finalizado el juego con
+                <span id="puntuacion"></span> puntos!
+            </p>
+        </div>
+
         <script src="js/app.js"></script>
 </body>
 

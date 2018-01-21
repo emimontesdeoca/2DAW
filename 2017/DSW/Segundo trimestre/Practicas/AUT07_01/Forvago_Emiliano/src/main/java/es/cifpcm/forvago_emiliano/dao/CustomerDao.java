@@ -13,5 +13,5 @@ import es.cifpcm.forvago_emiliano.pojo.Customer;
  */
 public interface CustomerDao {
 
-    public void insert(Customer c);
+    public void insert(Customer c, String username, String password);
 }

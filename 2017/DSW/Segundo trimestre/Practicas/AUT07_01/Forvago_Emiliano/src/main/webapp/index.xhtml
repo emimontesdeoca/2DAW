@@ -3,15 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Forvago</title>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
     </h:head>
     <h:body>
         <div>
             <h2 id="titulo"><img src="resources/images/logo.png" /></h2>
             <div id="botones">
-                <button>Registro</button>
-                <button>Identificarse</button>
+                <h:button outcome="/login/register.xhtml" value="Registrarse"/>    &nbsp;&nbsp;
+                <h:button outcome="/login/index.xhtml" value="Identificarse"/>
+
             </div>
         </div>
         <br/>

@@ -12,7 +12,9 @@
 
             <ui:define name="content">
 
-                <h:form id="form">
+                <h:form id="form" style="text-align:center">
+                    <h:link outcome="index.xhtml" value="Volver"/>
+                    <br/>
                     <p:repeat value="#{hotelResultsBean.offers}" var="offer">
                         <h:panelGrid columns="2" columnClasses="logo,detail">
                             <p:commandLink update=":form:offerDetail" oncomplete="PF('offerDialog').show()">

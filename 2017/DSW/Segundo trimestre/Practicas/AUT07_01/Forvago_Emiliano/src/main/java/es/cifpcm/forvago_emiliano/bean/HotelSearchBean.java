@@ -9,6 +9,8 @@ import es.cifpcm.forvago_emiliano.utils.Cookies;
 import es.cifpcm.forvago_emiliano.pojo.Municipio;
 import es.cifpcm.forvago_emiliano.pojo.Provincia;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.inject.Named;
 
@@ -67,9 +69,23 @@ public class HotelSearchBean implements Serializable {
     }
 
     public String setIDCookie() {
-        Cookies.setCookie("idMunicipio", this.idMunicipio.toString(), 10);
-        Cookies.setCookie("fechaEntrada", this.fechaEntrada.toString(), 10);
-        Cookies.setCookie("fechaSalida", this.fechaSalida.toString(), 10);
+
+        try {
+            Cookies.setCookie("idMunicipio", this.idMunicipio.toString(), 10);
+
+            Date a = this.fechaEntrada;
+            Date b = this.fechaSalida;
+
+            long diff = b.getTime() - a.getTime();
+            Integer i = (int) (long) diff;
+            Integer diasTotales = (i / (1000 * 60 * 60 * 24));
+
+            Cookies.setCookie("diasTotales", diasTotales.toString(), 10000);
+
+            // String entrada = df.format(this.fechaEntrada);
+            //String salida = df.format(this.fechaSalida);
+        } catch (Exception e) {
+        }
 
         return "resultSearch?faces-redirect=true";
     }

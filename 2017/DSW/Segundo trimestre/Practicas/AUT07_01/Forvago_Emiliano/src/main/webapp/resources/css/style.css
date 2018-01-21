@@ -40,7 +40,23 @@ table{
     width: 50%;
     margin: 0 auto;
 }
+formbusqueda{
+    width: auto;
+    margin: 0 auto;
+}
 
 form{
     margin-top: 20px;
+}
+#lblTotalDays{
+    margin-left: 10px;
+}
+
+body{
+    font-family: "Arial";
+}
+
+
+.ui-selectonemenu {
+    min-width: 205px !important;
 }

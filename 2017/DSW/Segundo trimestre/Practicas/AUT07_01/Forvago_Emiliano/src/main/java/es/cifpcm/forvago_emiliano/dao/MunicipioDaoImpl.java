@@ -30,14 +30,13 @@ public class MunicipioDaoImpl implements MunicipioDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
-            /// La query para para devolver los actores
+
             String query = "select * from municipios";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-                /// Ejecutar la query
+
                 ResultSet rs = pstmt.executeQuery();
-                /// Mientras tenga resultados añadir a una lista
+
                 while (rs.next()) {
                     Municipio a = new Municipio();
 
@@ -50,6 +49,7 @@ public class MunicipioDaoImpl implements MunicipioDao {
                     lista.add(a);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
         }
 

@@ -51,6 +51,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
                 pstmt.execute();
             }
+
+            conn.close();
         } catch (SQLException ex) {
         }
     }

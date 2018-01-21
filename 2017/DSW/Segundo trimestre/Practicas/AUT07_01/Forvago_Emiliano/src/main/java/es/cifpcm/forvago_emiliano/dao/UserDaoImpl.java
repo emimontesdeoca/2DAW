@@ -28,7 +28,6 @@ public class UserDaoImpl implements UserDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "select * from users where user_name = ? and password = ?";
@@ -44,6 +43,7 @@ public class UserDaoImpl implements UserDao {
                     break;
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
         }
 

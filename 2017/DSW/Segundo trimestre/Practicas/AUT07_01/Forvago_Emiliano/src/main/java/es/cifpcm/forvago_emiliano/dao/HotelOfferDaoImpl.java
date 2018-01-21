@@ -29,14 +29,13 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "select * from hoteloffer";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-                /// Ejecutar la query
+
                 ResultSet rs = pstmt.executeQuery();
-                /// Mientras tenga resultados añadir a una lista
+
                 while (rs.next()) {
                     HotelOffer h = new HotelOffer();
 
@@ -49,7 +48,9 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
                     lista.add(h);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
+
         }
 
         return lista;
@@ -62,7 +63,6 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "INSERT INTO `hoteloffer`(`name`, `price`, `hotel_picture`, `id_municipio`) VALUES (?,?,?,?)";
@@ -73,9 +73,8 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
                 pstmt.setString(3, h.getHotel_picture());
                 pstmt.setInt(4, h.getId_municipio());
 
-                /// Ejecutar la query
                 pstmt.execute();
-
+                conn.close();
             }
         } catch (SQLException ex) {
         }
@@ -92,7 +91,6 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "UPDATE `hoteloffer` SET `name`=?,`price`=?,`hotel_picture`=?,`id_municipio`=? WHERE hotel_id = ?";
@@ -104,9 +102,8 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
                 pstmt.setInt(4, h.getId_municipio());
                 pstmt.setInt(5, h.getHotel_id());
 
-                /// Ejecutar la query
                 pstmt.execute();
-
+                conn.close();
             }
         } catch (SQLException ex) {
         }
@@ -119,7 +116,6 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "DELETE FROM `hoteloffer` WHERE hotel_id = ?";
@@ -127,9 +123,8 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
 
                 pstmt.setInt(1, id);
 
-                /// Ejecutar la query
                 pstmt.execute();
-
+                conn.close();
             }
         } catch (SQLException ex) {
         }
@@ -144,7 +139,6 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "select * from hoteloffer where id_municipio = ?";
@@ -152,9 +146,8 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
 
                 pstmt.setInt(1, idMunicipio);
 
-                /// Ejecutar la query
                 ResultSet rs = pstmt.executeQuery();
-                /// Mientras tenga resultados añadir a una lista
+
                 while (rs.next()) {
                     HotelOffer h = new HotelOffer();
 
@@ -167,6 +160,7 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
                     lista.add(h);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
         }
 
@@ -182,7 +176,6 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
         } catch (Exception e) {
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
 
             String query = "select * from hoteloffer where name like %?%";
@@ -190,9 +183,8 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
 
                 pstmt.setString(1, nombreMunicipio);
 
-                /// Ejecutar la query
                 ResultSet rs = pstmt.executeQuery();
-                /// Mientras tenga resultados añadir a una lista
+
                 while (rs.next()) {
                     HotelOffer h = new HotelOffer();
 
@@ -205,6 +197,7 @@ public class HotelOfferDaoImpl implements HotelOfferDao {
                     lista.add(h);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
         }
 

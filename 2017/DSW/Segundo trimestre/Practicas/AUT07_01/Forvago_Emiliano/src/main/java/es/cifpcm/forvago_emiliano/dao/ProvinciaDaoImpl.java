@@ -24,7 +24,6 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
     public List<Provincia> selectAll() {
         List<Provincia> lista = new ArrayList<>();
 
-        /// Instanciamos la clase
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -32,14 +31,13 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
             String error = "error";
         }
 
-        /// Connection string 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/forvagos", "2daw", "2daw")) {
-            /// La query para para devolver los actores
+
             String query = "select * from provincias";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-                /// Ejecutar la query
+
                 ResultSet rs = pstmt.executeQuery();
-                /// Mientras tenga resultados añadir a una lista
+
                 while (rs.next()) {
                     Provincia a = new Provincia();
 
@@ -49,6 +47,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
                     lista.add(a);
                 }
             }
+            conn.close();
         } catch (SQLException ex) {
         }
 

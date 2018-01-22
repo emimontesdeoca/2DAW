@@ -5,59 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yelmos Cinemi</title>
+    <title>Votaciones</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
 
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" />
+    <nav tabindex="-1" aria-hidden="true" class="navbar navbar-dark bg-dark">
+        <a tabindex="-1" aria-hidden="true" class="navbar-brand" href="#">
+            <img tabindex="-1" aria-hidden="true" src="images/logo.png" />
         </a>
     </nav>
-
 
     <div class="container">
         <br>
         <nav aria-label="breadcrumb" class="center-bc">
             <ol class="breadcrumb center">
-
-
-                <li class="breadcrumb-item active" aria-current="page">Inicio</li>
-                <li class="breadcrumb-item">
-                    <a href="registro.html">Registro</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="votacion.html">Votacion</a>
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Votacion</li>
                 <li class="breadcrumb-item">
                     <a href="resultados.html">Resultados</a>
                 </li>
-
             </ol>
         </nav>
         <br>
-        <div class="jumbotron text-center">
-            <h1 class="display-4 ">Gane unas entradas al cine!</h1>
-            <br>
-            <p class="lead">Registrese completamente gratis y vote por su pelicula favorita, asi entrará en un sorteo de dos entradas con
-                palomitas y refresco incluido para nuestros cines!
-            </p>
-            <hr class="my-4">
-            <p>Pulse el siguiente boton para acceder al formulario de registro.</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="registro.html" role="button">Registrarse</a>
-            </p>
+
+        <div class="card-columns newcard-column">
+            <div class="card newcard" tabindex="0" aria-labelledby="titulo-0">
+                <img class="card-img-top" src="images/0.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 id="title-0" class="card-title">Los archivos del Pentágono</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content
+                        is a little bit longer.</p>
+                </div>
+                <div class="buttons-form">
+                    <button class="btn btn-success" data-toggle="modal" data-target="#modalConfirmacion">Votar</button>
+                </div>
+                <br/>
+            </div>
         </div>
-    </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="js/app.js"></script>
+        <!-- Modal -->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tituloModal">Confirmar votación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <p>Utilizaremos estos datos para almacenarlos en nuestra base de datos, ninguno de los datos introducidos
+                                será distribuido.
+                            </p>
+                            <form action="">
+                                <div class="form-row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" placeholder="Emiliano" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="apellido">Apellidos</label>
+                                            <input type="text" class="form-control" id="apellido" placeholder="Sanfiel" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="telefono">Telefono</label>
+                                            <input type="text" class="form-control" id="telefono" placeholder="+34689765425" required>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="buttons-form">
+                            <button class="btn btn-success" type="submit">Confirmar votación</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="js/app.js"></script>
 </body>
 
 </html>

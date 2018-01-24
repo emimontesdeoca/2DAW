@@ -30,19 +30,7 @@
         </nav>
         <br>
 
-        <div class="card-columns newcard-column">
-            <div class="card newcard" tabindex="0" aria-labelledby="titulo-0">
-                <img class="card-img-top" src="images/0.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 id="title-0" class="card-title">Los archivos del Pentágono</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content
-                        is a little bit longer.</p>
-                </div>
-                <div class="buttons-form">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#modalConfirmacion">Votar</button>
-                </div>
-                <br/>
-            </div>
+        <div class="card-columns newcard-column" id="peliculas-contenedor">
         </div>
 
 
@@ -61,8 +49,9 @@
                             <p>Utilizaremos estos datos para almacenarlos en nuestra base de datos, ninguno de los datos introducidos
                                 será distribuido.
                             </p>
-                            <form action="">
+                            <form onsubmit="votarFinal()" action="resultados.html">
                                 <div class="form-row">
+                                    <input type="hidden" id="idPelicula">
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="nombre">Nombre</label>
@@ -108,6 +97,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="js/data.js"></script>
         <script src="js/app.js"></script>
 </body>
 

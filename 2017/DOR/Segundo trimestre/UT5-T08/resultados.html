@@ -8,44 +8,59 @@
     <title>Resultados</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
-        <nav class="navbar navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" />
-                </a>
-            </nav>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="images/logo.png" />
+        </a>
+    </nav>
 
 
     <div class="container">
         <br>
         <nav aria-label="breadcrumb" class="center-bc">
             <ol class="breadcrumb center">
-
                 <li class="breadcrumb-item">
-                    <a href="index.html">Inicio</a>
+                    <a href="index.html">Votacion</a>
                 </li>
-                <li class="breadcrumb-item">
-                    <a href="registro.html">Registro</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="votacion.html">Votacion</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Resultados</li>
+                <li class="breadcrumb-item active" aria-current="page">Votacion</li>
 
             </ol>
         </nav>
         <br>
+        <div class="contenedor-botones">
+            <p>Elija la forma en la que desea mostrar el resultado de las votaciones:</p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary">
+                    <input type="radio" onchange="drawChart(2)" name="options" id="2" autocomplete="off">
+                    <i class="fa fa-pie-chart" aria-hidden="true"></i> Tarta
+                </label>
+                <label class="btn btn-secondary ">
+                    <input type="radio" onchange="drawChart(0)" name="options" id="0" autocomplete="off">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i> Columna
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" onchange="drawChart(1)" name="options" id="1" autocomplete="off">
+                    <i class="fa fa-pie-chart" aria-hidden="true"></i> Donut
+                </label>
 
+            </div>
+        </div>
+        <div id="chart_div" style="width:600; height:600"></div>
     </div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="js/app.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/res.js"></script>
+
 </body>
 
 </html>

@@ -62,3 +62,11 @@
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
 }
+#chart_div {
+  display: table;
+  margin: 0 auto;
+}
+
+.contenedor-botones {
+  text-align: center;
+}

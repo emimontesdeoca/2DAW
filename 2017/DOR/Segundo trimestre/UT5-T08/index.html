@@ -20,11 +20,11 @@
 
     <div class="container">
         <br>
-        <nav aria-label="breadcrumb" class="center-bc">
-            <ol class="breadcrumb center">
+        <nav aria-label="breadcrumb" aria-hidden="true" tabindex=-1 class="center-bc">
+            <ol class="breadcrumb center"aria-hidden="Contenedor de paginas">
                 <li class="breadcrumb-item active" aria-current="page">Votacion</li>
                 <li class="breadcrumb-item">
-                    <a href="resultados.html">Resultados</a>
+                    <a href="resultados.html" aria-label="Pagina de resultados">Resultados</a>
                 </li>
             </ol>
         </nav>
@@ -35,34 +35,36 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-label="Ventana modal para confirmar votacion" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="tituloModal">Confirmar votación</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <p>Utilizaremos estos datos para almacenarlos en nuestra base de datos, ninguno de los datos introducidos
+                            <p tabindex="0">Utilizaremos estos datos para almacenarlos en nuestra base de datos, ninguno de los datos introducidos
                                 será distribuido.
+                            </p>
+                            <p tabindex="0">Todos los campos son necesarios.
                             </p>
                             <form onsubmit="votarFinal()" action="resultados.html">
                                 <div class="form-row">
                                     <input type="hidden" id="idPelicula">
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="nombre">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" placeholder="Emiliano" required>
+                                            <label for="nombre" aria-label="Introducir Nombre">Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label for="apellido">Apellidos</label>
-                                            <input type="text" class="form-control" id="apellido" placeholder="Sanfiel" required>
+                                            <label for="apellido" aria-label="Introducir Apellidos">Apellidos</label>
+                                            <input type="text" class="form-control" id="apellido" required>
                                         </div>
                                     </div>
 
@@ -70,15 +72,15 @@
                                 <div class="form-row">
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                            <label for="email" aria-label="Introducir Email">Email</label>
+                                            <input type="email" class="form-control" id="email" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="telefono">Telefono</label>
-                                            <input type="text" class="form-control" id="telefono" placeholder="+34689765425" required>
+                                            <label for="telefono" aria-label="Introducir Teléfono">Telefono</label>
+                                            <input type="text" class="form-control" id="telefono" required>
                                         </div>
                                     </div>
                                 </div>

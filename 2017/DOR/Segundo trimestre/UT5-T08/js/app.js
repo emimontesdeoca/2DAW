@@ -1,14 +1,16 @@
 function getDivPelicula(index, src, titulo, sinopsis) {
   var divPelicula =
-    "<img class='card-img-top' src='" +
+    "<img aria-hidden=true class='card-img-top' src='" +
     src +
-    "' alt='Card image cap'><div class='card-body'><h5 id='title-" +
+    "' alt='Card image cap'><div class='card-body'><h5 tabindex=0 id='title-" +
     index +
     "' class='card-title'>" +
     titulo +
-    "</h5><p class='card-text'>" +
+    "</h5><p  tabindex=0 class='card-text'>Sinopsis: " +
     sinopsis +
-    "</p></div><div class='buttons-form'><button class='btn btn-success' data-toggle='modal' data-target='#modalConfirmacion' onclick='setValuesPelicula(" +
+    "</p></div><div class='buttons-form'><button class='btn btn-success' data-toggle='modal' data-target='#modalConfirmacion' aria-label='Votar por " +
+    titulo +
+    "' onclick='setValuesPelicula(" +
     index +
     ")'>Votar</button></div><br/></div></div>";
 
@@ -28,8 +30,8 @@ for (let index = 0; index < peliculas.length; index++) {
   );
   let div = document.createElement("div");
   div.setAttribute("class", "card newcard");
-  div.setAttribute("tabindex", "0");
-  div.setAttribute("aria-labelledby", "titulo-" + element.id);
+  // div.setAttribute("tabindex", "0");
+  // div.setAttribute("aria-labelledby", "titulo-" + element.id);
 
   div.innerHTML = res;
 

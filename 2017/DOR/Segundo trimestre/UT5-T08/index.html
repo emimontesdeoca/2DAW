@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Votaciones</title>
+    <title>Votaciones de peliculas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
 
@@ -14,23 +14,23 @@
 <body>
     <nav tabindex="-1" aria-hidden="true" class="navbar navbar-dark bg-dark">
         <a tabindex="-1" aria-hidden="true" class="navbar-brand" href="#">
-            <img tabindex="-1" aria-hidden="true" src="images/logo.png" />
+            <img alt="Logo" tabindex="-1" aria-hidden="true" src="images/logo.png" />
         </a>
     </nav>
 
     <div class="container">
         <br>
-        <nav aria-label="breadcrumb" aria-hidden="true" tabindex=-1 class="center-bc">
-            <ol class="breadcrumb center"aria-hidden="Contenedor de paginas">
-                <li class="breadcrumb-item active" aria-current="page">Votacion</li>
-                <li class="breadcrumb-item">
-                    <a href="resultados.html" aria-label="Pagina de resultados">Resultados</a>
+        <nav tabindex="-1" aria-hidden="true" class="center-bc">
+            <ol class="breadcrumb center" tabindex="-1" aria-hidden="true">
+                <li class="breadcrumb-item active" tabindex="-1" aria-hidden="true">Votacion</li>
+                <li class="breadcrumb-item" tabindex="-1" aria-hidden="true">
+                    <a href="resultados.html" tabindex="-1" aria-hidden="true">Resultados</a>
                 </li>
             </ol>
         </nav>
         <br>
 
-        <div class="card-columns newcard-column" id="peliculas-contenedor">
+        <div class="card-columns newcard-column" id="peliculas-contenedor" tabindex="0" aria-label="Catalogo de peliculas">
         </div>
 
 
@@ -84,9 +84,11 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="buttons-form">
-                            <button class="btn btn-success" type="submit">Confirmar votación</button>
+
+                                <div class="buttons-form">
+                                    <button class="btn btn-success" type="submit">Confirmar votación</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="modal-footer">

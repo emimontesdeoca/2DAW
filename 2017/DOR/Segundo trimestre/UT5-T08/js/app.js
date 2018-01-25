@@ -1,12 +1,14 @@
 function getDivPelicula(index, src, titulo, sinopsis) {
   var divPelicula =
-    "<img aria-hidden=true class='card-img-top' src='" +
+    "<img alt='" +
+    titulo +
+    "' aria-hidden=true class='card-img-top' src='" +
     src +
-    "' alt='Card image cap'><div class='card-body'><h5 tabindex=0 id='title-" +
-    index +
+    "'><div class='card-body'><h1 tabindex='0' aria-label='Pelicula: " +
+    titulo +
     "' class='card-title'>" +
     titulo +
-    "</h5><p  tabindex=0 class='card-text'>Sinopsis: " +
+    "</h1><p tabindex='0' class='card-text'>Sinopsis: " +
     sinopsis +
     "</p></div><div class='buttons-form'><button class='btn btn-success' data-toggle='modal' data-target='#modalConfirmacion' aria-label='Votar por " +
     titulo +

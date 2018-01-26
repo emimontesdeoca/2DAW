@@ -58,4 +58,5 @@ function drawChart(index) {
   //     document.getElementById("chart_div")
   //   );
   chart.draw(data, options);
+  document.getElementById("chart_div").focus();
 }

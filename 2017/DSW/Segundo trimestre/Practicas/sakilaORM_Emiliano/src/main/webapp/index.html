@@ -11,8 +11,70 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <a href="api/actor/allActors">Ver todos los actores</a>       
+        <a href="api/actor/allActors">Ver todos los actores</a>           
+        <a href="api/actor/allActorsLista">Ver todos los actores LISTA</a>       
         <a href="api/actor/id">Ver actor por ID</a>
 
+        <hr>
+
+        <ul id="actorList" style="float: right"></ul>
+
+
+
+        <label>Nombre</label><br>
+        <input type="text" id="txtNombre"><br>
+        <label>Apellido</label><br>
+        <input type="text" id="txtApellidos"><br>
+        <input type="button" id="cmdSubmit" value="Enviar">
+
+        <script  src="http://code.jquery.com/jquery-3.3.1.min.js" ></script>
+        <script type="text/javascript">
+            $("#cmdSubmit").click(function (event) {
+                var actor = {
+                    firstName: $("#txtNombre").val(),
+                    lastName: $("#txtApellidos").val()
+                };
+                var request = $.ajax({
+                    url: "api/actor/create",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(actor),
+                    dataType: "json",
+                    error: function (request, status, error) {
+                        console.log(request.responseText);
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        refreshActorList();
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            function refreshActorList() {
+                var custList = $('#actorList');
+                custList.empty();
+                $.ajax({
+                    "url": "api/actor/allActors/",
+                    "type": "get",
+                    "dataType": "json",
+                    "success": function (actors) {
+                        console.log(actors);
+                        $.each(actors, function (i, actor) {
+                            var li = $('<li/>')
+                                    .addClass('ui-menu-item')
+                                    .attr('role', 'menuitem')
+                                    .appendTo(custList);
+                            var a = $('<a/>')
+                                    .addClass('ui-all')
+                                    .text(actor.firstName + ' ' + actor.lastName)
+                                    .appendTo(li);
+                        });
+                    }
+                });
+            }
+            $(function () {
+                refreshActorList();
+            });
+        </script>
     </body>
 </html>

@@ -1,14 +1,17 @@
 es\cifpcm\sakilaorm_emiliano\FilmActor.class
 es\cifpcm\sakilaorm_emiliano\Film.class
+org\netbeans\rest\application\config\ApplicationConfig.class
 es\cifpcm\sakilaorm_emiliano\Groups.class
 es\cifpcm\sakilaorm_emiliano\Store.class
 es\cifpcm\sakilaorm_emiliano\Users.class
 es\cifpcm\sakilaorm_emiliano\Category.class
 es\cifpcm\sakilaorm_emiliano\Address.class
+es\cifpcm\sakilaorm_emiliano\dao\ActorDao.class
 es\cifpcm\sakilaorm_emiliano\City.class
 es\cifpcm\sakilaorm_emiliano\Language.class
 es\cifpcm\sakilaorm_emiliano\Rental.class
 es\cifpcm\sakilaorm_emiliano\Customer.class
+es\cifpcm\sakilaorm_emiliano\dao\ActorDaoImpl.class
 es\cifpcm\sakilaorm_emiliano\data\NewHibernateUtil.class
 es\cifpcm\sakilaorm_emiliano\FilmText.class
 es\cifpcm\sakilaorm_emiliano\Country.class
@@ -17,5 +20,6 @@ es\cifpcm\sakilaorm_emiliano\Payment.class
 es\cifpcm\sakilaorm_emiliano\Inventory.class
 es\cifpcm\sakilaorm_emiliano\FilmCategory.class
 es\cifpcm\sakilaorm_emiliano\Staff.class
+es\cifpcm\sakilaorm_emiliano\services\rest\ActorRest.class
 es\cifpcm\sakilaorm_emiliano\Actor.class
 es\cifpcm\sakilaorm_emiliano\FilmCategoryId.class

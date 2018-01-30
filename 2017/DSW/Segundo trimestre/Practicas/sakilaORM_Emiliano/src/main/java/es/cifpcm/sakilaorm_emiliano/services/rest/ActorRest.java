@@ -13,11 +13,19 @@ import java.util.ArrayList;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+
+import java.lang.*;
+import javax.ws.rs.Consumes;
+
+import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+
+import org.primefaces.json.*;
 
 /**
  *
@@ -34,16 +42,17 @@ public class ActorRest {
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllActores() {
         ActorDao a = new ActorDaoImpl();
-        String json = "[";
+        JSONArray json = new JSONArray(a.selectAll());
+        return json.toString();
+    }
 
-        for (Actor actor : a.selectAll()) {
-            json += "{ \"firstName\" : \"" + actor.getFirstName() + "\", \"lastName\" : \"" + actor.getLastName() + "\"},";
-        }
-
-        json = json.substring(0, json.length() - 1);
-        json += "]";
-
-        return json;
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("/create")
+    public Response setActor(@QueryParam("firstName") String firstName) {
+        System.out.println(firstName);
+        return Response.status(200).entity(firstName).build();
     }
 
     @GET

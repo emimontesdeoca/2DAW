@@ -66,16 +66,14 @@ public class ActorRest {
 
     @GET
     @Path("/id")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces("text/plain")
-    public String getActor(String id) {
+    public Response getActor(String id) {
         ActorDao a = new ActorDaoImpl();
 
         Actor actor = a.selectAll().get(Integer.parseInt(id));
 
         String json = "[{ \"firstName\" : \"" + actor.getFirstName() + "\", \"lastName\" : \"" + actor.getLastName() + "\"}}";
 
-        return json;
+        return Response.status(200).entity(json.toString()).build();
     }
 
 }

@@ -15,20 +15,49 @@ and open the template in the editor.
         <a href="api/actor/allActorsLista">Ver todos los actores LISTA</a>       
         <a href="api/actor/id">Ver actor por ID</a>
 
+        <h2 style="text-align:center">Emiliano Montesdeoca - API REST Java</h2>
         <hr>
 
         <ul id="actorList" style="float: right"></ul>
 
+        <div style="width:20%; margin:0 auto">
+            <fieldset style="width:200px; text-align:center">
+                <legend>Agregar un actor</legend>
+                <label>Nombre</label><br>
+                <input type="text" id="txtNombre"><br>
+                <label>Apellido</label><br>
+                <input type="text" id="txtApellidos"><br><br>
+                <input type="button" id="cmdSubmit" value="Enviar">
+            </fieldset>
 
-
-        <label>Nombre</label><br>
-        <input type="text" id="txtNombre"><br>
-        <label>Apellido</label><br>
-        <input type="text" id="txtApellidos"><br>
-        <input type="button" id="cmdSubmit" value="Enviar">
-
+            <fieldset style="width:200px; text-align:center">
+                <legend>Buscar actor por ID</legend>
+                <label>ID del actor</label><br>
+                <input type="text" id="txtID"><br>
+                <p>Se mostrara el actor por alert</p>
+                <input type="button" id="cmdSubmitId" value="Enviar">
+            </fieldset>
+            <fieldset style="width:200px; text-align:center">
+                <legend>Todos los actores</legend>
+                <label>Cargar todos los actores</label><br><br>
+                <input type="button" id="cmdSubmitActores" value="Cargar">
+            </fieldset>
+        </div>
         <script  src="http://code.jquery.com/jquery-3.3.1.min.js" ></script>
         <script type="text/javascript">
+            $("#cmdSubmitId").click(function refreshActorList(event) {
+                var id = $("#txtID").val();
+                $.ajax({
+                    url: "api/actor/id",
+                    type: "get",
+                    data: id,
+                    dataType: "text/plain",
+                    "success": function (data) {
+                        alert(data);
+                    }
+                });
+            })
+
             $("#cmdSubmit").click(function (event) {
                 var actor = {
                     firstName: $("#txtNombre").val(),
@@ -48,9 +77,8 @@ and open the template in the editor.
                     }
                 });
             });
-        </script>
-        <script type="text/javascript">
-            function refreshActorList() {
+
+            $("#cmdSubmitActores").click(function refreshActorList(event) {
                 var custList = $('#actorList');
                 custList.empty();
                 $.ajax({
@@ -71,10 +99,7 @@ and open the template in the editor.
                         });
                     }
                 });
-            }
-            $(function () {
-                refreshActorList();
-            });
+            })
         </script>
     </body>
 </html>

@@ -47,21 +47,31 @@ public class ActorRest {
     }
 
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces({MediaType.APPLICATION_JSON})
     @Path("/create")
-    public Response setActor(@QueryParam("firstName") String firstName) {
-        System.out.println(firstName);
-        return Response.status(200).entity(firstName).build();
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response setActor(String json) {
+
+        JSONObject jsonObj = new JSONObject(json);
+
+        Actor a = new Actor();
+
+        a.setFirstName(jsonObj.getString("firstName"));
+        a.setLastName(jsonObj.getString("lastName"));
+
+        ActorDao dao = new ActorDaoImpl();
+        dao.insert(a);
+
+        return Response.status(200).entity(jsonObj).build();
     }
 
     @GET
-    @Path("id")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getActor(@QueryParam("id") Integer id) {
+    @Path("/id")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces("text/plain")
+    public String getActor(String id) {
         ActorDao a = new ActorDaoImpl();
 
-        Actor actor = a.selectAll().get(id);
+        Actor actor = a.selectAll().get(Integer.parseInt(id));
 
         String json = "[{ \"firstName\" : \"" + actor.getFirstName() + "\", \"lastName\" : \"" + actor.getLastName() + "\"}}";
 

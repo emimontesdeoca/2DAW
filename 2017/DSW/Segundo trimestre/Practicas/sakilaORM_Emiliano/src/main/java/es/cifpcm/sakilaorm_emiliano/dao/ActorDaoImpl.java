@@ -43,6 +43,17 @@ public class ActorDaoImpl implements ActorDao {
     public Actor insert(Actor actor) {
         Actor a = actor;
 
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        try {
+            //session.beginTransaction();
+            session.save(a);
+            //session.getTransaction().commit();
+        } catch (Exception e) {
+            //session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+
         return a;
 
     }

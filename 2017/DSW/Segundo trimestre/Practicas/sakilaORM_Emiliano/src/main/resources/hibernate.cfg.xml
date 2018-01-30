@@ -46,25 +46,25 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sakila?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">2daw</property>
     <property name="hibernate.connection.password">2daw</property>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Payment"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Customer"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Country"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.FilmCategory"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Actor"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.FilmActor"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.FilmActorId"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Groups"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Users"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Store"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.City"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Address"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.FilmText"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Staff"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.FilmCategoryId"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Category"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Language"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Inventory"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Film"/>
-    <mapping class="es.cifpcm.sakilaorm_emiliano.Rental"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Payment"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Customer"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Country"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.FilmCategory"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Actor"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.FilmActor"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.FilmActorId"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Groups"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Users"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Store"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.City"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Address"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.FilmText"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Staff"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.FilmCategoryId"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Category"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Language"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Inventory"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Film"/>
+    <mapping class="es.cifpcm.sakilars_emiliano.Rental"/>
   </session-factory>
 </hibernate-configuration>

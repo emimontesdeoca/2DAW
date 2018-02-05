@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/publicTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form>
+            <div style="text-align:center;">
+                <h:link outcome="/index.xhtml" value="Volver"/><br/><br/>
+                <h:panelGrid  id="formbusqueda" columns="2" cellpadding="5" style="margin: 0 auto;width:auto">
+                    <p:outputLabel for="cboProvincias" value="Provincia: " />
+                    <p:selectOneMenu id="cboProvincias" value="#{hotelSearchBean.idProvincia}" >
+                        <p:ajax listener="#{hotelSearchBean.onCboProvinciasChange()}" update="cboMunicipios" />
+                        <f:selectItems value="#{hotelSearchBean.provincias}" var="p"
+                                       itemLabel="#{p.nombre}" itemValue="#{p.id_provinicia}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="cboMunicipios" value="Municipio: " />
+                    <p:selectOneMenu id="cboMunicipios" style="width: 206px;max-width: 206px;" value="#{hotelSearchBean.idMunicipio}" >
+                        <f:selectItems value="#{hotelSearchBean.municipios}" var="c"
+                                       itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="fechaEntrada" value="Fecha de entrada: " />
+                    <p:calendar pattern="dd/MM/yyyy" id="fechaEntrada" value="#{hotelSearchBean.fechaEntrada}" required="true" />
+
+                    <p:outputLabel for="fechaSalida" value="Fecha de salida " />
+                    <p:calendar pattern="dd/MM/yyyy" id="fechaSalida" value="#{hotelSearchBean.fechaSalida}" required="true"/>
+
+                </h:panelGrid>
+                <br/>
+                <p:commandButton value="Buscar" action="#{hotelSearchBean.setIDCookie()}"/>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

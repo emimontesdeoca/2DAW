@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>API REST JAVA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="font-family: Arial">
+        <h1 style="text-align:center">API REST Java</h1>
+        <h2 style="text-align:center">Emiliano Montesdeoca</h2>
+        <hr>
+
+        <ul id="actorList" style="float: right"></ul>
+
+        <div style="margin: 0 auto;display: flex;justify-content: center;">
+            <fieldset style="width:200px; text-align:center">
+                <legend>Agregar un actor</legend>
+                <label>Nombre</label><br>
+                <input type="text" id="txtNombre"><br>
+                <label>Apellido</label><br>
+                <input type="text" id="txtApellidos"><br><br>
+                <input type="button" id="cmdSubmit" value="Agregar">
+            </fieldset>
+
+            <fieldset style="width:200px; text-align:center">
+                <legend>Buscar actor por ID</legend>
+                <label>ID del actor</label><br>
+                <input type="text" id="txtID"><br>
+                <p>Se mostrara el actor a continuacion</p>
+                <p id="txtActor"></p>
+                <input type="button" id="cmdSubmitId" value="Buscar">
+            </fieldset>
+            <fieldset style="width:200px; text-align:center">
+                <legend>Todos los actores</legend>
+                <label>Cargar todos los actores en una lista</label><br><br>
+                <input type="button" id="cmdSubmitActores" value="Mostrar">
+            </fieldset>
+        </div>
+        <script  src="http://code.jquery.com/jquery-3.3.1.min.js" ></script>
+        <script type="text/javascript">
+            $("#cmdSubmitId").click(function refreshActorList(event) {
+                var id = $("#txtID").val();
+                $.ajax({
+                    url: "api/actor/" + id,
+                    type: "get",
+                    dataType: "json",
+                    "success": function (data) {
+                        $("#txtActor").text(data.firstName + " " + data.lastName)
+                    }
+                });
+            })
+
+            $("#cmdSubmit").click(function (event) {
+                var actor = {
+                    firstName: $("#txtNombre").val(),
+                    lastName: $("#txtApellidos").val()
+                };
+                var request = $.ajax({
+                    url: "api/actor/create",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(actor),
+                    dataType: "json",
+                    error: function (request, status, error) {
+                        console.log(request.responseText);
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        refreshActorList();
+                    }
+                });
+            });
+
+            $("#cmdSubmitActores").click(function refreshActorList(event) {
+                var custList = $('#actorList');
+                custList.empty();
+                $.ajax({
+                    "url": "api/actor/allActors/",
+                    "type": "get",
+                    "dataType": "json",
+                    "success": function (actors) {
+                        console.log(actors);
+                        $.each(actors, function (i, actor) {
+                            var li = $('<li/>')
+                                    .addClass('ui-menu-item')
+                                    .attr('role', 'menuitem')
+                                    .appendTo(custList);
+                            var a = $('<a/>')
+                                    .addClass('ui-all')
+                                    .text(actor.firstName + ' ' + actor.lastName)
+                                    .appendTo(li);
+                        });
+                    }
+                });
+            })
+        </script>
+    </body>
+</html>

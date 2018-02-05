@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro Forvago</title>
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <div>
+            <h2 id="titulo"><img src="../resources/images/logo.png" /></h2>
+        </div>
+        <br/>
+        <hr/>
+        <br/>
+        <div style="width:100%; text-align:center">
+            <h:link outcome="/index" value="Volver" /><br/>
+            <br/>
+        </div>
+        <h:form id="form" style="text-align: center;width: 50%;margin: 0 auto;">
+            <p:panel header="Informacion de logeo" >
+                <br/>
+                <p:outputLabel>Hay que rellenar todos los campos con asterisco</p:outputLabel>
+                <br/>
+                <br/>
+                <h:panelGrid columns="3" cellpadding="5" style="width: auto;margin: 0 auto;text-align: center;">
+                    <p:outputLabel for="txt1" value="Usuario"/>
+                    <p:inputText id="txt1" value="${registerBean.username}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                    <p:outputLabel for="txt2" value="Contraseña"/>
+                    <p:inputText id="txt2" value="${registerBean.password}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                    <p:outputLabel for="txt3" value="Nombre"/>
+                    <p:inputText id="txt3" value="${registerBean.first_name}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                    <p:outputLabel for="txt4" value="Apellido"/>
+                    <p:inputText id="txt4" value="${registerBean.last_name}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                    <p:outputLabel for="txt5" value="Telefono"/>
+                    <p:inputText id="txt5" value="${registerBean.telefono}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                    <p:outputLabel for="txt6" value="Email"/>
+                    <p:inputText id="txt6" value="${registerBean.email}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                    <p:outputLabel for="txt7" value="Fecha de nacimiento"/>
+                    <p:calendar pattern="dd/MM/yyyy" id="txt7" value="${registerBean.fecha_de_nacimiento}" required="true" requiredMessage="Hay que rellenar este campo!" /><br/>
+                </h:panelGrid>
+
+                <p:commandButton value="Login" action="#{registerBean.registrar()}"/>
+
+            </p:panel>
+
+        </h:form>
+
+        <br/>    
+        <hr/>
+        <p id="footertext">Creado por Emiliano Montesdeoca del Puerto</p>
+    </h:body>
+</html>
+

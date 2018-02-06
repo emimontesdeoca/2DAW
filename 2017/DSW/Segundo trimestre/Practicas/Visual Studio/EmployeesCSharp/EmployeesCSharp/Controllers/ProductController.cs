@@ -1,4 +1,5 @@
-﻿using EmployeesCSharp.Models;
+﻿using EmployeesCSharp.Data;
+using EmployeesCSharp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +10,39 @@ namespace EmployeesCSharp.Controllers
 {
     public class ProductController : Controller
     {
-        List<Product> lista = new List<Product>();
+        static List<Product> lista = new ProductData().GetData();
 
         // GET: Product
         public ActionResult Index()
         {
-
             return View(model: getProductos());
         }
 
         public List<Product> getProductos()
         {
-
-            for (int i = 0; i < 10; i++)
-            {
-                Product p = new Product(i, "Producto " + i, "Categoria " + i);
-                lista.Add(p);
-            }
-
             return lista;
         }
 
+        public ActionResult create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Product p)
+        {
+
+            if (ModelState.IsValid)
+            {
+                lista.Add(p);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
     }
 }

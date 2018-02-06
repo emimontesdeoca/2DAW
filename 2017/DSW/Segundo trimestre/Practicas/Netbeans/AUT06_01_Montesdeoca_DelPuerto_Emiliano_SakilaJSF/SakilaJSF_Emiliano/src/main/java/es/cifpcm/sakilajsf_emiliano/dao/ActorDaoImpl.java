@@ -35,7 +35,7 @@ public class ActorDaoImpl implements ActorDao {
         }
 
         /// Connection string 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "2daw", "2daw")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.239.114:3574/sakila", "2daw", "2daw")) {
             /// La query para para devolver los actores
             String query = "select * from actor";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -64,7 +64,7 @@ public class ActorDaoImpl implements ActorDao {
         }
 
         /// Connection string 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "2daw", "2daw")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.239.114:3574/sakila", "2daw", "2daw")) {
             /// La query para para devolver los actores
             String query = "INSERT INTO `actor`(`first_name`, `last_name`) VALUES (?,?)";
             try (PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {

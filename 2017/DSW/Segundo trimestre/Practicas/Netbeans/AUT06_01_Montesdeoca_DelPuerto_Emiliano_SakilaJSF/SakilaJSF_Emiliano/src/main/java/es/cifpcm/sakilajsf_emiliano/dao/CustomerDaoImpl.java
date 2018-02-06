@@ -32,7 +32,7 @@ public class CustomerDaoImpl implements CustomerDao {
         }
 
         /// Connection string 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "2daw", "2daw")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.239.114:3574/sakila", "2daw", "2daw")) {
             /// La query para para devolver los actores
             String query = "select * from customer";
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -71,7 +71,7 @@ public class CustomerDaoImpl implements CustomerDao {
         }
 
         /// Connection string 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "2daw", "2daw")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.239.114:3574/sakila", "2daw", "2daw")) {
             /// La query para para devolver los actores
             String query = "INSERT INTO `customer`(`store_id`, `first_name`, `last_name`, `email`, `address_id`, `active`) VALUES (?,?,?,?,?,?)";
             try (PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {

@@ -23,6 +23,7 @@ namespace BancosEMontesdeoca
         public string NumCuenta { get; set; }
         public Nullable<System.DateTime> FechaApertura { get; set; }
         public Nullable<int> IdTipoCuenta { get; set; }
+        [MinLength(1, ErrorMessage = "Minimo tiene que tener 1 euro")]
         public Nullable<decimal> Saldo { get; set; }
     
         public virtual Clientes Clientes { get; set; }

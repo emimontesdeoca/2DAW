@@ -19,6 +19,7 @@ namespace BancosEMontesdeoca
         public int IdCuenta { get; set; }
         public int IdCliente { get; set; }
         public int IdEntidad { get; set; }
+        [StringLength(20, MinimumLength = 10, ErrorMessage = "Minimo 10 numeros.")]
         public string NumCuenta { get; set; }
         public Nullable<System.DateTime> FechaApertura { get; set; }
         public Nullable<int> IdTipoCuenta { get; set; }

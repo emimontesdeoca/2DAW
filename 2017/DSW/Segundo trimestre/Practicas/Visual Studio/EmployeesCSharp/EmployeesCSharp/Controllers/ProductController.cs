@@ -44,5 +44,46 @@ namespace EmployeesCSharp.Controllers
             }
         }
 
+
+
+        public ActionResult Edit(Product p)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, Product p)
+        {
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].Id == id)
+                {
+                    lista[i] = p;
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var p = lista.Single(x => x.Id == id);
+
+            return View(model: p);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var p = lista.Single(x => x.Id == id);
+
+            lista.Remove(p);
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

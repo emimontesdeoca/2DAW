@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 style="text-align:center">Banco EMontesdeoca</h1>
+    <br />
+    <img src="~/Images/administration.png" style="width:100px; float:left; margin-right:20px;" />
+    <p class="lead">El banco donde te dice que no somos algo que te da dinero sino que especulamos con tu dinero y si lo perdemos pues te tenemos que pagar.</p>
+    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+</div>
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <a class="btn btn-default" href="@Url.Action("Get", "Clientes")">
+            <h2>Clientes</h2>
+            <p>
+                <img src="~/Images/Groups-Meeting-Dark-icon.png" />
+            </p>
+            <p style="text-align:center">
+                Acceder a clientes
+            </p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-default" href="@Url.Action("Index", "Cuentas")">
+            <h2>Cuentas</h2>
+            <p>
+                <img src="~/Images/dollar-folder-icon.png" />
+            </p>
+            <p style="text-align:center">
+                Acceder a cuentas
+            </p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-default" href="@Url.Action("Index", "Notificaciones")">
+            <h2>Notificaciones</h2>
+            <p>
+                <img src="~/Images/License-manager-icon.png" />
+            </p>
+            <p style="text-align:center">
+                Acceder a notificaciones
+            </p>
+        </a>
+    </div>
+</div>

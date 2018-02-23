@@ -12,6 +12,7 @@ namespace BancosEMontesdeoca
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Cuentas
     {
@@ -19,13 +20,21 @@ namespace BancosEMontesdeoca
         public int IdCuenta { get; set; }
         public int IdCliente { get; set; }
         public int IdEntidad { get; set; }
-        [StringLength(20, MinimumLength = 10, ErrorMessage = "Minimo 10 numeros.")]
+
+        [Required]
+        [StringLength(10, ErrorMessage = "Maximo 10 numeros.")]
         public string NumCuenta { get; set; }
+
+        [Column(TypeName = "date")]
+        [Required(ErrorMessage = "Fecha de registro requerida")]
+        [DataType(DataType.Date, ErrorMessage = "Fecha registro incorrecta")]
         public Nullable<System.DateTime> FechaApertura { get; set; }
         public Nullable<int> IdTipoCuenta { get; set; }
-        [MinLength(1, ErrorMessage = "Minimo tiene que tener 1 euro")]
+        //[MinLength(1, ErrorMessage = "Minimo tiene que tener 1 euro")]
+        [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "El valor debe de ser mayor que 0")]
         public Nullable<decimal> Saldo { get; set; }
-    
+
         public virtual Clientes Clientes { get; set; }
         public virtual Entidades Entidades { get; set; }
         public virtual TiposCuenta TiposCuenta { get; set; }

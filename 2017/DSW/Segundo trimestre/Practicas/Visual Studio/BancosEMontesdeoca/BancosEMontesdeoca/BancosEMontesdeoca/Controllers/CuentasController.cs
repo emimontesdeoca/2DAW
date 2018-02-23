@@ -26,19 +26,27 @@ namespace BancosEMontesdeoca.Controllers
         {
             BancosEntities ctx = new BancosEntities();
 
-            ViewBag.IdCliente = new SelectList(ctx.Clientes, "idCliente", "Nombre");
-            ViewBag.idEntidad = new SelectList(ctx.Entidades, "idEntidad", "Nombre");
-            ViewBag.idTipoCuenta = new SelectList(ctx.TiposCuenta, "idTipoCuenta", "Denominacion");
+            ViewBag.IdCliente = new SelectList(ctx.Clientes.OrderBy(x => x.NifNie), "idCliente", "NifNie");
+            ViewBag.idEntidad = new SelectList(ctx.Entidades.OrderBy(x => x.Nombre), "idEntidad", "Nombre");
+            ViewBag.idTipoCuenta = new SelectList(ctx.TiposCuenta.OrderBy(x => x.Denominacion), "idTipoCuenta", "Denominacion");
 
             return View();
         }
         [HttpPost]
         public ActionResult Create(Cuentas c)
         {
-            BancosEntities ctx = new BancosEntities();
-            ctx.Cuentas.Add(c);
-            ctx.SaveChanges();
-            return RedirectToAction("Get", "Cuentas");
+            if (ModelState.IsValid)
+            {
+                BancosEntities ctx = new BancosEntities();
+                ctx.Cuentas.Add(c);
+                ctx.SaveChanges();
+                return RedirectToAction("Get", "Cuentas");
+            }
+            else
+            {
+                return RedirectToAction("Get", "Cuentas");
+            }
+
         }
 
         public ActionResult Edit(int id)
@@ -47,9 +55,9 @@ namespace BancosEMontesdeoca.Controllers
 
             Cuentas c = ctx.Cuentas.Single(x => x.IdCuenta == id);
 
-            ViewBag.IdCliente = new SelectList(ctx.Clientes, "idCliente", "NifNie");
-            ViewBag.idEntidad = new SelectList(ctx.Entidades, "idEntidad", "Nombre");
-            ViewBag.idTipoCuenta = new SelectList(ctx.TiposCuenta, "idTipoCuenta", "Denominacion");
+            ViewBag.IdCliente = new SelectList(ctx.Clientes.OrderBy(x => x.NifNie), "idCliente", "NifNie", c.IdCliente);
+            ViewBag.idEntidad = new SelectList(ctx.Entidades.OrderBy(x => x.Nombre), "idEntidad", "Nombre", c.IdEntidad);
+            ViewBag.idTipoCuenta = new SelectList(ctx.TiposCuenta.OrderBy(x => x.Denominacion), "idTipoCuenta", "Denominacion", c.IdTipoCuenta);
 
             return View(c);
         }

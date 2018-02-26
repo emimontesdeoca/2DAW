@@ -164,6 +164,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Clientes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Entidades.cs">
       <DependentUpon>Clientes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Filters\AdminFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,10 +253,13 @@
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Cuentas\Get.cshtml" />
-    <Content Include="Views\Cuentas\Edit.cshtml" />
     <Content Include="Views\Cuentas\Delete.cshtml" />
     <Content Include="Views\Cuentas\Details.cshtml" />
     <Content Include="Views\Cuentas\Create.cshtml" />
+    <Content Include="Views\Auth\Index.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Cuentas\Edit.cshtml" />
+    <Content Include="Views\Shared\AuthError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

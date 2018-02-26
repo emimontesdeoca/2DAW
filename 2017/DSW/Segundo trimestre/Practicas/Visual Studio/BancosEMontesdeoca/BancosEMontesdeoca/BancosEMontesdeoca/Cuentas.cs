@@ -21,8 +21,9 @@ namespace BancosEMontesdeoca
         public int IdCliente { get; set; }
         public int IdEntidad { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Error en el campo")]
         [StringLength(10, ErrorMessage = "Maximo 10 numeros.")]
+        //[MinLength(10, ErrorMessage = "Minimo 10 numeros.")]
         public string NumCuenta { get; set; }
 
         [Column(TypeName = "date")]

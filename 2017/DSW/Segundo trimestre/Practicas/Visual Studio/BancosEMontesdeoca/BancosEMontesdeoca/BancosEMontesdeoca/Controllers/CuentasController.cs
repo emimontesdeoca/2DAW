@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BancosEMontesdeoca.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,10 +7,13 @@ using System.Web.Mvc;
 
 namespace BancosEMontesdeoca.Controllers
 {
+    [Authorize]
+    [AdminFilter]
     public class CuentasController : Controller
     {
         public static List<Cuentas> Lista = new List<Cuentas>();
         // GET: Cuentas
+
         public ActionResult Index()
         {
             return RedirectToAction("Get", "Cuentas");
@@ -64,20 +68,29 @@ namespace BancosEMontesdeoca.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Cuentas c)
         {
-            BancosEntities ctx = new BancosEntities();
+            if (ModelState.IsValid)
+            {
+                BancosEntities ctx = new BancosEntities();
 
-            Cuentas edit = ctx.Cuentas.Single(x => x.IdCuenta == id);
+                Cuentas edit = ctx.Cuentas.Single(x => x.IdCuenta == id);
 
-            edit.IdCliente = c.IdCliente;
-            edit.IdEntidad = c.IdEntidad;
-            edit.IdTipoCuenta = c.IdTipoCuenta;
-            edit.NumCuenta = c.NumCuenta;
-            edit.Saldo = c.Saldo;
-            edit.TiposCuenta = c.TiposCuenta;
+                edit.IdCliente = c.IdCliente;
+                edit.IdEntidad = c.IdEntidad;
+                edit.IdTipoCuenta = c.IdTipoCuenta;
+                edit.NumCuenta = c.NumCuenta;
+                edit.Saldo = c.Saldo;
+                edit.TiposCuenta = c.TiposCuenta;
 
-            ctx.SaveChanges();
+                ctx.SaveChanges();
 
-            return RedirectToAction("Get", "Cuentas");
+                return RedirectToAction("Get", "Cuentas");
+            }
+            else
+            {
+                return RedirectToAction("Get", "Cuentas");
+            }
+
+
         }
 
         public ActionResult Details(int id)

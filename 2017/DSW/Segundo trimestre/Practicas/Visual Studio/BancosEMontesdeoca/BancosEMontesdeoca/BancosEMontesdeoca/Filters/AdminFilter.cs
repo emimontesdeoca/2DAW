@@ -13,11 +13,11 @@ namespace BancosEMontesdeoca.Filters
         {
             BancoUsers u = null;
 
-            if (filterContext.HttpContext.Session["usuario"] is BancoUsers)
-            {
-                u = filterContext.HttpContext.Session["usuario"] as BancoUsers;
-            }
+            //if (filterContext.HttpContext.Session["usuario"] is BancoUsers)
+            //{
+            //}
 
+            u = filterContext.HttpContext.Session["usuario"] as BancoUsers;
 
 
             if (u == null || !u.Grupos.Contains("ADMIN"))

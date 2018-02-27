@@ -36,6 +36,7 @@ namespace BancosEMontesdeoca.Controllers
                         FormsAuthentication.SetAuthCookie(authUser.Login, false);
                         Session["usuario"] = authUser;
                         return RedirectToAction("Get", "Cuentas");
+
                     }
                     catch (Exception)
                     {
@@ -48,6 +49,15 @@ namespace BancosEMontesdeoca.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Session.Clear();
+
+            return RedirectToAction("Index", "Home");
         }
 
     }

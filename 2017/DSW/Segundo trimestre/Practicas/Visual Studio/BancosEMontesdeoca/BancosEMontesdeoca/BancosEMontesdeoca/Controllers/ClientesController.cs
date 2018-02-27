@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BancosEMontesdeoca.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,8 @@ using System.Web.Mvc;
 
 namespace BancosEMontesdeoca.Controllers
 {
+    [Authorize]
+    [AdminFilter]
     public class ClientesController : Controller
     {
         List<Clientes> Lista = new List<Clientes>();

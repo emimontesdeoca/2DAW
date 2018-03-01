@@ -24,5 +24,7 @@ namespace BancosEMontesdeoca.DataAccesLayer
             modelBuilder.Entity<BancoUsers>().ToTable("BancoUsers");
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<BancosEMontesdeoca.Operaciones> Operaciones { get; set; }
     }
 }

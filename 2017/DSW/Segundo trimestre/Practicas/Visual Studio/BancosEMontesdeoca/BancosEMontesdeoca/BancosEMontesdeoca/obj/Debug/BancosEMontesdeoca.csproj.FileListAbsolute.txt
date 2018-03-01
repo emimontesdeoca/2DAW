@@ -34,3 +34,4 @@ C:\Git\2DAW\2017\DSW\Segundo trimestre\Practicas\Visual Studio\BancosEMontesdeoc
 C:\Git\2DAW\2017\DSW\Segundo trimestre\Practicas\Visual Studio\BancosEMontesdeoca\BancosEMontesdeoca\BancosEMontesdeoca\obj\Debug\BancosEMontesdeoca.csproj.CoreCompileInputs.cache
 C:\Git\2DAW\2017\DSW\Segundo trimestre\Practicas\Visual Studio\BancosEMontesdeoca\BancosEMontesdeoca\BancosEMontesdeoca\obj\Debug\BancosEMontesdeoca.dll
 C:\Git\2DAW\2017\DSW\Segundo trimestre\Practicas\Visual Studio\BancosEMontesdeoca\BancosEMontesdeoca\BancosEMontesdeoca\obj\Debug\BancosEMontesdeoca.pdb
+C:\Git\2DAW\2017\DSW\Segundo trimestre\Practicas\Visual Studio\BancosEMontesdeoca\BancosEMontesdeoca\BancosEMontesdeoca\obj\Debug\BancosEMontesdeoca.csprojResolveAssemblyReference.cache

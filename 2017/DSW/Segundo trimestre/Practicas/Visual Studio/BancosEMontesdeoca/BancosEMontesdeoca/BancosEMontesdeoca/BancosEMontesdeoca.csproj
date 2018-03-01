@@ -260,6 +260,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Cuentas\Edit.cshtml" />
     <Content Include="Views\Shared\AuthError.cshtml" />
+    <Content Include="Views\Clientes\Operations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

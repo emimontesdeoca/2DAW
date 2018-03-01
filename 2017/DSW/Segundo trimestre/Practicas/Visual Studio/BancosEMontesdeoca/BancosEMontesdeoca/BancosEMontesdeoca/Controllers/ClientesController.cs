@@ -99,7 +99,8 @@ namespace BancosEMontesdeoca.Controllers
             return RedirectToAction("Get", "Clientes");
         }
 
-        public ActionResult Details(int id) {
+        public ActionResult Details(int id)
+        {
             Clientes c = new Clientes();
 
             using (BancosEntities ctx = new BancosEntities())
@@ -118,5 +119,16 @@ namespace BancosEMontesdeoca.Controllers
             return View(c);
         }
 
+        public ActionResult Operations(int id)
+        {
+            List<Operaciones> list = new List<Operaciones>();
+            BancosEntities ctx = new BancosEntities();
+
+            list = ctx.Operaciones.Where(p => p.IdCliente == id).ToList();
+
+            return View(list);
+
+
+        }
     }
 }

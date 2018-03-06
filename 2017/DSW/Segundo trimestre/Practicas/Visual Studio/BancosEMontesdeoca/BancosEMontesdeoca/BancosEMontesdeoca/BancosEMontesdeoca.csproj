@@ -176,6 +176,7 @@
       <DependentUpon>Clientes.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\AdminFilter.cs" />
+    <Compile Include="Filters\ManagerFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,21 +247,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Clientes\Get.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Clientes\Delete.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Details.cshtml" />
-    <Content Include="Views\Cuentas\Get.cshtml" />
     <Content Include="Views\Cuentas\Delete.cshtml" />
     <Content Include="Views\Cuentas\Details.cshtml" />
-    <Content Include="Views\Cuentas\Create.cshtml" />
     <Content Include="Views\Auth\Index.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Cuentas\Edit.cshtml" />
     <Content Include="Views\Shared\AuthError.cshtml" />
-    <Content Include="Views\Clientes\Operations.cshtml" />
+    <Content Include="Views\Cuentas\Lista.cshtml" />
+    <Content Include="Views\Cuentas\CreateModel.cshtml" />
+    <Content Include="Views\Clientes\Lista.cshtml" />
+    <Content Include="Views\Cuentas\VerCuentas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

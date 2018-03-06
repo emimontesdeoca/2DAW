@@ -21,19 +21,20 @@ namespace BancosEMontesdeoca
         public int IdCliente { get; set; }
         public int IdEntidad { get; set; }
 
-        [Required(ErrorMessage = "Error en el campo")]
-        [StringLength(10, ErrorMessage = "Maximo 10 numeros.")]
+        [Required(ErrorMessage = "Numero de cuenta requerido")]
+        [StringLength(10, ErrorMessage = "Maximo 10 digitos numericos.")]
+        [MinLength(10, ErrorMessage = "Requeridos 10 digitos numericos.")]
         //[MinLength(10, ErrorMessage = "Minimo 10 numeros.")]
         public string NumCuenta { get; set; }
 
         [Column(TypeName = "date")]
-        [Required(ErrorMessage = "Fecha de registro requerida")]
+        [Required(ErrorMessage = "Fecha de apertura requerida")]
         [DataType(DataType.Date, ErrorMessage = "Fecha registro incorrecta")]
         public Nullable<System.DateTime> FechaApertura { get; set; }
         public Nullable<int> IdTipoCuenta { get; set; }
         //[MinLength(1, ErrorMessage = "Minimo tiene que tener 1 euro")]
-        [Required]
-        [Range(0, double.MaxValue, ErrorMessage = "El valor debe de ser mayor que 0")]
+        [Required(ErrorMessage = "Saldo requerido")]
+        //[Range(0, double.MaxValue, ErrorMessage = "Saldo minimo 1")]
         public Nullable<decimal> Saldo { get; set; }
 
         public virtual Clientes Clientes { get; set; }

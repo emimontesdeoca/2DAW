@@ -24,10 +24,15 @@ namespace BancosEMontesdeoca
         }
         [Key]
         public int IdCliente { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
+        [StringLength(9, ErrorMessage = "Minimo 9 caracteres.")]
+        [MinLength(9, ErrorMessage = "Minimo 9 caracteres.")]
         public string NifNie { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "Campo requerido")]
         public string Apellidos { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuentas> Cuentas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
